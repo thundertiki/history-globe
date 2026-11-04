@@ -5,7 +5,6 @@
 A'i Cofán/Kofán
 Abdelouadides
 Abitibiwinni Aki
-Aboriginal tribes
 Acaxea
 Accomack
 Adal
@@ -14,12 +13,8 @@ Ahtna Nenn’
 Akwê
 Alazapas
 Alwa
-Amazon hunter-gatherers
 Amboca
 Amorúa
-Anatolian tribes
-Andean hunter-gatherers
-Andean states and chiefdoms
 Andegerebenha
 Andoa
 Andyamathanha
@@ -31,10 +26,7 @@ Apalachees
 Apsaalooké (Crow)
 Apyãwa
 Arabela
-Arabian pastoral nomads
 Arara of Volta Grande
-Archaic Amerindian hunter-gatherers
-Arctic marine mammal hunters
 Arran
 Arrohatec
 Artsakh
@@ -44,8 +36,6 @@ Atikum-Umã
 Ato trading confederacy
 Attiwonderonk (Neutral)
 Aucocisco
-Australian aboriginal hunter-gatherers
-Austro-Asiatic rice cultures
 Ava
 Avanti
 Avars
@@ -68,7 +58,6 @@ Beaver Lake Cree
 Bega
 Bell-shaped burials culture
 Berar
-Berber Tribes
 Betoy
 Bia Mbyá
 Bibbulman
@@ -95,7 +84,6 @@ Caldwell
 Calicuas
 Canela Apanyekrá
 Canela Ramkokamekrá
-Caribbean hunter-gatherers
 Carnatic
 Cascades
 Castile
@@ -144,7 +132,6 @@ Cuman Khanates
 Cushites
 Cuttatawomen
 Dainggatti
-Dakapeng culture
 Dakeł Keyoh (ᑕᗸᒡ ᗲᘏᑋ)
 Damot
 Dangbon
@@ -156,13 +143,11 @@ Deg Xit'an Ngan' (Deg Xit'an)
 Dehcho Dene
 Dena'ina Ełnena
 Dene Tha'
-Desert hunter-gatherers
 Diné Bikéyah
 Djabuganjdji
 Djabwurung
 Djargurdwurung
 Dokapuara (Tuyuca)
-Donghu tribes
 Dutch Guiana
 Dutch settlements
 Dyo'xaiya-o-Ivo'tsa (Okaina)
@@ -173,7 +158,6 @@ East Aden Protectorate
 East Getaes
 Eastern Masurian culture
 Eastern Nehântick
-Eastern North American hunter-gatherers
 Ecuana
 Eduria (Taiwano)
 El Paraiso
@@ -194,13 +178,9 @@ Esketemculeucw (Esk'etemc)
 Esse ejja
 Essequibo
 Ests
-Ethiopian Highland Peoples
-Ethiopian highland farmers
 Eyaq
 Fernandeño Tataviam
-Finno-Ugric taiga hunter-gatherers
 First Samori Empire
-Fourche Maline Culture
 Féénemɨnaa
 Gabalbara
 Gamberre
@@ -216,7 +196,6 @@ Gitanyow Lax’yip
 Gitga’at
 Gitga’at Lax Yuup
 Gitx̱san Lax̱yip
-Glades Culture
 Gold Coast
 Gold Coast (GB)
 Guacata
@@ -261,7 +240,6 @@ Hoti
 Huancas
 Huaylas
 Hul Kuhk’u
-Hunters-gatherers
 Hupd'äh
 Hurrian Kingdoms
 Hövsgöl Nuur
@@ -276,9 +254,7 @@ Imperial Hungary
 Inikana/Kukama Kukamiria/Kokama
 Inkal Awá
 Iogys
-Iranian pastoralists
 Iron Age chieftainships
-Iron Age megalith cultures
 Irritilas
 Irritilas/Lagunero
 Ishir Tomárãho
@@ -388,7 +364,6 @@ Lake Segozerskoye
 Laklanõ
 Lambakannas
 Laotian states
-Late Jomon culture
 Leks
 Lemhi-Shoshone
 León
@@ -415,7 +390,6 @@ Mahratta states
 Maijuna
 Maiou
 Maitraka Kingdom
-Maize farmers
 Malacatos
 Malak malak
 Malaysian Islamic states
@@ -424,11 +398,9 @@ Malyangaba
 Malécu
 Manchu Empire
 Mandes
-Manioc farmers
 Manoki
 Maratines
 Marinahua
-Marksville Culture
 Marramaninjsji
 Marrithiyel
 Massa
@@ -438,7 +410,6 @@ Mataram
 Matlatzinco/Tlahuica/Ocuiltec
 Matlatzinco/matlatzinteca
 Maya Yucateco
-Maya chiefdoms and states
 Maya city-states
 Maya states
 Mazun
@@ -448,8 +419,6 @@ Mecklenburg-Schwerin
 Mecklenburg-Strelitz
 Mehin
 Merinides
-Mesoamerican city-states and chiefdoms
-Mesoamerican hunter-gatherers and maïze farmers
 Mexihcah (Triple Alliance)
 Meškwahki·aša·hina (Fox)
 Me̱'pha̱a̱ (Tlapaneco)
@@ -475,7 +444,6 @@ Murrinh-patha
 Musgamagw Dzawada'enuxw
 Muskogee
 Muteamasa (Karapanã)
-N. European Bronze Age cultures
 NWT Métis Nation
 Na-cho Nyak Dun
 Nadöb
@@ -509,7 +477,6 @@ Nom Sus Wintu
 Nom Ti Pom Wintu
 Nomatsigenga
 Nor Rel Muk Wintu
-North American Pacific foraging, hunting and fishing peoples
 Northeastern Rhodesia
 Northern Yuki
 Northwestern Rhodesia
@@ -548,22 +515,18 @@ Pacheedaht
 Pakajaqi
 Palatinate
 Paleo-Koreans
-Paleo-Siberian hunter-gatherers
 Pallava state
 Pamoari
-Pampas cultures
 Pandya state
 Pankará
 Papago
 Papu
 Papua
 Papuan
-Papuan neolithic farmers
 Papuans
 Paramas
 Parikwene
 Parkatejê
-Patagonian shellfish and marine mammal hunters
 Pataxó Hã-Hã-Hãe
 Pentucket
 Pequonnock
@@ -575,9 +538,6 @@ Pipa Aha Macav (Mojave)
 Pisones
 Pissaseck
 Pitta-Pitta
-Plain bison hunters
-Plain-Pottery culture
-Plateau fichers and hunter gatherers
 Pocumtuk
 Podunks
 Point Peninsula
@@ -589,9 +549,6 @@ Porter
 Post-Ming Warlords
 Potawatomi-Shawnee (Oklahoma)
 Proto-Altaic pastoralists
-Proto-Scythian culture
-Proto-Thai cultures
-Proto-Tibetan cultures
 Prussians
 Purehno
 Puruwá
@@ -618,14 +575,11 @@ S. Xiongnu
 Saba
 Sacapultec
 Saces
-Saharan Nomadic Tribes
-Saharan pastoral nomads
 Sahtu Dene and Metis
 Sahtú Got’ine
 Saint Martin
 Sakurabiat
 Salasaka
-Salish & Kootenai Tribes
 Salmon River
 Saluda
 Sambian-Nothangian culture
@@ -637,7 +591,6 @@ Sataré-Mawé
 Satavahanihara
 Sauk and Meskwaki
 Saunan
-Savanna hunter-gatherers
 Savoy-Piedmont
 Schitsu’umsh (Coeur d’Alene)
 Secwepemcúl'ecw (Secwépemc)
@@ -649,7 +602,6 @@ Shaskanka
 Shawanaua
 Shawandasse Tula (Shawanwaki/Shawnee)
 Shawi
-Shellfish gatherers
 Shita Got’ine
 Shiwilu
 Shiwinna (Zuni)
@@ -683,7 +635,6 @@ Stellat'en
 Sturgeon Lake Cree
 Stz'uminus
 St̓át̓imc Tmicw (St'at'imc)
-Subarctic forest hunter-gatherers
 Sukhothai
 Sultinate of Zanzibar
 Suom
@@ -697,18 +648,15 @@ S’ólh Téméxw (Stó:lō)
 Ta'an Kwäch'än
 Tagé Cho Hudän (Little Salmon/Carmacks)
 Tahues
-Taiwanese Tribes
 Takla
 Tama Dujo
 Tamalipueca
-Tamaulipeco tribes
 Tamien Nation
 Tampachoa (Mansos)
 Tancalba
 Tanimuka
 Tano
 Tapachulteco (mixe-zoque)
-Tasmanian hunter-gatherers
 Tawahka
 Tekohá (Guarani)
 Tekohá (Paĩ Tavytera/Kaiowá)
@@ -745,12 +693,9 @@ Tse’khene
 Tsimane’
 Tŝilhqot’in Nen
 Ts’uubaa-asatx
-Tuareg Nomadic Tribes
 Tufan Empire
 Tukular Caliphate
 Tumbalalá
-Tungusic Tribes
-Turcik tribes
 Turingians
 Tzjon Non/ Tzo'tyio (Amuzgo)
 Tāłtān Konelīne (Tahltan)
@@ -796,7 +741,6 @@ Waíkhana
 Waípinõmakã (Bará)
 Wašišiw Ɂítdeʔ (Washoe)
 Wendake-Nionwentsïo
-West African cereal farmers
 West Getaes
 Western Gokturk Khaganate
 Western Masurian culture
@@ -843,7 +787,6 @@ Yurí
 Yuwi
 Zacatecs
 Zapotec Empire
-Zhou states
 ZioBain (Siona)
 Zo’é
 Zululand
@@ -852,10 +795,8 @@ central Asian khanates
 ditidaqiic̓aq disib̓aʔk (Ditidaht)
 kòréβahώ (korebaju/Koreguaje)
 minor Hindu and Buddhist kingdoms
-minor Hindu and Buddhist states
 minor Hindu kingdoms
 minor states
-minor states under Indian influence
 np̓əšqʷáw̓səxʷ (Wenatchi)
 nuučaan̓uuɫɁatḥ nism̓a (Nuu-chah-nulth)
 oθaakiiwaki‧hina‧ki (Sauk)

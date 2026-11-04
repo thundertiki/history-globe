@@ -2,7 +2,7 @@
 // (needed for the Claude artifact, whose sandbox blocks them). Run after entities.mjs.
 // Output: public/data/wiki.json = { qids: {Q123: title}, pages: {title: {e: extract, t: thumbnail, u: url}} }
 // Text is from Wikipedia, CC BY-SA 4.0; the app credits and links each article.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 
 const UA = 'history-globe-pipeline/0.1 (open-source educational map)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -32,8 +32,12 @@ for (let i = 0; i < qidList.length; i += 50) {
 console.log(Object.keys(qids).length, 'of', qidList.length, 'QIDs have English articles');
 
 const entities = JSON.parse(readFileSync('public/data/entities.json', 'utf8'));
-const titles = [...new Set([...Object.values(entities).map((e) => e.title), ...Object.values(qids)])].sort();
-const pages = {};
+// Incremental: keep summaries already fetched (delete wiki.json to refresh them all).
+const old = existsSync('public/data/wiki.json') ? JSON.parse(readFileSync('public/data/wiki.json', 'utf8')).pages : {};
+const wanted = [...new Set([...Object.values(entities).map((e) => e.title), ...Object.values(qids)])];
+const pages = Object.fromEntries(wanted.filter((t) => old[t]).map((t) => [t, old[t]]));
+const titles = wanted.filter((t) => !old[t]).sort();
+console.log(`${Object.keys(pages).length} summaries kept, ${titles.length} to fetch`);
 for (let i = 0; i < titles.length; i += 20) {
   const j = await api('en.wikipedia.org', {
     action: 'query', prop: 'extracts|pageimages|info', exintro: 1, explaintext: 1, exsentences: 4, exlimit: 20,

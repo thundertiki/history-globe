@@ -17,6 +17,13 @@ const input = $<HTMLInputElement>('date-input');
 const precision = $('precision');
 const toast = $('toast');
 
+// Keep the info card above the date bar, whose height depends on the device's font size and safe area.
+const timebar = document.querySelector<HTMLElement>('.timebar')!;
+new ResizeObserver(() => {
+  const r = timebar.getBoundingClientRect();
+  document.documentElement.style.setProperty('--timebar-h', `${Math.ceil(window.innerHeight - r.top)}px`);
+}).observe(timebar);
+
 function showToast(msg: string) {
   toast.textContent = msg;
   toast.hidden = false;

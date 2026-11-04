@@ -45,7 +45,9 @@ a { color: var(--accent); }
 #precision { text-align: center; }
 
 .panel {
-  position: absolute; top: 60px; right: 16px; width: 340px; max-height: calc(100% - 220px); overflow: auto;
+  position: absolute; top: 60px; right: 16px; width: 340px; overflow: auto;
+  /* --timebar-h is the date bar's measured height (main.ts), so the card never slides under it */
+  max-height: calc(100% - 60px - var(--timebar-h, 140px) - 32px);
   background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
   backdrop-filter: blur(6px);
 }
@@ -73,6 +75,9 @@ a { color: var(--accent); }
 /* Phones: panel becomes a bottom sheet above the time bar */
 @media (max-width: 640px) {
   .maplibregl-ctrl-bottom-right .maplibregl-ctrl-group { display: none; }
-  .panel { left: 16px; right: 16px; width: auto; top: auto; bottom: 150px; max-height: 45%; }
+  .panel {
+    left: 16px; right: 16px; width: auto; top: auto;
+    bottom: calc(var(--timebar-h, 140px) + 28px); max-height: min(45%, calc(100% - var(--timebar-h, 140px) - 100px));
+  }
   #date-input { font-size: 19px; }
 }
