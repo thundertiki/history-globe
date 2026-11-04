@@ -13,7 +13,10 @@
     "test": "vitest run",
     "data:fetch": "bash pipeline/fetch.sh",
     "data:build": "node pipeline/build.mjs",
-    "data:entities": "node pipeline/entities.mjs"
+    "data:entities": "node pipeline/entities.mjs && node pipeline/entities-search.mjs",
+    "build:artifact": "vite build --mode artifact && node pipeline/artifact.mjs",
+    "data:fonts": "node pipeline/fonts.mjs",
+    "data:summaries": "node pipeline/summaries.mjs"
   },
   "type": "module",
   "dependencies": {

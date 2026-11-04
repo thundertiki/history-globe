@@ -16,9 +16,9 @@ await page.waitForFunction(() => window.hg?.globe.map.loaded(), null, { timeout:
 
 const checks = [
   ['500 BC', ['Achaemenid Empire']],
-  ['1914-01-01', ['Austria-Hungary', 'Germany (Prussia)']],
-  ['1990-10-02', ['German Democratic Republic']],
-  ['1990-10-03', ['German Federal Republic']],
+  ['1914-01-01', ['Austro-Hungarian Empire', 'German Empire', 'Russian Empire', 'French West Africa']],
+  ['1990-10-02', ['German Democratic Republic', 'West Germany', 'USSR']],
+  ['1990-10-03', ['Germany']],
   ['2026-11-03', ['Germany', 'France']],
 ];
 let fail = 0;
@@ -32,8 +32,9 @@ for (const [d, want] of checks) {
     await Promise.race([new Promise((res) => m.once('idle', res)), new Promise((res) => setTimeout(res, 4000))]);
     // Whole-viewport queryRenderedFeatures is unreliable on the globe projection; query the source with the
     // same filter the layers use instead.
-    const filter = m.getFilter('borders-fill') ?? undefined;
-    const names = new Set(m.querySourceFeatures('borders', { filter }).map((f) => f.properties._name));
+    // Labels source holds exactly one point per polity name shown that day.
+    const all = m.querySourceFeatures('labels').map((f) => f.properties._name);
+    const names = new Set(all);
     return {
       label: document.getElementById('date-input').value,
       prec: document.getElementById('precision').textContent,

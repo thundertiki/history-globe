@@ -5,6 +5,7 @@ import { initAbout } from './about';
 import { HDate, formatDate, parseDate, yearLabel } from './dates';
 import { SLIDER_MAX, posToDate, dateToPos, normalize, step } from './timeline';
 import { Manifest, Pick, pickBorders } from './borders';
+import { nameAt } from './names';
 
 const DATA = `${import.meta.env.BASE_URL}data`;
 const now = new Date();
@@ -38,8 +39,11 @@ async function main() {
     fetch(`${DATA}/borders/index.json`).then((r) => r.json() as Promise<Manifest>),
     fetch(`${DATA}/entities.json`).then((r) => r.json()),
   ]);
-  const globe = new Globe('map', DATA);
-  const panel = new Panel(entities, (c, iso) => globe.ownerName(c, iso));
+  const globe = new Globe('map', DATA, new URL(`${import.meta.env.BASE_URL}fonts/`, location.href).href);
+  const panel = new Panel(entities, (c, iso) => {
+    const p = globe.ownerProps(c, iso);
+    return p ? nameAt(p, iso) : undefined;
+  }, DATA);
   initAbout();
 
   let date: HDate = parseDate(decodeURIComponent(location.hash.slice(1))) ?? { y: 1914, m: 7, d: 28 };
@@ -53,7 +57,11 @@ async function main() {
     input.classList.remove('bad');
     precision.textContent = precisionText(pick);
     if (!fromSlider) slider.value = String(dateToPos(date, today));
-    history.replaceState(null, '', `#${hashOf(date)}`);
+    try {
+      history.replaceState(null, "", `#${hashOf(date)}`); // shareable link to this date
+    } catch {
+      /* some embedded frames refuse history changes */
+    }
     const seq = ++renderSeq;
     try {
       await globe.show(pick);
@@ -88,9 +96,9 @@ async function main() {
     if (e.key === 'ArrowRight' && e.shiftKey) $('next').click();
   });
 
-  globe.onPick((place) => (place ? panel.show(place, date, pick) : panel.hide()));
+  globe.onPick((place) => (place ? panel.show(place, pick) : panel.hide()), () => pick.tier);
   // Expose for debugging and automated checks.
-  (window as any).hg = { globe, setDate: (s: string) => { date = normalize(parseDate(s)!, today); return render(); } };
+  (window as any).hg = { globe, nameAt, pick: () => pick, setDate: (s: string) => { date = normalize(parseDate(s)!, today); return render(); } };
   render();
 }
 

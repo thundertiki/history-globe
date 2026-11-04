@@ -1,0 +1,710 @@
+Aden 1937-04-01..1962-04-03: 1937-04-01 Yemen (UK) | 1945-09-02 Yemen | 1960-01-01 Aden
+Afghanistan 1886-01-01..1888-12-30: 1886-01-01 Afghanistan
+Afghanistan 1888-12-31..1893-11-11: 1888-12-31 Afghanistan
+Afghanistan 1893-11-12..1919-04-30: 1893-11-12 Afghanistan
+Afghanistan 1919-05-01..2019-12-31: 1919-05-01 Afghanistan
+Alaska 1886-01-01..1959-01-02: 1886-01-01 Alaska | 1914-01-01 United States
+Albania 1913-01-01..1914-03-06: 1913-01-01 Albania
+Albania 1914-03-07..1920-02-10: 1914-03-07 Albania
+Albania 1920-02-11..2019-12-31: 1920-02-11 Albania
+Algeria 1886-01-01..1901-02-06: 1886-01-01 Algeria (FR) | 1900-01-01 Algeria
+Algeria 1901-02-07..1902-12-24: 1901-02-07 Algeria
+Algeria 1902-12-25..1919-09-11: 1902-12-25 Algeria
+Algeria 1919-09-12..1962-07-04: 1919-09-12 Algeria | 1938-01-01 Algeria (France) | 1945-09-02 Algeria
+Algeria 1962-07-05..2019-12-31: 1962-07-05 Algeria
+Angola 1886-01-01..1890-08-19: 1886-01-01 Angola
+Angola 1890-08-20..1891-06-10: 1890-08-20 Angola
+Angola 1891-06-11..1905-05-29: 1891-06-11 Angola
+Angola 1905-05-30..1975-11-10: 1905-05-30 Angola | 1938-01-01 Angola (Portugal) | 1960-01-01 Angola
+Angola 1975-11-11..2019-12-31: 1975-11-11 Angola
+Argentina 1886-01-01..1899-03-23: 1886-01-01 Argentina
+Argentina 1899-03-24..1902-11-19: 1899-03-24 Argentina
+Argentina 1902-11-20..2019-12-31: 1902-11-20 Argentina
+Armenia 1991-12-26..2019-12-31: 1991-12-26 Armenia
+Australia 1901-01-01..1927-05-08: 1901-01-01 Australia
+Australia 1927-05-09..2019-12-31: 1927-05-09 Australia
+Austria 1918-11-03..1919-09-09: 1918-11-03 Austria
+Austria 1919-09-10..2019-12-31: 1919-09-10 Austria
+Austria-Hungary 1886-01-01..1908-10-06: 1886-01-01 Austria Hungary
+Austria-Hungary 1908-10-07..1918-11-02: 1908-10-07 Austro-Hungarian Empire
+Azerbaijan 1991-12-26..2019-12-31: 1991-12-26 Azerbaijan
+Bahamas 1886-01-01..1973-07-09: 1886-01-01 United Kingdom of Great Britain and Ireland | 1920-01-01 Bahamas
+Bahamas 1973-07-10..2019-12-31: 1973-07-10 Bahamas
+Bahrain 1971-08-15..2019-12-31: 1971-08-15 Bahrain
+Bangladesh 1971-12-16..2019-12-31: 1971-12-16 Bangladesh
+Barbados 1886-01-01..1966-11-29: 1886-01-01 United Kingdom of Great Britain and Ireland | 1914-01-01 Barbados
+Barbados 1966-11-30..2019-12-31: 1966-11-30 Barbados
+Belarus (Byelorussia) 1991-08-25..2019-12-31: 1991-08-25 Byelarus
+Belgium 1886-01-01..2019-12-31: 1886-01-01 Belgium
+Belize 1886-01-01..1970-08-02: 1886-01-01 Belize
+Belize 1970-08-03..1981-09-20: 1970-08-03 Belize
+Belize 1981-09-21..2019-12-31: 1981-09-21 Belize
+Benin 1895-01-01..1897-07-22: 1895-01-01 Dahomey
+Benin 1897-07-23..1898-06-13: 1897-07-23 Dahomey
+Benin 1898-06-14..1960-07-31: 1898-06-14 Borgu States | 1914-01-01 French West Africa | 1945-09-02 Benin
+Benin 1960-08-01..2019-12-31: 1960-08-01 Benin
+Bhutan 1886-01-01..1947-08-14: 1886-01-01 Bhutan
+Bhutan 1947-08-15..1948-12-31: 1947-08-15 Bhutan
+Bhutan 1949-01-01..2019-12-31: 1949-01-01 Bhutan
+Bokhara 1886-01-01..1920-09-01: 1886-01-01 Russian Empire | 1920-01-01 USSR
+Bolivia 1886-01-01..1903-11-16: 1886-01-01 Bolivia
+Bolivia 1903-11-17..1909-07-08: 1903-11-17 Bolivia
+Bolivia 1909-07-09..1938-07-20: 1909-07-09 Bolivia
+Bolivia 1938-07-21..2019-12-31: 1938-07-21 Bolivia
+Bosnia 1886-01-01..1908-10-06: 1886-01-01 Bosnia-Herzegovina
+Bosnia-Herzegovina 1992-04-27..2019-12-31: 1992-04-27 Bosnia and Herzegovina
+Botswana 1886-01-01..1890-06-30: 1886-01-01 Botswana
+Botswana 1890-07-01..1895-11-15: 1890-07-01 Botswana
+Botswana 1895-11-16..1966-09-29: 1895-11-16 Botswana
+Botswana 1966-09-30..2019-12-31: 1966-09-30 Botswana
+Brazil 1886-01-01..1903-11-16: 1886-01-01 Kingdom of Brazil
+Brazil 1903-11-17..1909-07-08: 1903-11-17 Kingdom of Brazil
+Brazil 1909-07-09..1960-04-20: 1909-07-09 Brazil
+Brazil 1960-04-21..2019-12-31: 1960-04-21 Brazil
+British Bechuanaland 1886-01-01..1890-06-29: 1886-01-01 British Bechuanaland
+British Bechuanaland 1890-06-30..1895-11-15: 1890-06-30 British Bechuanaland
+British Cameroons 1919-06-28..1922-07-19: 1919-06-28 British Cameroons
+British Cameroons 1922-07-20..1961-09-30: 1922-07-20 British Cameroons | 1945-09-02 Southern Cameroon | 1960-01-01 British Cameroons
+British Somaliland (Somaliland Republic) 1886-01-01..1897-04-13: 1886-01-01 British Somaliland (Somaliland Republic)
+British Somaliland (Somaliland Republic) 1897-04-14..1960-06-30: 1897-04-14 British Somaliland (Somaliland Republic) | 1914-01-01 Italian Somaliland | 1920-01-01 British Somaliland | 1960-01-01 British Somaliland (Somaliland Republic)
+British Togoland 1922-07-20..1955-12-31: 1922-07-20 Ghana | 1938-01-01 Gold Coast
+Brunei 1888-09-17..1983-12-31: 1888-09-17 Brunei
+Brunei 1984-01-01..2019-12-31: 1984-01-01 Brunei
+Bulgaria 1886-01-01..1913-08-09: 1886-01-01 Bulgaria
+Bulgaria 1913-08-10..1918-05-06: 1913-08-10 Bulgaria
+Bulgaria 1918-05-07..1919-11-26: 1918-05-07 Bulgaria
+Bulgaria 1919-11-27..1940-09-06: 1919-11-27 Bulgaria
+Bulgaria 1940-09-07..2019-12-31: 1940-09-07 Bulgaria
+Burkina Faso (Upper Volta) 1919-03-01..1932-09-04: 1919-03-01 French West Africa
+Burkina Faso (Upper Volta) 1947-01-04..1960-08-04: 1947-01-04 Burkina Faso
+Burkina Faso (Upper Volta) 1960-08-05..2019-12-31: 1960-08-05 Burkina Faso
+Burundi 1962-07-01..2019-12-31: 1962-07-01 Burundi
+Cambodia (Kampuchea) 1886-01-01..1893-10-02: 1886-01-01 French Indochina
+Cambodia (Kampuchea) 1893-10-03..1904-02-17: 1893-10-03 French Indochina
+Cambodia (Kampuchea) 1904-02-18..1907-03-22: 1904-02-18 French Indochina
+Cambodia (Kampuchea) 1907-03-23..1953-11-08: 1907-03-23 French Indochina | 1920-01-01 French Indo-China | 1938-01-01 Cambodia
+Cambodia (Kampuchea) 1953-11-09..2019-12-31: 1953-11-09 Cambodia
+Cameroon 1919-06-28..1922-07-19: 1919-06-28 French Cameroons
+Cameroon 1922-07-20..1959-12-31: 1922-07-20 French Cameroons | 1945-09-02 Cameroon
+Cameroon 1960-01-01..1961-09-30: 1960-01-01 Cameroon
+Cameroon 1961-10-01..2019-12-31: 1961-10-01 Cameroon
+Canada 1886-01-01..1948-07-21: 1886-01-01 Canada
+Canada 1948-07-22..2019-12-31: 1948-07-22 Canada
+Cape Colony 1886-01-01..1895-11-15: 1886-01-01 Cape Colony
+Cape Colony 1895-11-16..1910-05-29: 1895-11-16 Cape Colony
+Cape Verde 1886-01-01..1975-07-04: 1886-01-01 Cape Verde
+Cape Verde 1975-07-05..2019-12-31: 1975-07-05 Cape Verde
+Central African Republic 1906-02-11..1912-03-29: 1906-02-11 Central African Republic
+Central African Republic 1912-03-30..1919-06-27: 1912-03-30 French West Africa
+Central African Republic 1919-06-28..1960-08-12: 1919-06-28 French Equatorial Africa | 1945-09-02 Central African Republic
+Central African Republic 1960-08-13..2019-12-31: 1960-08-13 Central African Republic
+Chad 1900-09-05..1912-03-29: 1900-09-05 Chad
+Chad 1912-03-30..1919-06-27: 1912-03-30 French West Africa
+Chad 1919-06-28..1920-03-16: 1919-06-28 French Equatorial Africa
+Chad 1920-03-17..1960-08-10: 1920-03-17 French Equatorial Africa | 1945-09-02 Chad
+Chad 1960-08-11..2019-12-31: 1960-08-11 Chad
+Chile 1886-01-01..1899-03-23: 1886-01-01 Chile
+Chile 1899-03-24..1902-11-19: 1899-03-24 Chile
+Chile 1902-11-20..2019-12-31: 1902-11-20 Chile
+China 1886-01-01..1895-04-16: 1886-01-01 Manchu Empire
+China 1895-04-17..1898-12-31: 1895-04-17 Manchu Empire
+China 1899-01-01..1912-12-31: 1899-01-01 Manchu Empire
+China 1913-01-01..1914-04-16: 1913-01-01 Manchu Empire
+China 1914-04-17..1921-03-12: 1914-04-17 Chinese Warlords
+China 1921-03-13..1945-08-14: 1921-03-13 Chinese Warlords | 1938-01-01 Chinese warlords
+China 1945-08-15..1947-08-14: 1945-08-15 China
+China 1947-08-15..1949-12-07: 1947-08-15 China
+China 1949-12-08..1950-10-01: 1949-12-08 China
+China 1950-10-02..2019-12-31: 1950-10-02 China
+Colombia 1886-01-01..1903-11-02: 1886-01-01 Colombia
+Colombia 1903-11-03..1922-03-23: 1903-11-03 Colombia
+Colombia 1922-03-24..2019-12-31: 1922-03-24 Colombia
+Comoros 1946-10-27..1975-07-05: 1946-10-27 Comoros
+Comoros 1975-07-06..2019-12-31: 1975-07-06 Comoros
+Congo 1886-01-01..1898-06-13: 1886-01-01 Congo
+Congo 1898-06-14..1900-09-04: 1898-06-14 Congo
+Congo 1900-09-05..1906-02-10: 1900-09-05 Congo
+Congo 1906-02-11..1912-03-29: 1906-02-11 Congo
+Congo 1912-03-30..1919-06-27: 1912-03-30 French Equatorial Africa
+Congo 1919-06-28..1960-08-14: 1919-06-28 French Equatorial Africa | 1938-01-01 Congo (France) | 1945-09-02 Congo
+Congo 1960-08-15..2019-12-31: 1960-08-15 Congo
+Congo, Democratic Republic of (Zaire) 1886-01-01..1891-05-24: 1886-01-01 Sultanate of Utetera
+Congo, Democratic Republic of (Zaire) 1891-05-25..1891-06-10: 1891-05-25 Sultanate of Utetera
+Congo, Democratic Republic of (Zaire) 1891-06-11..1894-08-13: 1891-06-11 Congo, Democratic Republic of (Zaire)
+Congo, Democratic Republic of (Zaire) 1894-08-14..1908-10-17: 1894-08-14 Congo, Democratic Republic of (Zaire)
+Congo, Democratic Republic of (Zaire) 1908-10-18..1910-06-15: 1908-10-18 Congo, Democratic Republic of (Zaire)
+Congo, Democratic Republic of (Zaire) 1910-06-16..1960-06-29: 1910-06-16 Belgian Congo | 1920-01-01 Zaire (Belgium) | 1938-01-01 Belgian Congo | 1945-09-02 Zaire
+Congo, Democratic Republic of (Zaire) 1960-06-30..2019-12-31: 1960-06-30 Zaire
+Costa Rica 1886-01-01..2019-12-31: 1886-01-01 Costa Rica
+Cote D'Ivoire 1889-01-10..1893-03-09: 1889-01-10 Cote D'Ivoire
+Cote D'Ivoire 1893-03-10..1900-11-14: 1893-03-10 Cote D'Ivoire
+Cote D'Ivoire 1900-11-15..1902-03-19: 1900-11-15 Cote D'Ivoire
+Cote D'Ivoire 1902-03-20..1932-09-04: 1902-03-20 French West Africa
+Cote D'Ivoire 1932-09-05..1933-08-09: 1932-09-05 French West Africa
+Cote D'Ivoire 1933-08-10..1947-01-03: 1933-08-10 French West Africa | 1945-09-02 Ivory Coast
+Cote D'Ivoire 1947-01-04..1960-08-06: 1947-01-04 Ivory Coast
+Cote D'Ivoire 1960-08-07..1983-03-20: 1960-08-07 Cote D'Ivoire
+Cote D'Ivoire 1983-03-21..2019-12-31: 1983-03-21 Ivory Coast
+Croatia 1992-04-27..2019-12-31: 1992-04-27 Croatia
+Cuba 1886-01-01..1898-12-09: 1886-01-01 Cuba
+Cuba 1898-12-10..1902-05-19: 1898-12-10 Cuba
+Cuba 1902-05-20..2019-12-31: 1902-05-20 Cuba
+Cyprus 1914-11-05..1960-08-15: 1914-11-05 United Kingdom of Great Britain and Ireland | 1938-01-01 Cyprus
+Cyprus 1960-08-16..2019-12-31: 1960-08-16 Cyprus
+Czech Republic 1993-01-01..2019-12-31: 1993-01-01 Czech Republic
+Czechoslovakia 1918-11-11..1938-09-29: 1918-11-11 Czechoslovakia
+Czechoslovakia 1938-09-30..1938-11-01: 1938-09-30 Czechoslovakia
+Czechoslovakia 1938-11-02..1945-05-07: 1938-11-02 Czechoslovakia
+Czechoslovakia 1945-05-08..1947-02-09: 1945-05-08 Czechoslovakia
+Czechoslovakia 1947-02-10..1992-12-31: 1947-02-10 Czechoslovakia
+Danzig 1919-06-28..1938-08-31: 1919-06-28 Danzig
+Denmark 1886-01-01..1920-02-09: 1886-01-01 Denmark
+Denmark 1920-02-10..2019-12-31: 1920-02-10 Denmark
+Djibouti 1886-01-01..1900-01-23: 1886-01-01 Djibouti
+Djibouti 1900-01-24..1977-06-26: 1900-01-24 Djibouti | 1920-01-01 French Somaliland | 1945-09-02 Djibouti
+Djibouti 1977-06-27..2019-12-31: 1977-06-27 Djibouti
+Dominican Republic 1886-01-01..2019-12-31: 1886-01-01 Dominican Republic
+East Aden Protectorate 1937-04-01..1962-04-03: 1937-04-01 Yemen (UK) | 1945-09-02 Yemen | 1960-01-01 East Aden Protectorate
+East Timor 1886-01-01..1976-07-16: 1886-01-01 East Timor
+East Timor 2002-05-20..2019-12-31: 2002-05-20 East Timor
+Ecuador 1886-01-01..1942-01-28: 1886-01-01 Ecuador
+Ecuador 1942-01-29..2019-12-31: 1942-01-29 Ecuador
+Egypt 1886-01-01..1899-01-18: 1886-01-01 Egypt
+Egypt 1899-01-19..1914-12-17: 1899-01-19 Egypt
+Egypt 1914-12-18..1922-02-27: 1914-12-18 Egypt
+Egypt 1922-02-28..1925-12-05: 1922-02-28 Egypt
+Egypt 1925-12-06..1967-06-09: 1925-12-06 Egypt
+Egypt 1967-06-10..1979-05-25: 1967-06-10 Egypt
+Egypt 1979-05-26..2019-12-31: 1979-05-26 Egypt
+El Salvador 1886-01-01..2019-12-31: 1886-01-01 El Salvador
+Equatorial Guinea 1886-01-01..1900-06-26: 1886-01-01 Spanish Guinea
+Equatorial Guinea 1900-06-27..1968-10-11: 1900-06-27 Equatorial Guinea
+Equatorial Guinea 1968-10-12..2019-12-31: 1968-10-12 Equatorial Guinea
+Eritrea 1886-01-01..1889-05-01: 1886-01-01 Eritrea
+Eritrea 1889-05-02..1900-01-23: 1889-05-02 Eritrea
+Eritrea 1900-01-24..1941-05-18: 1900-01-24 Eritrea | 1938-01-01 Eritrea (Italy)
+Eritrea 1941-05-19..1952-09-14: 1941-05-19 Eritrea
+Eritrea 1993-05-24..2019-12-31: 1993-05-24 Eritrea
+Estonia 1918-11-11..1940-06-01: 1918-11-11 Estonia
+Estonia 1991-09-06..2019-12-31: 1991-09-06 Estonia
+Ethiopia 1886-01-01..1889-05-01: 1886-01-01 Ethiopia
+Ethiopia 1889-05-02..1897-05-13: 1889-05-02 Ethiopia
+Ethiopia 1897-05-14..1902-05-14: 1897-05-14 Ethiopia
+Ethiopia 1902-05-15..1907-12-05: 1902-05-15 Ethiopia
+Ethiopia 1907-12-06..1952-09-14: 1907-12-06 Abyssinia | 1920-01-01 Ethiopia
+Ethiopia 1952-09-15..1993-05-23: 1952-09-15 Ethiopia
+Ethiopia 1993-05-24..2019-12-31: 1993-05-24 Ethiopia
+Federated Malay States 1896-07-01..1909-03-09: 1896-07-01 Malaya
+Federated Malay States 1909-03-10..1946-03-31: 1909-03-10 Malaya | 1920-01-01 Malaysia
+Federation of Rhodesia and Nyasaland 1953-08-01..1964-01-21: 1953-08-01 Zambia
+Federation of South Arabia 1962-04-04..1967-11-29: 1962-04-04 Federation of South Arabia
+Fiji 1886-01-01..1970-10-09: 1886-01-01 Fiji
+Fiji 1970-10-10..2019-12-31: 1970-10-10 Fiji
+Finland 1917-12-06..1940-03-11: 1917-12-06 Finland
+Finland 1940-03-12..2019-12-31: 1940-03-12 Finland
+France 1886-01-01..1919-06-27: 1886-01-01 France
+France 1919-06-28..2019-12-31: 1919-06-28 France
+French Guyana 1886-01-01..1930-07-05: 1886-01-01 French Guiana
+French Guyana 1930-07-06..1946-03-18: 1930-07-06 French Guiana
+French Guyana 1946-03-19..2019-12-31: 1946-03-19 French Guiana
+French Polynesia 1903-05-19..2019-12-31: 1903-05-19 French Polynesia
+French West Africa 1895-06-16..1898-06-13: 1895-06-16 French West Africa
+French West Africa 1898-06-14..1902-12-24: 1898-06-14 French West Africa
+French West Africa 1902-12-25..1904-04-07: 1902-12-25 French West Africa
+Gabon 1886-01-01..1903-12-28: 1886-01-01 Gabon
+Gabon 1903-12-29..1906-02-10: 1903-12-29 Gabon
+Gabon 1906-02-11..1912-03-29: 1906-02-11 Gabon
+Gabon 1912-03-30..1919-06-27: 1912-03-30 French Equatorial Africa
+Gabon 1919-06-28..1960-08-16: 1919-06-28 French Equatorial Africa | 1945-09-02 Gabon
+Gabon 1960-08-17..2019-12-31: 1960-08-17 Gabon
+Gambia 1889-08-10..1965-02-17: 1889-08-10 Gambia
+Gambia 1965-02-18..2019-12-31: 1965-02-18 Gambia
+Gaza 1948-05-14..1967-06-09: 1948-05-14 Gaza
+Georgia 1991-09-06..2019-12-31: 1991-09-06 Georgia
+German Democratic Republic 1945-05-08..1949-10-04: 1945-05-08 German Democratic Republic
+German Democratic Republic 1949-10-05..1990-10-02: 1949-10-05 German Democratic Republic
+German Federal Republic 1945-05-08..1949-09-20: 1945-05-08 German Federal Republic
+German Federal Republic 1949-09-21..1990-10-02: 1949-09-21 West Germany
+German Federal Republic 1990-10-03..2019-12-31: 1990-10-03 Germany
+German Solomon Islands 1886-01-01..1899-11-13: 1886-01-01 German Solomon Islands
+German Togoland 1886-01-01..1886-12-31: 1886-01-01 German Togoland
+German Togoland 1887-01-01..1888-11-30: 1887-01-01 German Togoland
+German Togoland 1888-12-01..1896-12-31: 1888-12-01 German Togoland
+German Togoland 1897-01-01..1897-07-08: 1897-01-01 German Togoland
+German Togoland 1897-07-09..1897-07-22: 1897-07-09 German Togoland
+German Togoland 1897-07-23..1914-08-30: 1897-07-23 German Togoland | 1914-01-01 Togoland
+German Togoland 1914-08-31..1919-06-27: 1914-08-31 German Togoland
+German Togoland 1919-06-28..1922-07-19: 1919-06-28 Ghana
+Germany (Prussia) 1886-01-01..1919-06-27: 1886-01-01 Germany | 1914-01-01 German Empire
+Germany (Prussia) 1919-06-28..1920-02-09: 1919-06-28 Germany
+Germany (Prussia) 1920-02-10..1938-09-29: 1920-02-10 Germany
+Germany (Prussia) 1938-09-30..1945-05-07: 1938-09-30 Germany
+Ghana 1886-01-01..1888-11-30: 1886-01-01 Gold Coast (GB)
+Ghana 1888-12-01..1898-06-13: 1888-12-01 Asante
+Ghana 1898-06-14..1956-03-05: 1898-06-14 Asante | 1914-01-01 Gold Coast | 1920-01-01 Ghana | 1938-01-01 Gold Coast
+Ghana 1956-03-06..1957-03-05: 1956-03-06 Gold Coast
+Ghana 1957-03-06..2019-12-31: 1957-03-06 Ghana
+Greece 1886-01-01..1913-08-09: 1886-01-01 Greece
+Greece 1913-08-10..1919-11-26: 1913-08-10 Greece
+Greece 1919-11-27..2019-12-31: 1919-11-27 Greece
+Guadeloupe 1886-01-01..2019-12-31: 1886-01-01 Guadeloupe
+Guatemala 1886-01-01..2019-12-31: 1886-01-01 Guatemala
+Guinea 1894-01-01..1958-10-01: 1894-01-01 First Samori Empire | 1914-01-01 French West Africa | 1945-09-02 Guinea
+Guinea 1958-10-02..2019-12-31: 1958-10-02 Guinea
+Guinea-Bissau 1886-01-01..1886-05-11: 1886-01-01 Futa Jalon
+Guinea-Bissau 1886-05-12..1942-06-30: 1886-05-12 Futa Jalon | 1914-01-01 Portuguese Guinea | 1920-01-01 Guinea-Bissau
+Guinea-Bissau 1942-07-01..1974-09-09: 1942-07-01 Guinea-Bissau (Portugal) | 1960-01-01 Guinea-Bissau
+Guinea-Bissau 1974-09-10..2019-12-31: 1974-09-10 Guinea-Bissau
+Guyana 1886-01-01..1966-05-25: 1886-01-01 British Guiana | 1914-01-01 Guyana
+Guyana 1966-05-26..2019-12-31: 1966-05-26 Guyana
+Haiti 1886-01-01..1915-07-04: 1886-01-01 Haiti
+Haiti 1915-07-05..1934-08-14: 1915-07-05 Haiti
+Haiti 1934-08-15..2019-12-31: 1934-08-15 Haiti
+Hawaii 1898-07-06..1959-08-20: 1898-07-06 Kingdom of Hawaii | 1914-01-01 United States
+Herzegovina 1886-01-01..1908-10-06: 1886-01-01 Bosnia-Herzegovina
+Honduras 1886-01-01..2019-12-31: 1886-01-01 Honduras
+Hungary 1918-11-03..1918-11-30: 1918-11-03 Hungary
+Hungary 1918-12-01..1919-09-09: 1918-12-01 Hungary
+Hungary 1919-09-10..1920-06-03: 1919-09-10 Hungary
+Hungary 1920-06-04..1938-11-01: 1920-06-04 Hungary
+Hungary 1938-11-02..1947-02-09: 1938-11-02 Hungary
+Hungary 1947-02-10..2019-12-31: 1947-02-10 Hungary
+Iceland 1886-01-01..1918-11-30: 1886-01-01 Iceland
+Iceland 1918-12-01..1942-04-21: 1918-12-01 Iceland
+Iceland 1942-04-22..1944-06-16: 1942-04-22 Iceland
+Iceland 1944-06-17..2019-12-31: 1944-06-17 Iceland
+India 1886-01-01..1893-11-11: 1886-01-01 British Raj
+India 1893-11-12..1898-12-31: 1893-11-12 British Raj
+India 1899-01-01..1914-07-02: 1899-01-01 British Raj
+India 1914-07-03..1931-02-12: 1914-07-03 British Raj
+India 1931-02-13..1937-03-31: 1931-02-13 British Raj
+India 1937-04-01..1947-08-14: 1937-04-01 British Raj | 1945-09-02 India
+India 1947-08-15..1949-01-04: 1947-08-15 India
+India 1949-01-05..2019-12-31: 1949-01-05 India
+Indonesia 1886-01-01..1889-06-19: 1886-01-01 Netherlands Indies
+Indonesia 1889-06-20..1945-08-16: 1889-06-20 Netherlands Indies | 1920-01-01 Dutch East Indies
+Indonesia 1945-08-17..1949-12-28: 1945-08-17 Indonesia
+Indonesia 1949-12-29..1969-09-16: 1949-12-29 Indonesia
+Indonesia 1969-09-17..1976-07-16: 1969-09-17 Indonesia
+Indonesia 1976-07-17..2002-05-19: 1976-07-17 Indonesia
+Indonesia 2002-05-20..2019-12-31: 2002-05-20 Indonesia
+Inini 1930-07-06..1946-03-18: 1930-07-06 French Guiana
+Iran (Persia) 1886-01-01..2019-12-31: 1886-01-01 Persia | 1920-01-01 Iran
+Iraq 1920-04-26..1920-12-23: 1920-04-26 Mesopotamia (GB)
+Iraq 1920-12-24..1922-12-01: 1920-12-24 Mesopotamia (GB)
+Iraq 1922-12-02..1932-09-22: 1922-12-02 Iraq
+Iraq 1932-09-23..1932-10-02: 1932-09-23 Iraq
+Iraq 1932-10-03..2019-12-31: 1932-10-03 Iraq
+Ireland 1921-12-06..2019-12-31: 1921-12-06 Ireland
+Israel 1948-05-14..1967-06-09: 1948-05-14 Israel
+Israel 1967-06-10..1979-05-25: 1967-06-10 Israel
+Israel 1979-05-26..2019-12-31: 1979-05-26 Israel
+Italian Somaliland 1889-11-19..1897-03-19: 1889-11-19 Italian Somaliland
+Italian Somaliland 1897-03-20..1908-04-29: 1897-03-20 Italian Somaliland
+Italian Somaliland 1908-04-30..1924-06-30: 1908-04-30 British Somaliland | 1920-01-01 Italian Somaliland
+Italian Somaliland 1924-07-01..1941-03-19: 1924-07-01 Italian Somaliland
+Italian Somaliland 1941-03-20..1950-03-31: 1941-03-20 Italian Somaliland
+Italian Somaliland 1950-04-01..1960-06-30: 1950-04-01 Italian Somaliland
+Italy/Sardinia 1886-01-01..1919-09-09: 1886-01-01 Italy | 1914-01-01 Kingdom of Italy
+Italy/Sardinia 1919-09-10..2019-12-31: 1919-09-10 Italy
+Jamaica 1886-01-01..1962-08-05: 1886-01-01 United Kingdom of Great Britain and Ireland | 1920-01-01 Jamaica | 1945-09-02 Jamaica (UK) | 1960-01-01 Jamaica
+Jamaica 1962-08-06..2019-12-31: 1962-08-06 Jamaica
+Jammu and Kashmir 1947-08-15..1949-01-04: 1947-08-15 Jammu and Kashmir
+Japan 1886-01-01..2019-12-31: 1886-01-01 Imperial Japan | 1914-01-01 Empire of Japan | 1945-09-02 Japan
+Jordan 1920-04-26..1920-12-23: 1920-04-26 Mesopotamia (GB)
+Jordan 1920-12-24..1923-09-28: 1920-12-24 Mesopotamia (GB)
+Jordan 1923-09-29..1925-11-01: 1923-09-29 Mesopotamia (GB)
+Jordan 1925-11-02..1946-05-24: 1925-11-02 Jordan
+Jordan 1946-05-25..2019-12-31: 1946-05-25 Jordan
+Kamerun 1886-01-01..1894-03-14: 1886-01-01 Kamerun
+Kamerun 1894-03-15..1900-12-31: 1894-03-15 Kamerun
+Kamerun 1901-01-01..1912-03-29: 1901-01-01 Kamerun
+Kamerun 1912-03-30..1916-03-03: 1912-03-30 Kamerun
+Kamerun 1916-03-04..1919-06-27: 1916-03-04 Kamerun
+Kashmir (North, Azad) 1947-08-15..1949-01-04: 1947-08-15 Kashmir (North, Azad)
+Kazakhstan 1991-12-26..1997-12-09: 1991-12-26 Kazakhstan
+Kazakhstan 1997-12-10..2019-12-31: 1997-12-10 Kazakhstan
+Kenya 1888-10-15..1891-03-23: 1888-10-15 Kenya
+Kenya 1891-03-24..1894-06-07: 1891-03-24 Kenya
+Kenya 1894-06-08..1902-05-14: 1894-06-08 Kenya
+Kenya 1902-05-15..1906-12-31: 1902-05-15 Kenya
+Kenya 1907-01-01..1907-12-05: 1907-01-01 Kenya
+Kenya 1907-12-06..1914-04-20: 1907-12-06 British East Africa
+Kenya 1914-04-21..1920-07-22: 1914-04-21 Kenya
+Kenya 1920-07-23..1924-06-30: 1920-07-23 Kenya
+Kenya 1924-07-01..1926-09-26: 1924-07-01 Kenya
+Kenya 1926-09-27..1963-12-11: 1926-09-27 Kenya
+Kenya 1963-12-12..2019-12-31: 1963-12-12 Kenya
+Khiva 1886-01-01..1920-02-01: 1886-01-01 Russian Empire | 1920-01-01 USSR
+Korea 1886-01-01..1910-08-22: 1886-01-01 Korea
+Korea 1910-08-23..1945-08-14: 1910-08-23 Empire of Japan
+Korea, People's Republic of 1945-08-15..1948-09-08: 1945-08-15 Korea, People's Republic of
+Korea, People's Republic of 1948-09-09..2019-12-31: 1948-09-09 Korea, Democratic People's Republic of
+Korea, Republic of 1945-08-15..1948-08-14: 1945-08-15 Korea, Republic of
+Korea, Republic of 1948-08-15..2019-12-31: 1948-08-15 Korea, Republic of
+Kosovo 2008-02-20..2019-12-31: 2008-02-20 Kosovo
+Kuwait 1961-06-19..2019-12-31: 1961-06-19 Kuwait
+Kyrgyz Republic 1991-09-01..2019-12-31: 1991-09-01 Kyrgyzstan
+Lagos 1886-01-01..1906-02-15: 1886-01-01 Ibadan
+Laos 1893-10-03..1896-01-14: 1893-10-03 Laos
+Laos 1896-01-15..1954-04-30: 1896-01-15 French Indochina | 1920-01-01 French Indo-China | 1938-01-01 Laos
+Laos 1954-05-01..2019-12-31: 1954-05-01 Laos
+Latvia 1918-11-18..1940-06-01: 1918-11-18 Latvia
+Latvia 1991-09-06..2019-12-31: 1991-09-06 Latvia
+Lebanon 1920-04-26..1920-12-23: 1920-04-26 Lebanon
+Lebanon 1920-12-24..1944-11-21: 1920-12-24 Syria (France)
+Lebanon 1944-11-22..2019-12-31: 1944-11-22 Lebanon
+Lesotho 1886-01-01..1966-10-03: 1886-01-01 Basutoland | 1914-01-01 Lesotho
+Lesotho 1966-10-04..2019-12-31: 1966-10-04 Lesotho
+Liberia 1886-01-01..1892-12-07: 1886-01-01 Liberia
+Liberia 1892-12-08..2019-12-31: 1892-12-08 Liberia
+Libya 1912-10-18..1919-09-11: 1912-10-18 Libya
+Libya 1919-09-12..1925-12-05: 1919-09-12 Libya (IT)
+Libya 1925-12-06..1934-07-19: 1925-12-06 Libya (IT)
+Libya 1934-07-20..1943-05-12: 1934-07-20 Libya
+Libya 1943-05-13..1949-11-20: 1943-05-13 Libya
+Libya 1949-11-21..1951-12-23: 1949-11-21 Libya
+Libya 1951-12-24..2019-12-31: 1951-12-24 Libya
+Lithuania 1918-02-16..1920-10-06: 1918-02-16 Lithuania
+Lithuania 1920-10-07..1922-04-17: 1920-10-07 Lithuania
+Lithuania 1922-04-18..1939-09-30: 1922-04-18 Lithuania
+Lithuania 1939-10-01..1940-06-01: 1939-10-01 Lithuania
+Lithuania 1991-09-06..2019-12-31: 1991-09-06 Lithuania
+Luxembourg 1886-01-01..2019-12-31: 1886-01-01 Luxembourg
+Macedonia (FYROM/North Macedonia) 1991-11-20..2019-12-31: 1991-11-20 Macedonia
+Madagascar (Malagasy) 1886-01-01..1896-08-05: 1886-01-01 Madagascar (Malagasy)
+Madagascar (Malagasy) 1896-08-06..1912-07-24: 1896-08-06 Imerina
+Madagascar (Malagasy) 1912-07-25..1946-10-26: 1912-07-25 Madagascar (France)
+Madagascar (Malagasy) 1946-10-27..1960-06-25: 1946-10-27 Madagascar
+Madagascar (Malagasy) 1960-06-26..2019-12-31: 1960-06-26 Madagascar
+Malawi 1891-06-10..1953-07-31: 1891-06-10 Malawi | 1945-09-02 Nyasaland
+Malawi 1964-01-22..1964-07-05: 1964-01-22 Malawi
+Malawi 1964-07-06..2019-12-31: 1964-07-06 Malawi
+Malaysia 1946-04-01..1957-08-30: 1946-04-01 Malaysia
+Malaysia 1957-08-31..1963-09-15: 1957-08-31 Malaysia
+Malaysia 1963-09-16..1965-08-08: 1963-09-16 Malaysia
+Malaysia 1965-08-09..2019-12-31: 1965-08-09 Malaysia
+Maldives 1887-12-16..1965-05-25: 1887-12-16 Maldives
+Maldives 1965-05-26..2019-12-31: 1965-05-26 Maldives
+Mali 1905-01-01..1913-04-22: 1905-01-01 Mali
+Mali 1913-04-23..1919-02-28: 1913-04-23 French West Africa
+Mali 1919-03-01..1932-09-04: 1919-03-01 French West Africa
+Mali 1932-09-05..1944-07-04: 1932-09-05 French West Africa
+Mali 1944-07-05..1947-01-03: 1944-07-05 Mali
+Mali 1947-01-04..1959-04-03: 1947-01-04 Mali
+Mali 1959-04-04..1960-06-19: 1959-04-04 Mali
+Mali 1960-06-20..1960-09-21: 1960-06-20 Mali
+Mali 1960-09-22..2019-12-31: 1960-09-22 Mali
+Malta 1886-01-01..1964-09-20: 1886-01-01 Malta
+Malta 1964-09-21..2019-12-31: 1964-09-21 Malta
+Martinique 1886-01-01..2019-12-31: 1886-01-01 Martinique | 1945-09-02 Martinique (France) | 1960-01-01 Martinique
+Mauritania 1904-04-08..1904-10-02: 1904-04-08 Mauritania
+Mauritania 1904-10-03..1912-11-26: 1904-10-03 Mauritania
+Mauritania 1912-11-27..1913-04-22: 1912-11-27 Mauritania
+Mauritania 1913-04-23..1920-01-11: 1913-04-23 French West Africa
+Mauritania 1920-01-12..1944-07-04: 1920-01-12 French West Africa
+Mauritania 1944-07-05..1960-11-27: 1944-07-05 Mauritania
+Mauritania 1960-11-28..1975-11-13: 1960-11-28 Mauritania
+Mauritania 1975-11-14..1979-08-04: 1975-11-14 Mauritania
+Mauritania 1979-08-05..2019-12-31: 1979-08-05 Mauritania
+Mauritius 1886-01-01..1968-03-11: 1886-01-01 Mauritius
+Mauritius 1968-03-12..2019-12-31: 1968-03-12 Mauritius
+Mexico 1886-01-01..2019-12-31: 1886-01-01 Mexico
+Moldova 1991-08-25..2019-12-31: 1991-08-25 Moldova
+Mongolia 1921-03-13..2019-12-31: 1921-03-13 Mongolia
+Montenegro 1886-01-01..1913-08-09: 1886-01-01 Montenegro
+Montenegro 1913-08-10..1915-07-01: 1913-08-10 Montenegro
+Montenegro 1915-07-02..1918-11-30: 1915-07-02 Montenegro
+Montenegro 2006-06-12..2019-12-31: 2006-06-12 Montenegro
+Morocco 1886-01-01..1902-12-24: 1886-01-01 Morocco
+Morocco 1902-12-25..1904-01-01: 1902-12-25 Morocco
+Morocco 1904-01-02..1904-10-02: 1904-01-02 Morocco
+Morocco 1904-10-03..1912-11-26: 1904-10-03 Morocco
+Morocco 1912-11-27..1956-03-01: 1912-11-27 Morocco | 1938-01-01 Morocco (France) | 1945-09-02 Morocco
+Morocco 1956-03-02..1956-04-06: 1956-03-02 Morocco
+Morocco 1956-04-07..1958-04-09: 1956-04-07 Morocco
+Morocco 1958-04-10..1975-11-13: 1958-04-10 Morocco
+Morocco 1975-11-14..1979-08-04: 1975-11-14 Morocco
+Morocco 1979-08-05..2019-12-31: 1979-08-05 Morocco
+Mozambique 1886-01-01..1891-06-10: 1886-01-01 Mozambique
+Mozambique 1891-06-11..1975-06-24: 1891-06-11 Mozambique | 1938-01-01 Mozambique (Portugal) | 1960-01-01 Mozambique
+Mozambique 1975-06-25..2019-12-31: 1975-06-25 Mozambique
+Myanmar (Burma) 1937-04-01..1948-01-03: 1937-04-01 British Raj | 1945-09-02 Burma
+Myanmar (Burma) 1948-01-04..2005-11-05: 1948-01-04 Burma
+Myanmar (Burma) 2005-11-06..2019-12-31: 2005-11-06 Burma
+Namibia 1886-01-01..1886-12-29: 1886-01-01 Namibia
+Namibia 1886-12-30..1915-08-15: 1886-12-30 Namibia | 1914-01-01 German South-West Africa
+Namibia 1915-08-16..1920-12-16: 1915-08-16 Union of South Africa
+Namibia 1920-12-17..1966-10-26: 1920-12-17 Union of South Africa | 1945-09-02 Namibia
+Namibia 1966-10-27..1990-03-20: 1966-10-27 Namibia
+Namibia 1990-03-21..2019-12-31: 1990-03-21 Namibia
+Natal 1886-01-01..1895-04-22: 1886-01-01 Natal
+Natal 1895-04-23..1910-05-29: 1895-04-23 Natal
+Nepal 1886-01-01..2019-12-31: 1886-01-01 Nepal
+Netherlands 1886-01-01..2019-12-31: 1886-01-01 Netherlands
+New Caledonia and Dependencies 1886-01-01..2019-12-31: 1886-01-01 New Caledonia and Dependencies | 1938-01-01 New Caledonia | 1945-09-02 New Caledonia and Dependencies
+New Guinea (German New Guinea) (Kaiser Wilhelmsland) 1886-01-01..1890-12-31: 1886-01-01 Papua New Guinea
+New Guinea (German New Guinea) (Kaiser Wilhelmsland) 1891-01-01..1899-12-31: 1891-01-01 Papua New Guinea
+New Guinea (German New Guinea) (Kaiser Wilhelmsland) 1900-01-01..1909-12-31: 1900-01-01 Papua New Guinea
+New Guinea (German New Guinea) (Kaiser Wilhelmsland) 1910-01-01..1914-11-10: 1910-01-01 Papua New Guinea
+New Guinea (German New Guinea) (Kaiser Wilhelmsland) 1914-11-11..1920-06-27: 1914-11-11 Papua New Guinea
+New Guinea (German New Guinea) (Kaiser Wilhelmsland) 1920-06-28..1949-06-30: 1920-06-28 Papua New Guinea | 1938-01-01 New Guinea (German New Guinea) (Kaiser Wilhelmsland) | 1945-09-02 Papua New Guinea
+New South Wales 1886-01-01..1900-12-31: 1886-01-01 New South Wales (UK)
+New Zealand 1886-01-01..1907-08-31: 1886-01-01 Māori
+New Zealand 1907-09-01..2019-12-31: 1907-09-01 New Zealand
+Newfoundland 1886-01-01..1948-07-21: 1886-01-01 Newfoundland | 1920-01-01 Dominion of Newfoundland | 1945-09-02 Newfoundland
+Nicaragua 1886-01-01..2019-12-31: 1886-01-01 Nicaragua
+Niger 1905-01-01..1926-12-27: 1905-01-01 French West Africa
+Niger 1926-12-28..1932-09-04: 1926-12-28 French West Africa
+Niger 1932-09-05..1947-01-03: 1932-09-05 French West Africa | 1945-09-02 Niger
+Niger 1947-01-04..1960-08-02: 1947-01-04 Niger
+Niger 1960-08-03..2019-12-31: 1960-08-03 Niger
+Nigeria 1914-01-01..1960-09-30: 1914-01-01 Nigeria
+Nigeria 1960-10-01..1961-09-30: 1960-10-01 Nigeria
+Nigeria 1961-10-01..2019-12-31: 1961-10-01 Nigeria
+Northeastern Rhodesia 1900-01-29..1911-08-17: 1900-01-29 Northeastern Rhodesia
+Northern Nigeria 1899-01-01..1902-12-31: 1899-01-01 Northern Nigeria
+Northern Nigeria 1903-01-01..1904-04-07: 1903-01-01 Northern Nigeria
+Northern Nigeria 1904-04-08..1913-12-31: 1904-04-08 Northern Nigeria
+Northwestern Rhodesia 1900-01-29..1905-05-29: 1900-01-29 Lozi
+Northwestern Rhodesia 1905-05-30..1911-08-17: 1905-05-30 Lozi
+Norway 1905-08-26..2019-12-31: 1905-08-26 Norway
+Oil Rivers Protectorate 1886-01-01..1898-12-31: 1886-01-01 Ato trading confederacy
+Oman 1886-01-01..1990-02-22: 1886-01-01 Arabia | 1914-01-01 British Protectorate | 1920-01-01 Muscat and Oman | 1938-01-01 Oman
+Oman 1990-02-23..2019-12-31: 1990-02-23 Oman
+Orange Free State 1886-01-01..1910-05-29: 1886-01-01 Orange Free State
+Pahang 1888-01-01..1896-06-30: 1888-01-01 Malaya
+Pakistan 1947-08-15..1949-01-04: 1947-08-15 Pakistan
+Pakistan 1949-01-05..1959-09-30: 1949-01-05 Pakistan
+Pakistan 1959-10-01..1967-08-13: 1959-10-01 Pakistan
+Pakistan 1967-08-14..1971-12-15: 1967-08-14 Pakistan
+Pakistan 1971-12-16..2019-12-31: 1971-12-16 Pakistan
+Palestine 1920-04-26..1920-12-23: 1920-04-26 Mandatory Palestine (GB)
+Palestine 1920-12-24..1923-09-28: 1920-12-24 Mandatory Palestine (GB)
+Palestine 1923-09-29..1948-05-13: 1923-09-29 Mandatory Palestine (GB) | 1938-01-01 Israel
+Panama 1903-11-03..2019-12-31: 1903-11-03 Panama
+Papua 1886-01-01..1887-12-31: 1886-01-01 Papua
+Papua 1888-01-01..1905-11-15: 1888-01-01 Papua
+Papua 1905-11-16..1920-12-16: 1905-11-16 Papua
+Papua 1920-12-17..1949-06-30: 1920-12-17 Papua New Guinea | 1938-01-01 Papua | 1945-09-02 Papua New Guinea
+Papua New Guinea 1949-07-01..1975-09-15: 1949-07-01 Papua New Guinea
+Papua New Guinea 1975-09-16..2019-12-31: 1975-09-16 Papua New Guinea
+Paraguay 1886-01-01..1938-07-20: 1886-01-01 Paraguay
+Paraguay 1938-07-21..2019-12-31: 1938-07-21 Paraguay
+Perak 1886-01-01..1896-06-30: 1886-01-01 Malaya
+Peru 1886-01-01..1909-07-08: 1886-01-01 Peru
+Peru 1909-07-09..1922-03-23: 1909-07-09 Peru
+Peru 1922-03-24..1942-01-28: 1922-03-24 Peru
+Peru 1942-01-29..2019-12-31: 1942-01-29 Peru
+Philippines 1886-01-01..1898-12-10: 1886-01-01 Philippines
+Philippines 1898-12-11..1946-07-03: 1898-12-11 Philippines
+Philippines 1946-07-04..1948-07-16: 1946-07-04 Philippines
+Philippines 1948-07-17..1976-05-28: 1948-07-17 Philippines
+Philippines 1976-05-29..2019-12-31: 1976-05-29 Philippines
+Poland 1918-11-11..1919-06-27: 1918-11-11 Poland
+Poland 1919-06-28..1919-09-09: 1919-06-28 Poland
+Poland 1919-09-10..1920-10-06: 1919-09-10 Poland
+Poland 1920-10-07..1921-03-17: 1920-10-07 Poland
+Poland 1921-03-18..1945-05-07: 1921-03-18 Poland
+Poland 1945-05-08..2019-12-31: 1945-05-08 Poland
+Portugal 1886-01-01..2019-12-31: 1886-01-01 Portugal
+Puerto Rico 1886-01-01..1898-12-09: 1886-01-01 Puerto Rico
+Puerto Rico 1898-12-10..2019-12-31: 1898-12-10 Puerto Rico
+Qatar 1916-11-03..1971-09-02: 1916-11-03 Qatar
+Qatar 1971-09-03..2019-12-31: 1971-09-03 Qatar
+Queensland 1886-01-01..1900-12-31: 1886-01-01 Queensland (UK)
+Reunion 1886-01-01..2019-12-31: 1886-01-01 Reunion
+Rumania 1886-01-01..1913-08-09: 1886-01-01 Romania
+Rumania 1913-08-10..1916-12-05: 1913-08-10 Romania
+Rumania 1916-12-06..1918-05-06: 1916-12-06 Romania
+Rumania 1918-05-07..1918-10-31: 1918-05-07 Romania
+Rumania 1918-11-01..1919-09-09: 1918-11-01 Romania
+Rumania 1919-09-10..1919-11-26: 1919-09-10 Romania
+Rumania 1919-11-27..1920-06-03: 1919-11-27 Romania
+Rumania 1920-06-04..1920-10-27: 1920-06-04 Romania
+Rumania 1920-10-28..1940-06-27: 1920-10-28 Romania
+Rumania 1940-06-28..1940-09-06: 1940-06-28 Romania
+Rumania 1940-09-07..2019-12-31: 1940-09-07 Romania
+Russia (Soviet Union) 1886-01-01..1905-09-04: 1886-01-01 Russian Empire
+Russia (Soviet Union) 1905-09-05..1914-04-16: 1905-09-05 Russian Empire
+Russia (Soviet Union) 1914-04-17..1917-12-05: 1914-04-17 Russian Empire
+Russia (Soviet Union) 1917-12-06..1918-02-15: 1917-12-06 Russian Empire
+Russia (Soviet Union) 1918-02-16..1918-03-02: 1918-02-16 Russian Empire
+Russia (Soviet Union) 1918-03-03..1918-03-10: 1918-03-03 Russian Empire
+Russia (Soviet Union) 1918-03-11..1918-11-10: 1918-03-11 Russian Empire
+Russia (Soviet Union) 1918-11-11..1920-02-01: 1918-11-11 USSR
+Russia (Soviet Union) 1920-02-02..1920-09-01: 1920-02-02 USSR
+Russia (Soviet Union) 1920-09-02..1920-10-27: 1920-09-02 USSR
+Russia (Soviet Union) 1920-10-28..1921-03-17: 1920-10-28 USSR
+Russia (Soviet Union) 1921-03-18..1940-03-11: 1921-03-18 USSR
+Russia (Soviet Union) 1940-03-12..1940-06-01: 1940-03-12 USSR
+Russia (Soviet Union) 1940-06-02..1940-06-27: 1940-06-02 USSR
+Russia (Soviet Union) 1940-06-28..1945-05-07: 1940-06-28 USSR
+Russia (Soviet Union) 1945-05-08..1945-08-14: 1945-05-08 USSR
+Russia (Soviet Union) 1945-08-15..1991-08-24: 1945-08-15 USSR
+Russia (Soviet Union) 1991-08-25..1991-08-31: 1991-08-25 USSR
+Russia (Soviet Union) 1991-09-01..1991-09-05: 1991-09-01 USSR
+Russia (Soviet Union) 1991-09-06..1991-10-26: 1991-09-06 USSR
+Russia (Soviet Union) 1991-10-27..1991-11-30: 1991-10-27 USSR
+Russia (Soviet Union) 1991-12-01..1991-12-20: 1991-12-01 USSR
+Russia (Soviet Union) 1991-12-21..2014-03-17: 1991-12-21 Russia
+Russia (Soviet Union) 2014-03-18..2019-12-31: 2014-03-18 Russia
+Rwanda 1962-07-01..2019-12-31: 1962-07-01 Rwanda
+Rwanda-Urundi 1920-06-28..1922-07-19: 1920-06-28 Rwanda (Belgium)
+Rwanda-Urundi 1922-07-20..1962-06-30: 1922-07-20 Rwanda (Belgium) | 1945-09-02 Rwanda
+Sabah (North Borneo) 1888-05-12..1889-06-19: 1888-05-12 Malaya
+Sabah (North Borneo) 1889-06-20..1946-07-14: 1889-06-20 Malaya | 1920-01-01 Malaysia
+Sabah (North Borneo) 1946-07-15..1963-09-15: 1946-07-15 Sabah (North Borneo)
+Sarawak 1888-06-14..1889-06-19: 1888-06-14 Malaya
+Sarawak 1889-06-20..1946-06-30: 1889-06-20 Malaya | 1920-01-01 Malaysia
+Sarawak 1946-07-01..1963-09-15: 1946-07-01 Sarawak
+Saudi Arabia 1932-09-23..1934-12-31: 1932-09-23 Emirate of Bin Shal'an
+Saudi Arabia 1935-01-01..2000-06-11: 1935-01-01 Saudi Arabia
+Saudi Arabia 2000-06-12..2019-12-31: 2000-06-12 Saudi Arabia
+Selangore 1886-01-01..1896-06-30: 1886-01-01 Malaya
+Senegal 1886-01-01..1959-04-03: 1886-01-01 Senegal (FR) | 1900-01-01 Senegal | 1914-01-01 French West Africa | 1945-09-02 Senegal
+Senegal 1960-06-21..2019-12-31: 1960-06-21 Senegal
+Serbia 1886-01-01..1913-08-09: 1886-01-01 Serbia
+Serbia 1913-08-10..1915-10-01: 1913-08-10 Serbia
+Serbia 1915-10-02..1918-11-30: 1915-10-02 Serbia
+Serbia 2006-06-06..2008-02-16: 2006-06-06 Serbia
+Serbia 2008-02-17..2019-12-31: 2008-02-17 Serbia
+Sierra Leone 1886-01-01..1889-08-09: 1886-01-01 Sierra Leone
+Sierra Leone 1889-08-10..1895-08-23: 1889-08-10 Sierra Leone
+Sierra Leone 1895-08-24..1961-04-26: 1895-08-24 Sierra Leone
+Sierra Leone 1961-04-27..2019-12-31: 1961-04-27 Sierra Leone
+Singapore 1946-04-01..1962-12-31: 1946-04-01 Singapore
+Singapore 1965-08-09..2019-12-31: 1965-08-09 Singapore
+Slovakia 1993-01-01..2019-12-31: 1993-01-01 Slovakia
+Slovenia 1992-04-27..2019-12-31: 1992-04-27 Slovenia
+Solomon Islands 1893-03-15..1899-11-13: 1893-03-15 Solomon Islands
+Solomon Islands 1899-11-14..1951-12-31: 1899-11-14 Solomon Islands
+Solomon Islands 1952-01-01..1978-07-06: 1952-01-01 Solomon Islands
+Solomon Islands 1978-07-07..2019-12-31: 1978-07-07 Solomon Islands
+Somalia 1960-07-01..2019-12-31: 1960-07-01 Somalia
+South Africa 1910-05-31..2019-12-31: 1910-05-31 South Africa | 1920-01-01 Union of South Africa | 1945-09-02 South Africa
+South Australia 1886-01-01..1900-12-31: 1886-01-01 Northern Territory (UK) | 1900-01-01 South Australia
+South Sudan 2011-07-09..2019-12-31: 2011-07-09 South Sudan
+Southern Nigeria 1899-01-01..1906-02-15: 1899-01-01 Ato trading confederacy
+Southern Nigeria 1906-02-16..1913-12-31: 1906-02-16 Ato trading confederacy
+Southern Sakhalin Island 1905-09-05..1945-08-14: 1905-09-05 Empire of Japan
+Southern zone of Spanish Morocco 1956-04-07..1958-04-09: 1956-04-07 Southern zone of Spanish Morocco
+Spain 1886-01-01..2019-12-31: 1886-01-01 Spain
+Spanish Morocco 1912-11-27..1956-04-06: 1912-11-27 Spanish Morocco
+Spanish Sahara 1958-10-10..1975-11-13: 1958-10-10 Western Sahara
+Spanish West Africa 1886-01-01..1900-06-26: 1886-01-01 Spanish West Africa
+Spanish West Africa 1900-06-27..1912-11-26: 1900-06-27 Spanish West Africa
+Spanish West Africa 1912-11-27..1958-10-09: 1912-11-27 Rio De Oro | 1945-09-02 Western Sahara
+Sri Lanka (Ceylon) 1886-01-01..1948-02-03: 1886-01-01 Ceylon | 1945-09-02 Sri Lanka
+Sri Lanka (Ceylon) 1948-02-04..2019-12-31: 1948-02-04 Sri Lanka
+Straits Settlements 1886-01-01..1946-03-31: 1886-01-01 Malaya | 1920-01-01 Malaysia
+Sudan 1899-01-19..1902-05-14: 1899-01-19 Egypt
+Sudan 1902-05-15..1910-06-15: 1902-05-15 Egypt
+Sudan 1910-06-16..1914-04-20: 1910-06-16 Anglo-Egyptian Sudan
+Sudan 1914-04-21..1934-07-19: 1914-04-21 Sudan
+Sudan 1934-07-20..1955-12-31: 1934-07-20 Sudan
+Sudan 1956-01-01..2011-07-08: 1956-01-01 Sudan
+Sudan 2011-07-09..2019-12-31: 2011-07-09 Sudan
+Surinam 1886-01-01..1954-12-14: 1886-01-01 Dutch Guiana | 1914-01-01 Suriname
+Surinam 1954-12-15..1975-11-24: 1954-12-15 Suriname
+Surinam 1975-11-25..2019-12-31: 1975-11-25 Suriname
+Swaziland (Eswatini) 1895-02-21..1902-08-06: 1895-02-21 Swaziland (Eswatini)
+Swaziland (Eswatini) 1902-08-07..1968-09-05: 1902-08-07 Swaziland
+Swaziland (Eswatini) 1968-09-06..2019-12-31: 1968-09-06 Swaziland
+Sweden 1886-01-01..1905-08-25: 1886-01-01 Sweden–Norway
+Sweden 1905-08-26..2019-12-31: 1905-08-26 Sweden
+Switzerland 1886-01-01..2019-12-31: 1886-01-01 Switzerland
+Syria 1920-04-26..1920-12-23: 1920-04-26 Syria
+Syria 1920-12-24..1922-12-01: 1920-12-24 Syria
+Syria 1922-12-02..1945-12-31: 1922-12-02 Syria (France) | 1945-09-02 Syria
+Syria 1946-01-01..1967-06-09: 1946-01-01 Syria
+Syria 1967-06-10..2019-12-31: 1967-06-10 Syria
+Taiwan 1895-04-17..1945-08-14: 1895-04-17 Taiwan | 1914-01-01 Empire of Japan
+Taiwan 1949-12-08..2019-12-31: 1949-12-08 Taiwan
+Tajikistan 1991-09-06..2019-12-31: 1991-09-06 Tajikistan
+Tanzania (Tanganyika) 1891-01-01..1916-10-08: 1891-01-01 Tanzania (Tanganyika) | 1914-01-01 German E. Africa (Tanganyika)
+Tanzania (Tanganyika) 1916-10-09..1919-06-27: 1916-10-09 Tanzania (Tanganyika)
+Tanzania (Tanganyika) 1919-06-28..1920-06-27: 1919-06-28 Tanzania, United Republic of
+Tanzania (Tanganyika) 1920-06-28..1922-07-19: 1920-06-28 Tanzania, United Republic of
+Tanzania (Tanganyika) 1922-07-20..1961-12-08: 1922-07-20 Tanzania, United Republic of | 1960-01-01 Tanzania (Tanganyika)
+Tanzania (Tanganyika) 1961-12-09..1964-04-25: 1961-12-09 Tanzania, United Republic of
+Tanzania (Tanganyika) 1964-04-26..2019-12-31: 1964-04-26 Tanzania, United Republic of
+Tasmania 1886-01-01..1900-12-31: 1886-01-01 Tasmania
+Thailand 1886-01-01..1893-10-02: 1886-01-01 Rattanakosin Kingdom
+Thailand 1893-10-03..1904-02-17: 1893-10-03 Rattanakosin Kingdom
+Thailand 1904-02-18..1907-03-22: 1904-02-18 Rattanakosin Kingdom
+Thailand 1907-03-23..1909-03-09: 1907-03-23 Rattanakosin Kingdom
+Thailand 1909-03-10..2019-12-31: 1909-03-10 Rattanakosin Kingdom | 1938-01-01 Siam | 1945-09-02 Thailand
+Tibet 1913-01-01..1914-07-02: 1913-01-01 Tibet
+Tibet 1914-07-03..1950-10-01: 1914-07-03 Tibet
+Togo 1922-07-20..1960-04-26: 1922-07-20 Togo
+Togo 1960-04-27..2019-12-31: 1960-04-27 Togo
+Transvaal 1886-01-01..1910-05-29: 1886-01-01 Transvaal
+Trinidad and Tobago 1886-01-01..1962-08-30: 1886-01-01 United Kingdom of Great Britain and Ireland | 1920-01-01 Trinidad
+Trinidad and Tobago 1962-08-31..2019-12-31: 1962-08-31 Trinidad
+Tunisia 1886-01-01..1955-12-31: 1886-01-01 Tunisia
+Tunisia 1956-01-01..2019-12-31: 1956-01-01 Tunisia
+Turkey (Ottoman Empire) 1886-01-01..1912-10-17: 1886-01-01 Ottoman Empire
+Turkey (Ottoman Empire) 1912-10-18..1912-12-31: 1912-10-18 Ottoman Empire
+Turkey (Ottoman Empire) 1913-01-01..1913-05-29: 1913-01-01 Ottoman Empire
+Turkey (Ottoman Empire) 1913-05-30..1914-11-02: 1913-05-30 Ottoman Empire
+Turkey (Ottoman Empire) 1914-11-03..1918-03-02: 1914-11-03 Ottoman Empire
+Turkey (Ottoman Empire) 1918-03-03..1918-10-29: 1918-03-03 Ottoman Empire
+Turkey (Ottoman Empire) 1918-10-30..1920-04-25: 1918-10-30 Turkey (Ottoman Empire)
+Turkey (Ottoman Empire) 1920-04-26..1923-10-13: 1920-04-26 Ottoman Sultanate
+Turkey (Ottoman Empire) 1923-10-14..2019-12-31: 1923-10-14 Republic of Turkey | 1938-01-01 Turkey
+Turkmenistan 1991-10-27..2019-12-31: 1991-10-27 Turkmenistan
+Uganda 1894-06-08..1902-05-14: 1894-06-08 Uganda
+Uganda 1902-05-15..1910-06-15: 1902-05-15 Bunyoro
+Uganda 1910-06-16..1914-04-20: 1910-06-16 Uganda
+Uganda 1914-04-21..1926-09-26: 1914-04-21 Uganda
+Uganda 1926-09-27..1962-10-08: 1926-09-27 Uganda
+Uganda 1962-10-09..2019-12-31: 1962-10-09 Uganda
+Ukraine 1991-12-26..2014-03-17: 1991-12-26 Ukraine
+Ukraine 2014-03-18..2019-12-31: 2014-03-18 Ukraine
+Unfederated Malay States 1886-01-01..1909-03-09: 1886-01-01 Malaya
+Unfederated Malay States 1909-03-10..1946-03-31: 1909-03-10 Malaya | 1920-01-01 Malaysia
+United Arab Emirates 1892-03-08..1913-07-28: 1892-03-08 Trucial Oman
+United Arab Emirates 1913-07-29..1971-12-01: 1913-07-29 United Arab Emirates | 1920-01-01 Trucial Oman | 1945-09-02 United Arab Emirates
+United Arab Emirates 1971-12-02..2019-12-31: 1971-12-02 United Arab Emirates
+United Kingdom 1886-01-01..1921-12-05: 1886-01-01 United Kingdom of Great Britain and Ireland
+United Kingdom 1921-12-06..2019-12-31: 1921-12-06 United Kingdom of Great Britain and Ireland | 1938-01-01 United Kingdom
+United States of America 1886-01-01..1959-01-02: 1886-01-01 United States of America | 1914-01-01 United States
+United States of America 1959-01-03..1959-08-20: 1959-01-03 United States
+United States of America 1959-08-21..2019-12-31: 1959-08-21 United States
+Uruguay 1886-01-01..2019-12-31: 1886-01-01 Uruguay
+Uzbekistan 1991-09-01..2019-12-31: 1991-09-01 Uzbekistan
+Venezuela 1886-01-01..2019-12-31: 1886-01-01 Venezuela
+Victoria 1886-01-01..1900-12-31: 1886-01-01 Victoria (UK)
+Vietnam (Annam/Cochin China/Tonkin) 1886-01-01..1887-05-31: 1886-01-01 Vietnam (Annam/Cochin China/Tonkin)
+Vietnam (Annam/Cochin China/Tonkin) 1887-06-01..1893-01-01: 1887-06-01 Vietnam (Annam/Cochin China/Tonkin)
+Vietnam (Annam/Cochin China/Tonkin) 1893-01-02..1893-10-02: 1893-01-02 Annam
+Vietnam (Annam/Cochin China/Tonkin) 1893-10-03..1954-04-30: 1893-10-03 French Indochina | 1920-01-01 Annam | 1938-01-01 French Indo-China | 1945-09-02 Tonkin
+Vietnam, Democratic Republic of 1954-05-01..1975-04-30: 1954-05-01 Vietnam
+Vietnam, Democratic Republic of 1975-05-01..2019-12-31: 1975-05-01 Vietnam
+Vietnam, Republic of 1954-05-01..1975-04-30: 1954-05-01 Vietnam, Republic of
+West Bank 1948-05-14..1967-06-09: 1948-05-14 West Bank
+West Irian (Dutch New Guinea) 1949-12-29..1962-08-14: 1949-12-29 West Irian (Dutch New Guinea)
+West Irian (Dutch New Guinea) 1962-08-15..1963-04-30: 1962-08-15 West Irian (Dutch New Guinea)
+West Irian (Dutch New Guinea) 1963-05-01..1969-09-16: 1963-05-01 West Irian (Dutch New Guinea)
+Western Australia 1886-01-01..1900-12-31: 1886-01-01 Western Australia (UK)
+Yemen (Arab Republic of Yemen) 1918-10-30..1934-06-13: 1918-10-30 Hejaz
+Yemen (Arab Republic of Yemen) 1934-06-14..1990-05-21: 1934-06-14 Yemen (Arab Republic of Yemen) | 1960-01-01 Yemen
+Yemen (Arab Republic of Yemen) 1990-05-22..2000-06-11: 1990-05-22 Yemen
+Yemen (Arab Republic of Yemen) 2000-06-12..2019-12-31: 2000-06-12 Yemen
+Yemen, People's Republic of 1967-11-30..1990-05-21: 1967-11-30 Yemen, People's Republic of
+Yugoslavia 1918-12-01..1919-09-09: 1918-12-01 Serbia
+Yugoslavia 1919-09-10..1920-06-03: 1919-09-10 Yugoslavia
+Yugoslavia 1920-06-04..1991-11-19: 1920-06-04 Yugoslavia
+Yugoslavia 1991-11-20..1992-04-26: 1991-11-20 Yugoslavia
+Yugoslavia 1992-04-27..2006-06-02: 1992-04-27 Serbia
+Zambia 1911-08-18..1953-07-31: 1911-08-18 Rhodesia | 1920-01-01 Zambia | 1938-01-01 Northern Rhodesia
+Zambia 1964-01-22..2019-12-31: 1964-01-22 Zambia
+Zanzibar 1890-07-01..1895-06-30: 1890-07-01 Zanzibar
+Zanzibar 1895-07-01..1963-12-18: 1895-07-01 Zanzibar
+Zanzibar 1963-12-19..1964-04-25: 1963-12-19 Zanzibar
+Zimbabwe (Rhodesia) 1889-01-01..1891-06-10: 1889-01-01 Zimbabwe (Rhodesia)
+Zimbabwe (Rhodesia) 1891-06-11..1900-01-28: 1891-06-11 Lozi
+Zimbabwe (Rhodesia) 1900-01-29..1953-07-31: 1900-01-29 Rhodesia | 1920-01-01 Zimbabwe | 1938-01-01 Southern Rhodesia | 1945-09-02 Rhodesia
+Zimbabwe (Rhodesia) 1964-01-22..1965-11-10: 1964-01-22 Zimbabwe
+Zimbabwe (Rhodesia) 1965-11-11..2019-12-31: 1965-11-11 Zimbabwe

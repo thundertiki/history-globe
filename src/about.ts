@@ -15,7 +15,14 @@ present-day borders. Ancient borders are approximate.</p>
     present-day borders and land.</li>
   <li><a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a> summaries (CC BY-SA 4.0) and
     <a href="https://www.wikidata.org/" target="_blank" rel="noopener">Wikidata</a> (CC0).</li>
-  <li>Map rendering: <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>.</li>
+  <li>Map rendering: <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>; labels in
+    Open Sans (Apache-2.0).</li>
+</ul>
+<h3>Names and summaries</h3>
+<ul>
+  <li>From 1886, names are matched to the period from the historical-basemaps snapshots, so 1914 shows the
+    Russian Empire rather than Russia. They change when a snapshot changes, which is not always the exact day.</li>
+  <li>Wikipedia summaries were collected when the app was built and describe each place overall.</li>
 </ul>
 <p>Free and open source (GPL-3.0). Non-commercial.</p>
 <form method="dialog"><button>Close</button></form>`;

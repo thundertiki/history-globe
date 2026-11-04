@@ -6,11 +6,12 @@ mkdir -p "$RAW/hb"
 
 get() { [ -s "$2" ] || { echo "fetch $1"; curl -sfL -o "$2" "$1"; }; }
 
-# Tier A: historical-basemaps (GPL-3.0), slices up to 1880
+# historical-basemaps (GPL-3.0): tier A slices up to 1880; 1900+ slices only supply period names for tier B
 HB=https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson
 for f in bc3000 bc2000 bc1500 bc1000 bc700 bc500 bc400 bc323 bc300 bc200 bc100 bc1 \
          100 200 300 400 500 600 700 800 900 1000 1100 1200 1279 1300 1400 1492 1500 1530 \
-         1600 1650 1700 1715 1783 1800 1815 1878 1880; do
+         1600 1650 1700 1715 1783 1800 1815 1878 1880 \
+         1900 1914 1920 1930 1938 1945 1960 1994 2000 2010; do
   get "$HB/world_$f.geojson" "$RAW/hb/world_$f.geojson"
 done
 

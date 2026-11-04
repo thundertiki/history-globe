@@ -8,3 +8,4 @@ tokens/
 node_modules/
 dist/
 pipeline/raw/
+dist-artifact/

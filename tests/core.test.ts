@@ -82,3 +82,26 @@ describe('borders', () => {
     expect(pickBorders({ y: -5000 }, man).file).toBe('a/bc3000.json');
   });
 });
+
+import { nameAt, nameList, labelsOn } from '../src/names';
+describe('period names', () => {
+  const p = { start: '1886-01-01', country_name: 'Germany (Prussia)', n0: 'Germany', f1: '1914-01-01', n1: 'German Empire' };
+  it('picks the name in force on the day', () => {
+    expect(nameAt(p, '1900-05-05')).toBe('Germany');
+    expect(nameAt(p, '1914-01-01')).toBe('German Empire');
+    expect(nameAt({ country_name: 'Mali' }, '1990-01-01')).toBe('Mali');
+    expect(nameList(p)).toEqual([['1886-01-01', 'Germany'], ['1914-01-01', 'German Empire']]);
+  });
+  it('labels each name once per day, at the largest territory', () => {
+    const pt = (props: any) => ({ type: 'Feature' as const, geometry: { type: 'Point' as const, coordinates: [0, 0] }, properties: props });
+    const fc = { type: 'FeatureCollection' as const, features: [
+      pt({ start: '1900-01-01', end: '1950-01-01', area: 5, n0: 'French West Africa', country_name: 'Senegal' }),
+      pt({ start: '1900-01-01', end: '1950-01-01', area: 9, n0: 'French West Africa', country_name: 'Mali' }),
+      pt({ start: '1960-01-01', end: '2019-12-31', area: 9, n0: 'Mali', country_name: 'Mali' }),
+    ] };
+    const l = labelsOn(fc, '1914-01-01');
+    expect(l.features.length).toBe(1);
+    expect(l.features[0].properties!.country_name).toBe('Mali');
+    expect(labelsOn(fc, '1970-01-01').features.map((f) => f.properties!._name)).toEqual(['Mali']);
+  });
+});
