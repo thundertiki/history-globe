@@ -1,0 +1,78 @@
+:root {
+  --bg: #0b1320;
+  --card: rgba(18, 26, 40, 0.92);
+  --text: #e8edf5;
+  --muted: #9aa7ba;
+  --accent: #e3b45c;
+  --line: rgba(255, 255, 255, 0.12);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; }
+#map { position: absolute; inset: 0; }
+
+button {
+  font: inherit; color: var(--text); background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line); border-radius: 10px; min-width: 44px; min-height: 44px; cursor: pointer;
+}
+button:hover { background: rgba(255, 255, 255, 0.16); }
+button.ghost { background: transparent; border-color: transparent; }
+a { color: var(--accent); }
+
+.topbar {
+  position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px; pointer-events: none;
+}
+.topbar > * { pointer-events: auto; }
+.topbar h1 { font-size: 18px; margin: 0; font-weight: 600; text-shadow: 0 1px 3px #000; }
+
+.timebar {
+  position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
+  width: min(760px, calc(100% - 32px)); background: var(--card); border: 1px solid var(--line);
+  border-radius: 14px; padding: 10px 14px calc(8px + env(safe-area-inset-bottom)); backdrop-filter: blur(6px);
+}
+.timebar .row { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+.timebar .small { font-size: 12px; color: var(--muted); }
+#date-form { flex: 1; }
+#date-input {
+  width: 100%; text-align: center; font: inherit; font-size: 22px; font-weight: 600; color: var(--text);
+  background: transparent; border: 1px solid transparent; border-radius: 8px; padding: 4px;
+}
+#date-input:focus { border-color: var(--accent); outline: none; }
+#date-input.bad { border-color: #e06666; }
+#slider { width: 100%; margin: 8px 0 4px; accent-color: var(--accent); height: 28px; }
+#precision { text-align: center; }
+
+.panel {
+  position: absolute; top: 60px; right: 16px; width: 340px; max-height: calc(100% - 220px); overflow: auto;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+  backdrop-filter: blur(6px);
+}
+.panel .close { position: absolute; top: 4px; right: 4px; }
+.panel h2 { margin: 0 36px 4px 0; font-size: 20px; }
+.panel .meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
+.panel .meta div { margin: 2px 0; }
+.panel img { width: 100%; max-height: 180px; object-fit: cover; border-radius: 8px; margin: 6px 0; }
+.panel p { line-height: 1.45; font-size: 14px; }
+.panel .src { font-size: 12px; color: var(--muted); }
+
+#about {
+  max-width: 560px; width: calc(100% - 32px); background: #121a28; color: var(--text);
+  border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px;
+}
+#about::backdrop { background: rgba(0, 0, 0, 0.6); }
+#about h2 { margin-top: 0; }
+#about li { margin: 6px 0; font-size: 14px; line-height: 1.4; }
+
+#toast {
+  position: absolute; top: 60px; left: 50%; transform: translateX(-50%); background: #5a2a2a;
+  padding: 8px 14px; border-radius: 10px; font-size: 14px;
+}
+
+/* Phones: panel becomes a bottom sheet above the time bar */
+@media (max-width: 640px) {
+  .maplibregl-ctrl-bottom-right .maplibregl-ctrl-group { display: none; }
+  .panel { left: 16px; right: 16px; width: auto; top: auto; bottom: 150px; max-height: 45%; }
+  #date-input { font-size: 19px; }
+}

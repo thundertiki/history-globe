@@ -1,0 +1,34 @@
+{
+  "name": "history-globe",
+  "version": "1.0.0",
+  "description": "Pick a date, see the world's borders on a 3D globe",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "data:fetch": "bash pipeline/fetch.sh",
+    "data:build": "node pipeline/build.mjs",
+    "data:entities": "node pipeline/entities.mjs"
+  },
+  "type": "module",
+  "dependencies": {
+    "maplibre-gl": "^5.24.0",
+    "topojson-client": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/topojson-client": "^3.1.5",
+    "mapshaper": "^0.7.101",
+    "playwright-core": "^1.64.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
+  },
+  "private": true,
+  "license": "GPL-3.0-or-later"
+}

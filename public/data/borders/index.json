@@ -1,0 +1,168 @@
+{
+ "tierB": {
+  "start": "1886-01-01",
+  "end": "2019-12-31",
+  "file": "b/cshapes.json"
+ },
+ "tierC": {
+  "file": "c/ne.json"
+ },
+ "tierA": [
+  {
+   "year": -2999,
+   "file": "a/bc3000.json"
+  },
+  {
+   "year": -1999,
+   "file": "a/bc2000.json"
+  },
+  {
+   "year": -1499,
+   "file": "a/bc1500.json"
+  },
+  {
+   "year": -999,
+   "file": "a/bc1000.json"
+  },
+  {
+   "year": -699,
+   "file": "a/bc700.json"
+  },
+  {
+   "year": -499,
+   "file": "a/bc500.json"
+  },
+  {
+   "year": -399,
+   "file": "a/bc400.json"
+  },
+  {
+   "year": -322,
+   "file": "a/bc323.json"
+  },
+  {
+   "year": -299,
+   "file": "a/bc300.json"
+  },
+  {
+   "year": -199,
+   "file": "a/bc200.json"
+  },
+  {
+   "year": -99,
+   "file": "a/bc100.json"
+  },
+  {
+   "year": 0,
+   "file": "a/bc1.json"
+  },
+  {
+   "year": 100,
+   "file": "a/100.json"
+  },
+  {
+   "year": 200,
+   "file": "a/200.json"
+  },
+  {
+   "year": 300,
+   "file": "a/300.json"
+  },
+  {
+   "year": 400,
+   "file": "a/400.json"
+  },
+  {
+   "year": 500,
+   "file": "a/500.json"
+  },
+  {
+   "year": 600,
+   "file": "a/600.json"
+  },
+  {
+   "year": 700,
+   "file": "a/700.json"
+  },
+  {
+   "year": 800,
+   "file": "a/800.json"
+  },
+  {
+   "year": 900,
+   "file": "a/900.json"
+  },
+  {
+   "year": 1000,
+   "file": "a/1000.json"
+  },
+  {
+   "year": 1100,
+   "file": "a/1100.json"
+  },
+  {
+   "year": 1200,
+   "file": "a/1200.json"
+  },
+  {
+   "year": 1279,
+   "file": "a/1279.json"
+  },
+  {
+   "year": 1300,
+   "file": "a/1300.json"
+  },
+  {
+   "year": 1400,
+   "file": "a/1400.json"
+  },
+  {
+   "year": 1492,
+   "file": "a/1492.json"
+  },
+  {
+   "year": 1500,
+   "file": "a/1500.json"
+  },
+  {
+   "year": 1530,
+   "file": "a/1530.json"
+  },
+  {
+   "year": 1600,
+   "file": "a/1600.json"
+  },
+  {
+   "year": 1650,
+   "file": "a/1650.json"
+  },
+  {
+   "year": 1700,
+   "file": "a/1700.json"
+  },
+  {
+   "year": 1715,
+   "file": "a/1715.json"
+  },
+  {
+   "year": 1783,
+   "file": "a/1783.json"
+  },
+  {
+   "year": 1800,
+   "file": "a/1800.json"
+  },
+  {
+   "year": 1815,
+   "file": "a/1815.json"
+  },
+  {
+   "year": 1878,
+   "file": "a/1878.json"
+  },
+  {
+   "year": 1880,
+   "file": "a/1880.json"
+  }
+ ]
+}
