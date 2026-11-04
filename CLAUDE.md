@@ -7,12 +7,16 @@ Design and status: vault `10 Projects/History Globe.md`.
 ## Layout
 - `src/`: Vite + TypeScript + MapLibre GL 5 (globe projection), no framework.
   - `dates.ts`: `HDate` with astronomical years (1 BC = 0). Never use JS `Date` before 1900.
-  - `timeline.ts`: non-linear slider (years < 1500, months < 1886, days after).
+  - `timeline.ts`: non-linear slider (deep time 1,000/100-year steps from 300,000 BC, years from 3000 BC, months
+    from 1500, days from 1886).
+  - `history.ts`: the card's timeline chips. Overlays (events, early humans) live in `globe.ts`.
   - `borders.ts`: picks the tier for a date. `globe.ts`: map and layers. `panel.ts`: tap card. `about.ts`: credits.
 - `pipeline/` (run in this order): `fetch.sh` downloads into `raw/` (git-ignored); `build.mjs` simplifies to
   `public/data/borders/` (each file: `borders` + one-per-polity `labels`) and adds 1886+ period names;
   `entities.mjs` + `entities-search.mjs` map names to Wikipedia; `summaries.mjs` prebuilds `wiki.json`;
-  `fonts.mjs` fetches label glyphs into `public/fonts/`; `artifact.mjs` packages the phone version.
+  `fonts.mjs` fetches label glyphs into `public/fonts/`; `events.mjs` pulls Wikidata events into `events.json`;
+  `apply-overrides.mjs` applies `entity-overrides.json` and resolves new names; `artifact.mjs` packages the
+  artifact. `public/data/human.json` (early human sites and routes) is hand-written: keep dates hedged.
 - `public/data/` is generated, but committed so the site builds without running the pipeline.
 
 ## Data tiers (keep the About panel in sync)

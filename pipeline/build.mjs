@@ -56,16 +56,20 @@ const slices = readdirSync(join(RAW, 'hb'))
   .filter((s) => s.year < 1886)
   .sort((a, b) => a.year - b.year);
 
+// presence: polity name -> snapshot years it appears in (the card's timeline for tier A).
+const presence = {};
 for (const s of slices) {
   const fc = await geo(
     `-i in.json -filter 'NAME != null && NAME !== ""' -filter-fields NAME,SUBJECTO,PARTOF,BORDERPRECISION`,
     { 'in.json': read(hbFile(s.label)) }
   );
-  const labels = await labelPoints(fc, (p) => p.NAME, (p) => ({ NAME: p.NAME }));
+  const labels = await labelPoints(fc, (p) => p.NAME, (p) => ({ NAME: p.NAME, area: Math.round(p._area / 1e6) }));
   const out = join(OUT, 'a', `${s.label}.json`);
   await writeTopo(out, fc, labels, '20%');
+  for (const f of labels.features) (presence[f.properties.NAME] ??= []).push(s.year);
   console.log('A', s.label, kb(out), 'KB');
 }
+writeFileSync('public/data/presence.json', JSON.stringify(presence));
 
 // ---------- Tier B: CShapes 2.0 with period names ----------
 {
@@ -186,7 +190,7 @@ for (const s of slices) {
     `-i in.json -each 'name=NAME_LONG||NAME, qid=WIKIDATAID, sov=SOVEREIGNT' -filter-fields name,qid,sov`,
     { 'in.json': read(join(RAW, 'ne_50m_admin0.geojson')) }
   );
-  const labels = await labelPoints(fc, (p) => p.name, (p) => ({ name: p.name }));
+  const labels = await labelPoints(fc, (p) => p.name, (p) => ({ name: p.name, area: Math.round(p._area / 1e6) }));
   const out = join(OUT, 'c', 'ne.json');
   await writeTopo(out, fc, labels, '30%');
   console.log('C ne', kb(out), 'KB');

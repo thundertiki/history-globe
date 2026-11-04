@@ -13,6 +13,12 @@ export interface Place {
   props: Record<string, any>;
 }
 
+/** What a tap landed on: a country/polity, a dated event, or an early-human site. */
+export type Hit =
+  | { kind: 'place'; place: Place }
+  | { kind: 'event'; props: Record<string, any> }
+  | { kind: 'site'; props: Record<string, any> };
+
 /** Stable muted colour per polity: hue, saturation and lightness all vary, so neighbours rarely match. */
 function colorFor(key: string): string {
   let h = 2166136261;
@@ -127,9 +133,86 @@ export class Globe {
         'text-font': ['OpenSansSemibold'],
         'text-size': ['interpolate', ['linear'], ['zoom'], 1, 10, 5, 14],
         'text-max-width': 8,
+        // When labels collide, larger territories keep theirs (lower sort key is placed first).
+        'symbol-sort-key': ['-', 0, ['coalesce', ['get', 'area'], 0]],
       },
       paint: { 'text-color': '#f4f1ea', 'text-halo-color': 'rgba(0,0,0,0.75)', 'text-halo-width': 1.2 },
     });
+
+    // Overlays: early-human routes and sites (appear once their date is reached), then dated events.
+    this.map.addSource('human-routes', { type: 'geojson', data: empty });
+    this.map.addSource('human-sites', { type: 'geojson', data: empty });
+    this.map.addSource('events', { type: 'geojson', data: empty });
+    this.map.addLayer({
+      id: 'human-routes', type: 'line', source: 'human-routes', filter: ['boolean', false],
+      layout: { 'line-cap': 'round' },
+      paint: { 'line-color': '#7fd1b9', 'line-width': 2.5, 'line-opacity': 0.85, 'line-dasharray': [2, 1.5] },
+    });
+    this.map.addLayer({
+      id: 'human-sites', type: 'circle', source: 'human-sites', filter: ['boolean', false],
+      paint: {
+        'circle-radius': 6, 'circle-color': '#7fd1b9', 'circle-stroke-color': '#0b1320', 'circle-stroke-width': 2,
+      },
+    });
+    this.map.addLayer({
+      id: 'human-sites-label', type: 'symbol', source: 'human-sites', filter: ['boolean', false],
+      layout: {
+        'text-field': ['get', 'name'], 'text-font': ['OpenSansSemibold'], 'text-size': 11,
+        'text-offset': [0, 1.1], 'text-anchor': 'top', 'text-optional': true,
+      },
+      paint: { 'text-color': '#bff0e1', 'text-halo-color': 'rgba(0,0,0,0.8)', 'text-halo-width': 1.2 },
+    });
+    this.map.addLayer({
+      id: 'events', type: 'circle', source: 'events', filter: ['boolean', false],
+      paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 3.5, 5, 6],
+        'circle-color': ['match', ['get', 'type'], 'battle', '#e2574c', 'siege', '#f08a4b', 'treaty', '#e3b45c', '#6fb3ff'],
+        'circle-stroke-color': '#0b1320', 'circle-stroke-width': 1.2,
+      },
+    });
+    this.map.addLayer({
+      id: 'events-label', type: 'symbol', source: 'events', minzoom: 4, filter: ['boolean', false],
+      layout: {
+        'text-field': ['get', 'label'], 'text-font': ['OpenSansSemibold'], 'text-size': 11,
+        'text-offset': [0, 0.9], 'text-anchor': 'top', 'text-max-width': 10, 'text-optional': true,
+      },
+      paint: { 'text-color': '#ffe2c8', 'text-halo-color': 'rgba(0,0,0,0.8)', 'text-halo-width': 1.2 },
+    });
+  }
+
+  /** Load overlay data (events and the early-human layer) once. */
+  async setOverlays(events: any[], human: { sites: any[]; routes: any[] }) {
+    await this.ready;
+    const pt = (lon: number, lat: number, props: object) =>
+      ({ type: 'Feature', geometry: { type: 'Point', coordinates: [lon, lat] }, properties: props }) as Feature;
+    (this.map.getSource('events') as GeoJSONSource).setData({
+      type: 'FeatureCollection',
+      features: events.map(([lon, lat, t, label, type, desc, title, when]) => pt(lon, lat, { t, label, type, desc, title, when })),
+    });
+    (this.map.getSource('human-sites') as GeoJSONSource).setData({
+      type: 'FeatureCollection',
+      features: human.sites.map((s) => pt(s.lon, s.lat, s)),
+    });
+    (this.map.getSource('human-routes') as GeoJSONSource).setData({
+      type: 'FeatureCollection',
+      features: human.routes.map((r) => ({
+        type: 'Feature', geometry: { type: 'LineString', coordinates: r.path }, properties: { t: r.t, label: r.label, when: r.when },
+      })) as Feature[],
+    });
+  }
+
+  /**
+   * Show overlays for a decimal year: events within ±window years; early-human sites and routes from their date
+   * on, while the date is before AD 1500 (after that they would only add clutter).
+   */
+  async updateOverlays(t: number, window: number, show: { events: boolean; human: boolean }) {
+    await this.ready;
+    const off: FilterSpecification = ['boolean', false];
+    const ev: FilterSpecification = show.events ? ['all', ['>=', ['get', 't'], t - window], ['<=', ['get', 't'], t + window]] : off;
+    const hu: FilterSpecification = show.human && t < 1500 ? ['<=', ['get', 't'], t] : off;
+    this.map.setFilter('events', ev);
+    this.map.setFilter('events-label', ev);
+    for (const id of ['human-sites', 'human-sites-label', 'human-routes']) this.map.setFilter(id, hu);
   }
 
   /** Show the borders for a pick. Throws if the file fails to load (previous borders stay). */
@@ -172,16 +255,32 @@ export class Globe {
     this.map.easeTo({ center: at.lngLat, padding, duration: 500 });
   }
 
-  onPick(cb: (place: Place | null, at: { lngLat: maplibregl.LngLat; point: maplibregl.Point }) => void, tierNow: () => Tier) {
-    let selected: number | string | undefined;
+  /** Highlight one border feature (or none). */
+  select(id: number | string | undefined) {
+    if (this.selected !== undefined) this.map.setFeatureState({ source: 'borders', id: this.selected }, { sel: false });
+    this.selected = id;
+    if (id !== undefined) this.map.setFeatureState({ source: 'borders', id }, { sel: true });
+  }
+  private selected: number | string | undefined;
+
+  /** Taps: an event or early-human site wins over the country underneath (with a finger-sized hit box). */
+  onPick(cb: (hit: Hit | null, at: { lngLat: maplibregl.LngLat; point: maplibregl.Point }) => void, tierNow: () => Tier) {
     this.map.on('click', (e) => {
+      const r = 12;
+      const box: [maplibregl.PointLike, maplibregl.PointLike] = [[e.point.x - r, e.point.y - r], [e.point.x + r, e.point.y + r]];
+      const over = this.map.queryRenderedFeatures(box, { layers: ['human-sites', 'events'] })[0];
+      const at = { lngLat: e.lngLat, point: e.point };
+      if (over) {
+        this.select(undefined);
+        return cb({ kind: over.layer.id === 'events' ? 'event' : 'site', props: over.properties }, at);
+      }
       const f = this.map.queryRenderedFeatures(e.point, { layers: ['borders-fill'] })[0];
-      if (selected !== undefined) this.map.setFeatureState({ source: 'borders', id: selected }, { sel: false });
-      selected = f?.id;
-      if (selected !== undefined) this.map.setFeatureState({ source: 'borders', id: selected }, { sel: true });
-      cb(f ? { tier: tierNow(), props: f.properties } : null, { lngLat: e.lngLat, point: e.point });
+      this.select(f?.id);
+      cb(f ? { kind: 'place', place: { tier: tierNow(), props: f.properties } } : null, at);
     });
-    this.map.on('mouseenter', 'borders-fill', () => (this.map.getCanvas().style.cursor = 'pointer'));
-    this.map.on('mouseleave', 'borders-fill', () => (this.map.getCanvas().style.cursor = ''));
+    for (const id of ['borders-fill', 'events', 'human-sites']) {
+      this.map.on('mouseenter', id, () => (this.map.getCanvas().style.cursor = 'pointer'));
+      this.map.on('mouseleave', id, () => (this.map.getCanvas().style.cursor = ''));
+    }
   }
 }

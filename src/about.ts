@@ -18,6 +18,15 @@ present-day borders. Ancient borders are approximate.</p>
   <li>Map rendering: <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>; labels in
     Open Sans (Apache-2.0).</li>
 </ul>
+<h3>Deep time and layers</h3>
+<ul>
+  <li>Before 3000 BC the slider moves in 100- and 1,000-year steps back to 300,000 BC. Maps that far back show the
+    rough ranges of human species and early cultures, and are speculative.</li>
+  <li>The early-humans layer marks key sites and schematic migration routes, from the first Homo sapiens in Africa
+    to the settlement of New Zealand. Dates are approximate and several are debated.</li>
+  <li>Battles, sieges, treaties and the founding of large cities come from Wikidata (CC0), shown within a few years
+    of the chosen date (25 years before 1500, 5 before 1886, 1 after).</li>
+</ul>
 <h3>Names and summaries</h3>
 <ul>
   <li>From 1886, names are matched to the period from the historical-basemaps snapshots, so 1914 shows the

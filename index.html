@@ -12,7 +12,14 @@
 
     <header class="topbar">
       <h1>History Globe</h1>
-      <button id="about-btn" class="ghost" aria-label="About and sources">About</button>
+      <div class="top-actions">
+        <button id="layers-btn" class="ghost" aria-haspopup="true" aria-expanded="false">Layers</button>
+        <button id="about-btn" class="ghost" aria-label="About and sources">About</button>
+      </div>
+      <div id="layers" class="layers" hidden>
+        <label><input type="checkbox" id="layer-events" checked /> <span class="dot ev"></span> Battles, treaties and cities</label>
+        <label><input type="checkbox" id="layer-human" checked /> <span class="dot hu"></span> Early humans (before AD 1500)</label>
+      </div>
     </header>
 
     <aside id="panel" class="panel" hidden>
@@ -22,15 +29,17 @@
 
     <footer class="timebar">
       <div class="row">
+        <button id="play" aria-label="Play through time" title="Play through time">▶</button>
         <button id="prev" aria-label="Back one step">‹</button>
         <form id="date-form">
           <input id="date-input" aria-label="Date" autocomplete="off" spellcheck="false" />
         </form>
         <button id="next" aria-label="Forward one step">›</button>
+        <button id="speed" aria-label="Playback speed" title="Playback speed">1×</button>
       </div>
       <input id="slider" type="range" aria-label="Timeline" />
       <div class="row small">
-        <span>3000 BC</span>
+        <span>300,000 BC</span>
         <span id="precision"></span>
         <span>Today</span>
       </div>

@@ -100,3 +100,36 @@ a { color: var(--accent); }
   }
   #date-input { font-size: 19px; }
 }
+
+/* Top bar actions and the Layers menu */
+.top-actions { display: flex; gap: 4px; }
+.layers {
+  position: absolute; top: calc(52px + env(safe-area-inset-top, 0px)); right: max(16px, env(safe-area-inset-right, 0px));
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px;
+  display: grid; gap: 4px; pointer-events: auto; backdrop-filter: blur(6px); z-index: 5;
+}
+.layers label { display: flex; align-items: center; gap: 8px; min-height: 40px; font-size: 14px; cursor: pointer; }
+.layers input { width: 18px; height: 18px; accent-color: var(--accent); }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.ev { background: #e2574c; box-shadow: 10px 0 0 -1px #e3b45c; margin-right: 8px; }
+.dot.hu { background: #7fd1b9; }
+
+/* Play and speed buttons beside the step arrows */
+#play { color: var(--accent); }
+#speed { min-width: 44px; font-size: 13px; color: var(--muted); }
+
+/* Timeline chips in the info card: one scrollable row per kind */
+.tl { margin: 2px 0 8px; }
+.tl-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; }
+.chips { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.chip {
+  flex: none; min-height: 32px; min-width: 0; padding: 4px 10px; font-size: 13px; white-space: nowrap;
+  border-radius: 999px; background: rgba(255, 255, 255, 0.06);
+}
+.chip.on { background: var(--accent); color: #1a1408; border-color: var(--accent); font-weight: 600; }
+
+@media (max-width: 400px) {
+  .timebar .row { gap: 4px; }
+  .timebar .row > button { min-width: 40px; padding: 0; }
+}
+.layers[hidden] { display: none; }

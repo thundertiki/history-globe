@@ -1,0 +1,43 @@
+{
+  "_about": "Early human spread layer, compiled for History Globe from widely cited published estimates. Dates are approximate and several are debated; t is an astronomical year (1950 - years before present). Routes are schematic, not exact paths.",
+  "sites": [
+    { "name": "Jebel Irhoud", "lon": -8.87, "lat": 31.85, "t": -298050, "when": "c. 300,000 years ago", "note": "Oldest known Homo sapiens fossils, in Morocco: our species was already spread across Africa.", "wiki": "Jebel Irhoud" },
+    { "name": "Florisbad skull", "lon": 26.07, "lat": -28.77, "t": -258050, "when": "c. 260,000 years ago", "note": "Early Homo sapiens or close relative in southern Africa.", "wiki": "Florisbad Skull" },
+    { "name": "Omo Kibish", "lon": 35.9, "lat": 5.4, "t": -231050, "when": "at least 233,000 years ago", "note": "Omo I, among the oldest anatomically modern human remains, in Ethiopia.", "wiki": "Omo remains" },
+    { "name": "Misliya Cave", "lon": 35.0, "lat": 32.7, "t": -175050, "when": "c. 177,000–194,000 years ago", "note": "A modern human jaw in Israel: an early, short-lived venture out of Africa.", "wiki": "Misliya cave" },
+    { "name": "Skhul and Qafzeh", "lon": 34.97, "lat": 32.67, "t": -108050, "when": "c. 120,000–90,000 years ago", "note": "Early modern humans in the Levant, alongside Neanderthals nearby.", "wiki": "Skhul and Qafzeh hominins" },
+    { "name": "Blombos Cave", "lon": 21.22, "lat": -34.41, "t": -98050, "when": "c. 100,000–70,000 years ago", "note": "Engraved ochre and shell beads: some of the earliest symbolic art.", "wiki": "Blombos Cave" },
+    { "name": "Toba eruption", "lon": 98.8, "lat": 2.6, "t": -72050, "when": "c. 74,000 years ago", "note": "One of the largest known volcanic eruptions; its effect on early humans is debated.", "wiki": "Toba catastrophe theory" },
+    { "name": "Madjedbebe", "lon": 132.9, "lat": -12.5, "t": -63050, "when": "c. 65,000–50,000 years ago (debated)", "note": "Possibly the oldest evidence of people in Australia.", "wiki": "Madjedbebe" },
+    { "name": "Bacho Kiro Cave", "lon": 25.43, "lat": 42.95, "t": -43050, "when": "c. 45,000 years ago", "note": "Among the earliest Homo sapiens in Europe, in Bulgaria.", "wiki": "Bacho Kiro cave" },
+    { "name": "Lake Mungo", "lon": 143.1, "lat": -33.7, "t": -40050, "when": "c. 42,000 years ago", "note": "Mungo Man and Mungo Lady: Australia's oldest known human remains.", "wiki": "Lake Mungo remains" },
+    { "name": "Neanderthals fade out", "lon": -5.34, "lat": 36.12, "t": -38050, "when": "c. 40,000 years ago", "note": "Neanderthals disappear (Gorham's Cave, Gibraltar, is among their last sites); many people today carry some of their DNA.", "wiki": "Neanderthal extinction" },
+    { "name": "Tianyuan Cave", "lon": 115.88, "lat": 39.66, "t": -38050, "when": "c. 40,000 years ago", "note": "One of the oldest modern humans in East Asia, near Beijing.", "wiki": "Tianyuan man" },
+    { "name": "Chauvet Cave", "lon": 4.42, "lat": 44.39, "t": -34050, "when": "c. 36,000 years ago", "note": "Painted lions, horses and rhinos in southern France.", "wiki": "Chauvet Cave" },
+    { "name": "Yana Rhinoceros Horn Site", "lon": 135.4, "lat": 70.7, "t": -30050, "when": "c. 32,000 years ago", "note": "People living far above the Arctic Circle in Siberia.", "wiki": "Yana Rhinoceros Horn Site" },
+    { "name": "White Sands footprints", "lon": -106.3, "lat": 32.8, "t": -21050, "when": "c. 23,000–21,000 years ago (debated)", "note": "Human footprints in New Mexico that may push the peopling of the Americas back to the Ice Age.", "wiki": "White Sands footprints" },
+    { "name": "Monte Verde", "lon": -73.2, "lat": -41.5, "t": -12550, "when": "c. 14,500 years ago", "note": "A settlement in southern Chile, far down the Americas.", "wiki": "Monte Verde" },
+    { "name": "Clovis", "lon": -103.2, "lat": 34.3, "t": -11050, "when": "c. 13,000 years ago", "note": "Clovis spear points spread across North America.", "wiki": "Clovis culture" },
+    { "name": "Göbekli Tepe", "lon": 38.92, "lat": 37.22, "t": -9499, "when": "c. 9500 BC", "note": "Monumental stone enclosures built by hunter-gatherers, before farming took hold.", "wiki": "Göbekli Tepe" },
+    { "name": "Jericho", "lon": 35.44, "lat": 31.87, "t": -8999, "when": "c. 9000 BC", "note": "One of the oldest continuously settled places, with early farming.", "wiki": "Jericho" },
+    { "name": "Lapita", "lon": 150.5, "lat": -3.5, "t": -1499, "when": "c. 1500 BC", "note": "Lapita seafarers begin settling the remote Pacific islands.", "wiki": "Lapita culture" },
+    { "name": "Madagascar settled", "lon": 47.5, "lat": -18.9, "t": 500, "when": "c. AD 500", "note": "Austronesian sailors from Borneo reach Madagascar.", "wiki": "History of Madagascar" },
+    { "name": "Hawaii settled", "lon": -155.5, "lat": 19.6, "t": 1000, "when": "c. AD 1000", "note": "Polynesian voyagers reach Hawaii.", "wiki": "Polynesian navigation" },
+    { "name": "Rapa Nui settled", "lon": -109.4, "lat": -27.1, "t": 1200, "when": "c. AD 1200", "note": "Polynesians reach Easter Island.", "wiki": "Easter Island" },
+    { "name": "New Zealand settled", "lon": 174.8, "lat": -41.3, "t": 1280, "when": "c. AD 1280", "note": "The last major land mass to be settled by people.", "wiki": "Māori people" }
+  ],
+  "routes": [
+    { "label": "Early ventures out of Africa", "t": -178050, "when": "c. 180,000–120,000 years ago", "path": [[38, 8], [33.5, 29.5], [35, 32.7]] },
+    { "label": "Main dispersal out of Africa (southern route)", "t": -68050, "when": "c. 70,000–60,000 years ago", "path": [[40, 9], [43.3, 12.6], [55, 19], [68, 24], [78, 18], [92, 20], [100, 6]] },
+    { "label": "Crossing to Sahul (Australia and New Guinea)", "t": -61050, "when": "c. 65,000–50,000 years ago", "path": [[100, 6], [112, -7], [124, -9], [132.9, -12.5]] },
+    { "label": "Into Europe", "t": -45050, "when": "c. 47,000–45,000 years ago", "path": [[35, 33], [33, 38], [28.5, 41.2], [25.4, 43], [15, 47], [4.4, 44.4]] },
+    { "label": "Across Asia", "t": -43050, "when": "c. 45,000–40,000 years ago", "path": [[55, 38], [70, 41], [88, 43], [105, 40], [115.9, 39.7]] },
+    { "label": "Into Siberia and Beringia", "t": -32050, "when": "c. 32,000–25,000 years ago", "path": [[95, 55], [120, 63], [135.4, 70.7], [160, 67], [172, 66]] },
+    { "label": "Into the Americas", "t": -14050, "when": "c. 16,000–14,000 years ago (perhaps earlier)", "path": [[-168, 65], [-150, 59], [-133, 55], [-124, 45], [-117, 33], [-105, 20], [-80, 8], [-78, -5], [-71, -20], [-73.2, -41.5]] },
+    { "label": "Into Remote Oceania", "t": -1199, "when": "c. 1200–800 BC", "path": [[150.5, -3.5], [160, -9], [166.5, -15.5], [178, -18], [188, -13.8]] },
+    { "label": "Across the Indian Ocean", "t": 500, "when": "c. AD 500", "path": [[110, -2], [95, -8], [75, -12], [60, -15], [47.5, -18.9]] },
+    { "label": "Polynesian triangle", "t": 1000, "when": "c. AD 1000–1300", "path": [[188, -13.8], [210.5, -17.5], [204.5, 19.6]] },
+    { "label": "To Rapa Nui", "t": 1200, "when": "c. AD 1200", "path": [[210.5, -17.5], [225, -23], [250.6, -27.1]] },
+    { "label": "To Aotearoa New Zealand", "t": 1280, "when": "c. AD 1280", "path": [[210.5, -17.5], [200, -25], [185, -35], [174.8, -41.3]] }
+  ]
+}

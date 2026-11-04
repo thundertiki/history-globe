@@ -1,6 +1,7 @@
 # History Globe
 
-Pick a date and see the world's political borders on a 3D globe, from 3000 BC to today. Tap a country for its
+Pick a date and see the world's political borders on a 3D globe, from 300,000 BC to today. Press play to watch
+empires rise and fall, see battles, treaties and city foundings near the date, and follow early humans out of Africa. Tap a country for its
 name at that time, its status and capital (from 1886), and a Wikipedia summary.
 
 - Before 1886: about 40 world snapshots ([historical-basemaps](https://github.com/aourednik/historical-basemaps)),
@@ -14,8 +15,8 @@ name at that time, its status and capital (from 1886), and a Wikipedia summary.
 
 | Platform | File | Notes |
 |---|---|---|
-| Windows 10/11 (64-bit) | [History-Globe-Setup-0.1.2-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.1.2/History-Globe-Setup-0.1.2-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
-| Android 6+ | [History-Globe-0.1.2.apk](https://github.com/thundertiki/history-globe/releases/download/v0.1.2/History-Globe-0.1.2.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
+| Windows 10/11 (64-bit) | [History-Globe-Setup-0.2.0-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.2.0/History-Globe-Setup-0.2.0-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
+| Android 6+ | [History-Globe-0.2.0.apk](https://github.com/thundertiki/history-globe/releases/download/v0.2.0/History-Globe-0.2.0.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
 
 Both work offline (only Wikipedia pictures need the internet).
 

@@ -1,8 +1,10 @@
-// Non-linear slider: years in the deep past, months from 1500, days from 1886 (when day-exact borders begin) to today.
+// Non-linear slider: deep time in 1,000- then 100-year steps back to 300,000 BC (earliest Homo sapiens),
+// single years from 3000 BC, months from 1500, days from 1886 (when day-exact borders begin) to today.
 // Each segment gets a fixed share of the slider track.
 import { HDate, dayIndex, fromDayIndex } from './dates';
 
-export const MIN_YEAR = -2999; // 3000 BC
+export const MIN_YEAR = -299999; // 300,000 BC
+export const YEAR_START = -2999; // 3000 BC: single-year steps from here
 export const SLIDER_MAX = 1_000_000;
 const MONTH_START = 1500;
 const DAY_START = 1886; // CShapes day-exact borders start here
@@ -15,20 +17,34 @@ interface Segment {
   index(h: HDate): number;
 }
 
+// Deep-time stops: every 1,000 years to 10,000 BC, then every 100 years to 3000 BC.
+const DEEP: number[] = [];
+for (let y = MIN_YEAR; y < -9999; y += 1000) DEEP.push(y);
+for (let y = -9999; y < YEAR_START; y += 100) DEEP.push(y);
+
 export function segments(today: HDate): Segment[] {
   return [
     {
-      f0: 0, f1: 0.35, count: MONTH_START - MIN_YEAR,
-      toDate: (i) => ({ y: MIN_YEAR + i }),
-      index: (h) => h.y - MIN_YEAR,
+      f0: 0, f1: 0.12, count: DEEP.length,
+      toDate: (i) => ({ y: DEEP[i] }),
+      index: (h) => {
+        let i = 0;
+        while (i + 1 < DEEP.length && DEEP[i + 1] <= h.y) i++;
+        return i;
+      },
     },
     {
-      f0: 0.35, f1: 0.6, count: (DAY_START - MONTH_START) * 12,
+      f0: 0.12, f1: 0.42, count: MONTH_START - YEAR_START,
+      toDate: (i) => ({ y: YEAR_START + i }),
+      index: (h) => h.y - YEAR_START,
+    },
+    {
+      f0: 0.42, f1: 0.62, count: (DAY_START - MONTH_START) * 12,
       toDate: (i) => ({ y: MONTH_START + Math.floor(i / 12), m: (i % 12) + 1 }),
       index: (h) => (h.y - MONTH_START) * 12 + ((h.m ?? 1) - 1),
     },
     {
-      f0: 0.6, f1: 1, count: dayIndex(today) + 1,
+      f0: 0.62, f1: 1, count: dayIndex(today) + 1,
       toDate: (i) => fromDayIndex(i),
       index: (h) => dayIndex(h),
     },
@@ -36,9 +52,10 @@ export function segments(today: HDate): Segment[] {
 }
 
 function segFor(h: HDate, segs: Segment[]): Segment {
-  if (h.y < MONTH_START) return segs[0];
-  if (h.y < DAY_START) return segs[1];
-  return segs[2];
+  if (h.y < YEAR_START) return segs[0];
+  if (h.y < MONTH_START) return segs[1];
+  if (h.y < DAY_START) return segs[2];
+  return segs[3];
 }
 
 const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));

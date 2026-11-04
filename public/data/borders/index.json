@@ -9,6 +9,26 @@
  },
  "tierA": [
   {
+   "year": -122999,
+   "file": "a/bc123000.json"
+  },
+  {
+   "year": -9999,
+   "file": "a/bc10000.json"
+  },
+  {
+   "year": -7999,
+   "file": "a/bc8000.json"
+  },
+  {
+   "year": -4999,
+   "file": "a/bc5000.json"
+  },
+  {
+   "year": -3999,
+   "file": "a/bc4000.json"
+  },
+  {
    "year": -2999,
    "file": "a/bc3000.json"
   },

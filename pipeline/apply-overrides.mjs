@@ -8,7 +8,11 @@ const overrides = JSON.parse(readFileSync('pipeline/entity-overrides.json', 'utf
 const entities = JSON.parse(readFileSync('public/data/entities.json', 'utf8'));
 const unmatched = new Set(readFileSync('pipeline/unmatched.txt', 'utf8').split('\n').filter(Boolean));
 
-const pairs = Object.entries(overrides).filter(([, t]) => t);
+// Names new since the last full match (e.g. newly added snapshots) are tried as written.
+const presence = JSON.parse(readFileSync('public/data/presence.json', 'utf8'));
+const fresh = Object.keys(presence).filter((n) => !entities[n] && !unmatched.has(n) && !(n in overrides) && n.trim());
+const pairs = [...Object.entries(overrides).filter(([, t]) => t), ...fresh.map((n) => [n, n])];
+console.log(fresh.length, 'new names to try');
 const titles = [...new Set(pairs.map(([, t]) => t))];
 const ok = new Map();
 for (let i = 0; i < titles.length; i += 50) {
@@ -28,7 +32,8 @@ for (let i = 0; i < titles.length; i += 50) {
 const bad = [];
 for (const [name, t] of pairs) {
   if (ok.has(t)) { entities[name] = ok.get(t); unmatched.delete(name); }
-  else bad.push(`${name} -> ${t}`);
+  else if (name in overrides) bad.push(`${name} -> ${t}`);
+  else unmatched.add(name);
 }
 writeFileSync('public/data/entities.json', JSON.stringify(entities));
 writeFileSync('pipeline/unmatched.txt', [...unmatched].join('\n') + '\n');

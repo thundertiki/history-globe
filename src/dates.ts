@@ -10,7 +10,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 /** Year label as people write it: "500 BC", "AD 43", "1914". */
 export function yearLabel(y: number): string {
-  if (y <= 0) return `${1 - y} BC`;
+  if (y <= 0) return `${(1 - y).toLocaleString('en-US')} BC`; // 45,000 BC
   if (y < 1000) return `AD ${y}`;
   return String(y);
 }
@@ -26,6 +26,11 @@ export function formatDate(h: HDate): string {
 export function isoDay(h: HDate): string {
   const p = (n: number, w: number) => String(n).padStart(w, '0');
   return `${p(h.y, 4)}-${p(h.m ?? 1, 2)}-${p(h.d ?? 1, 2)}`;
+}
+
+/** Decimal astronomical year, for comparing with event dates. */
+export function decimalYear(h: HDate): number {
+  return h.y + ((h.m ?? 1) - 1) / 12 + ((h.d ?? 1) - 1) / 365;
 }
 
 /** Sortable number: compare dates of mixed precision (missing parts count as 1). */
@@ -45,7 +50,7 @@ export function fromDayIndex(i: number): HDate {
 
 /** Parse "500 BC", "-499", "1914", "1914-07-28", "28 Jul 1914", "Jul 1914". Returns null if unreadable. */
 export function parseDate(text: string): HDate | null {
-  const s = text.trim().replace(/\s+/g, ' ');
+  const s = text.trim().replace(/\s+/g, ' ').replace(/(\d),(?=\d{3}\b)/g, '$1'); // "45,000 BC"
   let m = s.match(/^(\d+)\s*(BC|BCE)$/i);
   if (m) return { y: 1 - Number(m[1]) };
   m = s.match(/^(?:AD\s*)?(\d+)\s*(?:AD|CE)?$/i);

@@ -3,6 +3,7 @@ import type { Place } from './globe';
 import { HDate, formatDate, yearLabel } from './dates';
 import type { Pick } from './borders';
 import { nameAt, nameList } from './names';
+import type { Row } from './history';
 
 type Entities = Record<string, { title: string; qid: string | null }>;
 
@@ -91,31 +92,66 @@ export class Panel {
 
   // Compact card: name, key facts and a 3-line summary beside a small thumbnail, so the map stays visible.
   // "More" expands the summary in place.
-  async show(place: Place, pick: Pick) {
-    const t = ++this.token;
+  /** Called with a date when a timeline chip is tapped. */
+  onJump: (date: string) => void = () => {};
+
+  async show(place: Place, pick: Pick, rows: Row[] = []) {
     const card = describe(place, pick, this.ownerName);
+    return this.render(card.name, card.meta, rows, card.lookups, card.qid);
+  }
+
+  /** Card for an event or an early-human site: its own text, plus Wikipedia when the summary was prebuilt. */
+  async showInfo(name: string, meta: string[], text: string, wikiTitle?: string) {
+    return this.render(name, meta, [], wikiTitle ? [wikiTitle] : [], undefined, text, wikiTitle);
+  }
+
+  private async render(
+    name: string, meta: string[], rows: Row[], lookups: string[], qid?: string, text?: string, directTitle?: string
+  ) {
+    const t = ++this.token;
     this.el.classList.remove('expanded');
+    const chips = rows.map((r) => `
+      <div class="tl"><div class="tl-title">${esc(r.title)}</div><div class="chips">${r.chips
+        .map((c) => `<button type="button" class="chip${c.current ? ' on' : ''}" data-date="${esc(c.date)}"
+          ${c.current ? 'aria-current="true"' : ''}>${esc(c.label)}</button>`)
+        .join('')}</div></div>`).join('');
     this.body.innerHTML = `
       <div class="head">
         <div class="titles">
-          <h2>${esc(card.name)}</h2>
-          <div class="meta">${card.meta.map((m) => `<div>${m}</div>`).join('')}</div>
+          <h2>${esc(name)}</h2>
+          <div class="meta">${meta.map((m) => `<div>${m}</div>`).join('')}</div>
         </div>
       </div>
-      <div id="wiki"><p class="src">Loading Wikipedia…</p></div>`;
+      ${chips}
+      <div id="wiki"><p class="src">Loading…</p></div>`;
+    this.body.querySelectorAll<HTMLButtonElement>('.chip').forEach((b) =>
+      b.addEventListener('click', () => this.onJump(b.dataset.date!))
+    );
+    // Show the current chip in each row without the user scrolling sideways.
+    this.body.querySelectorAll<HTMLElement>('.chip.on').forEach((c) => c.scrollIntoView({ block: 'nearest', inline: 'center' }));
     this.el.hidden = false;
     this.el.scrollTop = 0;
 
-    // Wikipedia article: Natural Earth's QID first (exact), else the build-time name table.
+    // Wikipedia article: Natural Earth's QID first (exact), else the build-time name table, else a given title.
     const w = await loadWiki(this.dataRoot);
-    let title: string | null = card.qid ? w.qids[card.qid] ?? null : null;
-    for (const n of card.lookups) if (!title && this.entities[n]) title = this.entities[n].title;
+    let title: string | null = qid ? w.qids[qid] ?? null : null;
+    for (const n of lookups) if (!title && this.entities[n]) title = this.entities[n].title;
+    title ??= directTitle ?? null;
     const s = title ? w.pages[title] : undefined;
     if (t !== this.token) return; // a newer tap replaced this one
 
     const wiki = document.getElementById('wiki')!;
+    if (text !== undefined && !s) {
+      // Event or site without a prebuilt summary: its own text and a link.
+      const href = directTitle
+        ? `https://en.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(directTitle)}`
+        : `https://en.wikipedia.org/w/index.php?search=${encodeURIComponent(name)}`;
+      wiki.innerHTML = `${text ? `<p class="summary">${esc(text)}</p>` : ''}
+        <p class="src"><a href="${href}" target="_blank" rel="noopener">Read more on Wikipedia</a></p>`;
+      return;
+    }
     if (!s) {
-      const q = encodeURIComponent(card.name);
+      const q = encodeURIComponent(name);
       wiki.innerHTML = `<p class="src">No matching Wikipedia article yet.
         <a href="https://en.wikipedia.org/w/index.php?search=${q}" target="_blank" rel="noopener">Search Wikipedia</a></p>`;
       return;

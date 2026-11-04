@@ -12,6 +12,8 @@ describe('dates', () => {
     expect(yearLabel(0)).toBe('1 BC');
     expect(yearLabel(-499)).toBe('500 BC');
     expect(yearLabel(43)).toBe('AD 43');
+    expect(yearLabel(-44999)).toBe('45,000 BC');
+    expect(parseDate('45,000 BC')).toEqual({ y: -44999 });
   });
   it('parses and formats common forms', () => {
     expect(parseDate('1914')).toEqual({ y: 1914 });
@@ -40,7 +42,8 @@ describe('timeline', () => {
     expect(normalize({ y: 1990, m: 10, d: 3 }, today)).toEqual({ y: 1990, m: 10, d: 3 });
   });
   it('round-trips every year, a sample of months and days', () => {
-    for (let y = MIN_YEAR; y < 1500; y += 7) expect(posToDate(dateToPos({ y }, today), today)).toEqual({ y });
+    for (let y = -2999; y < 1500; y += 7) expect(posToDate(dateToPos({ y }, today), today)).toEqual({ y });
+    for (const y of [MIN_YEAR, -150999, -9999, -3099]) expect(posToDate(dateToPos({ y }, today), today)).toEqual({ y });
     for (let i = 0; i < 386 * 12; i += 13) {
       const h = { y: 1500 + Math.floor(i / 12), m: (i % 12) + 1 };
       expect(posToDate(dateToPos(h, today), today)).toEqual(h);
@@ -55,6 +58,9 @@ describe('timeline', () => {
     expect(step({ y: 1500, m: 1 }, -1, today)).toEqual({ y: 1499 });
     expect(step({ y: 1885, m: 12 }, 1, today)).toEqual({ y: 1886, m: 1, d: 1 });
     expect(step({ y: 0 }, -1, today)).toEqual({ y: -1 });
+    expect(step({ y: -2999 }, -1, today)).toEqual({ y: -3099 });
+    expect(step({ y: -9999 }, -1, today)).toEqual({ y: -10999 });
+    expect(normalize({ y: -45000 }, today)).toEqual({ y: -45999 });
     expect(step(today, 1, today)).toEqual(today);
   });
 });
