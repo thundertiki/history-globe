@@ -34,7 +34,12 @@ console.log(Object.keys(qids).length, 'of', qidList.length, 'QIDs have English a
 const entities = JSON.parse(readFileSync('public/data/entities.json', 'utf8'));
 // Incremental: keep summaries already fetched (delete wiki.json to refresh them all).
 const old = existsSync('public/data/wiki.json') ? JSON.parse(readFileSync('public/data/wiki.json', 'utf8')).pages : {};
-const wanted = [...new Set([...Object.values(entities).map((e) => e.title), ...Object.values(qids)])];
+// Period articles from eras.mjs (e.g. "New Kingdom of Egypt") are wanted too, when that file exists.
+const eraFile = existsSync('public/data/eras.json') ? JSON.parse(readFileSync('public/data/eras.json', 'utf8')) : null;
+const eraTitles = eraFile
+  ? [...Object.values(eraFile.eras).flatMap((l) => l.map((e) => e[2])), ...Object.values(eraFile.history)].filter(Boolean)
+  : [];
+const wanted = [...new Set([...Object.values(entities).map((e) => e.title), ...Object.values(qids), ...eraTitles])];
 const pages = Object.fromEntries(wanted.filter((t) => old[t]).map((t) => [t, old[t]]));
 const titles = wanted.filter((t) => !old[t]).sort();
 console.log(`${Object.keys(pages).length} summaries kept, ${titles.length} to fetch`);

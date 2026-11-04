@@ -16,6 +16,8 @@ export interface Pick {
   snapshotYear?: number;
   /** For tier B: ISO day to filter features by start/end. */
   iso?: string;
+  /** The chosen date's year (astronomical), for period-correct articles. */
+  year: number;
 }
 
 const isoOrdinal = (iso: string) => {
@@ -30,8 +32,8 @@ export function pickBorders(h: HDate, man: Manifest): Pick {
     const slices = man.tierA;
     let s = slices[0];
     for (const x of slices) if (x.year <= h.y) s = x;
-    return { tier: 'A', file: s.file, snapshotYear: s.year };
+    return { tier: 'A', file: s.file, snapshotYear: s.year, year: h.y };
   }
-  if (o <= isoOrdinal(man.tierB.end)) return { tier: 'B', file: man.tierB.file, iso: isoDay(h) };
-  return { tier: 'C', file: man.tierC.file };
+  if (o <= isoOrdinal(man.tierB.end)) return { tier: 'B', file: man.tierB.file, iso: isoDay(h), year: h.y };
+  return { tier: 'C', file: man.tierC.file, year: h.y };
 }

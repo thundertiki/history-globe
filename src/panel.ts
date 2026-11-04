@@ -31,6 +31,18 @@ function loadWiki(dataRoot: string): Promise<Wiki> {
   return wiki;
 }
 
+interface Eras {
+  eras: Record<string, [number, string, string | null][]>;
+  history: Record<string, string>;
+}
+let eras: Promise<Eras> | null = null;
+function loadEras(dataRoot: string): Promise<Eras> {
+  eras ??= fetch(`${dataRoot}/eras.json`)
+    .then((r) => (r.ok ? r.json() : { eras: {}, history: {} }))
+    .catch(() => ((eras = null), { eras: {}, history: {} }));
+  return eras;
+}
+
 interface Card {
   name: string;
   meta: string[];
@@ -97,6 +109,21 @@ export class Panel {
 
   async show(place: Place, pick: Pick, rows: Row[] = []) {
     const card = describe(place, pick, this.ownerName);
+    // Old maps often just say "Egypt": use the period's article (New Kingdom, Mamluk Sultanate...) for the
+    // chosen date, or "History of Egypt" before 1800 when no period is listed, never the modern country.
+    if (place.tier !== 'C') {
+      const [er, w] = await Promise.all([loadEras(this.dataRoot), loadWiki(this.dataRoot)]);
+      const era = (er.eras[card.name] ?? []).filter(([from]) => from <= pick.year).pop();
+      if (era?.[2]) {
+        const meta = era[1] !== card.name ? [`Shown on the map as ${esc(card.name)}`, ...card.meta] : card.meta;
+        return this.render(era[1], meta, rows, [], undefined, undefined, era[2]);
+      }
+      const title = card.lookups.map((n) => this.entities[n]?.title).find(Boolean);
+      const modern = title && Object.values(w.qids).includes(title);
+      if (modern && pick.year < 1800 && er.history[title!]) {
+        return this.render(card.name, card.meta, rows, [], undefined, undefined, er.history[title!]);
+      }
+    }
     return this.render(card.name, card.meta, rows, card.lookups, card.qid);
   }
 

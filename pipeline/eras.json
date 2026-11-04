@@ -1,0 +1,149 @@
+{
+  "_about": "Old-map names that would otherwise link to a modern country's article. Each entry: [from astronomical year, label shown on the card, Wikipedia title]. The entry with the latest 'from' at or before the chosen date applies. Names not listed here fall back to 'History of <country>' before 1800.",
+  "Egypt": [
+    [-999999, "Prehistoric Egypt", "Prehistoric Egypt"],
+    [-3099, "Early Dynastic Egypt", "Early Dynastic Period (Egypt)"],
+    [-2685, "Old Kingdom of Egypt", "Old Kingdom of Egypt"],
+    [-2180, "First Intermediate Period of Egypt", "First Intermediate Period of Egypt"],
+    [-2054, "Middle Kingdom of Egypt", "Middle Kingdom of Egypt"],
+    [-1649, "Second Intermediate Period of Egypt", "Second Intermediate Period of Egypt"],
+    [-1549, "New Kingdom of Egypt", "New Kingdom of Egypt"],
+    [-1068, "Third Intermediate Period of Egypt", "Third Intermediate Period of Egypt"],
+    [-663, "Late Period of ancient Egypt", "Late Period of ancient Egypt"],
+    [-331, "Ptolemaic Kingdom", "Ptolemaic Kingdom"],
+    [-29, "Roman Egypt", "Egypt (Roman province)"],
+    [641, "Egypt under the caliphates", "Egypt in the Middle Ages"],
+    [969, "Fatimid Caliphate", "Fatimid Caliphate"],
+    [1171, "Ayyubid Sultanate", "Ayyubid Sultanate"],
+    [1250, "Mamluk Sultanate", "Mamluk Sultanate"],
+    [1517, "Ottoman Egypt", "Egypt Eyalet"],
+    [1805, "Egypt under Muhammad Ali", "History of Egypt under the Muhammad Ali dynasty"],
+    [1867, "Khedivate of Egypt", "Khedivate of Egypt"],
+    [1914, "Sultanate of Egypt", "Sultanate of Egypt"],
+    [1922, "Kingdom of Egypt", "Kingdom of Egypt"],
+    [1953, "Egypt", "Egypt"]
+  ],
+  "France": [
+    [987, "Kingdom of France", "Kingdom of France"],
+    [1792, "French First Republic", "French First Republic"],
+    [1804, "First French Empire", "First French Empire"],
+    [1814, "Bourbon Restoration", "Bourbon Restoration in France"],
+    [1830, "July Monarchy", "July Monarchy"],
+    [1848, "French Second Republic", "French Second Republic"],
+    [1852, "Second French Empire", "Second French Empire"],
+    [1870, "French Third Republic", "French Third Republic"],
+    [1940, "Vichy France", "Vichy France"],
+    [1946, "French Fourth Republic", "French Fourth Republic"],
+    [1958, "France", "France"]
+  ],
+  "Portugal": [
+    [1139, "Kingdom of Portugal", "Kingdom of Portugal"],
+    [1910, "First Portuguese Republic", "First Portuguese Republic"],
+    [1933, "Estado Novo", "Estado Novo (Portugal)"],
+    [1974, "Portugal", "Portugal"]
+  ],
+  "Ethiopia": [
+    [1137, "Zagwe dynasty", "Zagwe dynasty"],
+    [1270, "Ethiopian Empire", "Ethiopian Empire"],
+    [1974, "Derg", "Derg"],
+    [1991, "Ethiopia", "Ethiopia"]
+  ],
+  "Japan": [
+    [250, "Kofun period", "Kofun period"],
+    [538, "Asuka period", "Asuka period"],
+    [710, "Nara period", "Nara period"],
+    [794, "Heian period", "Heian period"],
+    [1185, "Kamakura shogunate", "Kamakura shogunate"],
+    [1336, "Ashikaga shogunate", "Ashikaga shogunate"],
+    [1467, "Sengoku period", "Sengoku period"],
+    [1603, "Tokugawa shogunate", "Tokugawa shogunate"],
+    [1868, "Empire of Japan", "Empire of Japan"],
+    [1947, "Japan", "Japan"]
+  ],
+  "Japan (Warring States)": [[1467, "Sengoku period", "Sengoku period"]],
+  "Persia": [
+    [224, "Sasanian Empire", "Sasanian Empire"],
+    [651, "Persia under the caliphates", "Muslim conquest of Persia"],
+    [1501, "Safavid Iran", "Safavid Iran"],
+    [1736, "Afsharid Iran", "Afsharid Iran"],
+    [1751, "Zand dynasty", "Zand dynasty"],
+    [1789, "Qajar Iran", "Qajar Iran"],
+    [1925, "Pahlavi Iran", "Pahlavi Iran"],
+    [1979, "Iran", "Iran"]
+  ],
+  "Sweden": [
+    [1397, "Kalmar Union", "Kalmar Union"],
+    [1523, "Sweden", "History of Sweden (1523–1611)"],
+    [1611, "Swedish Empire", "Swedish Empire"],
+    [1721, "Sweden", "Sweden"]
+  ],
+  "Denmark": [
+    [1397, "Kalmar Union", "Kalmar Union"],
+    [1523, "Denmark–Norway", "Denmark–Norway"],
+    [1814, "Denmark", "Denmark"]
+  ],
+  "Norway": [[872, "Kingdom of Norway", "Kingdom of Norway (872–1397)"]],
+  "Poland": [
+    [1025, "Kingdom of Poland", "Kingdom of Poland (1025–1385)"],
+    [1385, "Crown of the Kingdom of Poland", "Crown of the Kingdom of Poland"],
+    [1569, "Polish–Lithuanian Commonwealth", "Polish–Lithuanian Commonwealth"]
+  ],
+  "Lithuania": [[1236, "Grand Duchy of Lithuania", "Grand Duchy of Lithuania"]],
+  "Hungary": [[1000, "Kingdom of Hungary", "Kingdom of Hungary"]],
+  "Croatia": [[925, "Kingdom of Croatia", "Kingdom of Croatia (925–1102)"]],
+  "Mali": [[1000, "Mali Empire", "Mali Empire"]],
+  "Ghana": [[300, "Ghana Empire", "Ghana Empire"]],
+  "Benin": [[1180, "Kingdom of Benin", "Kingdom of Benin"]],
+  "Cambodia": [
+    [802, "Khmer Empire", "Khmer Empire"],
+    [1431, "Post-Angkor Cambodia", "Post-Angkor period"]
+  ],
+  "Laos": [[1353, "Lan Xang", "Lan Xang"]],
+  "Burma": [[1752, "Konbaung dynasty", "Konbaung dynasty"]],
+  "Italy": [
+    [-508, "Roman Republic", "Roman Republic"],
+    [-26, "Roman Empire", "Roman Empire"],
+    [1861, "Kingdom of Italy", "Kingdom of Italy"],
+    [1946, "Italy", "Italy"]
+  ],
+  "United Kingdom": [
+    [1707, "Kingdom of Great Britain", "Kingdom of Great Britain"],
+    [1801, "United Kingdom of Great Britain and Ireland", "United Kingdom of Great Britain and Ireland"],
+    [1922, "United Kingdom", "United Kingdom"]
+  ],
+  "Netherlands": [
+    [1581, "Dutch Republic", "Dutch Republic"],
+    [1795, "Batavian Republic", "Batavian Republic"],
+    [1806, "Kingdom of Holland", "Kingdom of Holland"],
+    [1815, "United Kingdom of the Netherlands", "United Kingdom of the Netherlands"],
+    [1839, "Netherlands", "Netherlands"]
+  ],
+  "Swiss Confederation": [
+    [1291, "Old Swiss Confederacy", "Old Swiss Confederacy"],
+    [1798, "Helvetic Republic", "Helvetic Republic"]
+  ],
+  "Switzerland": [[1803, "Switzerland", "Switzerland"]],
+  "Afghanistan": [
+    [1747, "Durrani Empire", "Durrani Empire"],
+    [1823, "Emirate of Afghanistan", "Emirate of Afghanistan"],
+    [1926, "Kingdom of Afghanistan", "Kingdom of Afghanistan"]
+  ],
+  "Nepal": [[1768, "Kingdom of Nepal", "Kingdom of Nepal"]],
+  "Ceylon": [[1796, "British Ceylon", "British Ceylon"]],
+  "Ceylon (Dutch)": [[1640, "Dutch Ceylon", "Dutch Ceylon"]],
+  "Philippines": [[1565, "Spanish Philippines", "Captaincy General of the Philippines"]],
+  "Cuba (Spain)": [[1607, "Captaincy General of Cuba", "Captaincy General of Cuba"]],
+  "Taiwan": [
+    [1624, "Dutch Formosa", "Dutch Formosa"],
+    [1683, "Taiwan under Qing rule", "Taiwan under Qing rule"]
+  ],
+  "Armenia": [
+    [-330, "Kingdom of Armenia", "Kingdom of Armenia (antiquity)"],
+    [885, "Bagratid Armenia", "Bagratid Armenia"]
+  ],
+  "Morocco": [
+    [1244, "Marinid Sultanate", "Marinid Sultanate"],
+    [1549, "Saadi Sultanate", "Saadi Sultanate"],
+    [1631, "Alawi Sultanate", "Alawi Sultanate"]
+  ]
+}
