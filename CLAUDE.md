@@ -1,6 +1,6 @@
 # history-globe: pick a date, see the world's borders on a 3D globe
 
-Free, open-source (GPL-3.0) web app; private repo until Ben says to make it public. Phone version: a Claude
+Free, open-source (GPL-3.0) web app; public repo since 2026-11-04 (no personal paths or secrets in it). Phone version: a Claude
 artifact built from the same code (`npm run build:artifact`, publish `dist-artifact/page.html` + its files).
 Design and status: vault `10 Projects/History Globe.md`.
 
@@ -29,7 +29,8 @@ Design and status: vault `10 Projects/History Globe.md`.
 - `npm test` (Vitest unit tests), `npm run dev`, `npm run build`.
 - `node tests/e2e-check.mjs [shotDir]` runs headless Edge against the dev server on port 5174.
 - Installers (output in `release/`, git-ignored): `npm run dist:win` (Electron, NSIS x64, unsigned) and
-  `npm run dist:android` (Capacitor, debug-signed APK; needs JDK 21 + Android SDK, see `pipeline/android-build.mjs`).
+  `npm run dist:android` (Capacitor, debug-signed APK; JDK 21 + Android SDK paths in git-ignored
+  `pipeline/android-build.local.json`).
   Shells: `desktop/main.cjs` (serves `dist/` over `app://`), `android/` (Capacitor). Icons: `build/`.
 - Data: `npm run data:fetch`, `data:build`, `data:entities` and `data:summaries` (slow, rate-limited), `data:fonts`.
 
