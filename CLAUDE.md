@@ -33,3 +33,5 @@ Design and status: vault `10 Projects/History Globe.md`.
 - Data licences: `public/data/LICENSES.md`. CShapes is non-commercial, so no ads or paid features.
 - Say how precise the borders are wherever a date is shown.
 - In flight: `docs/next.md`. Failed approaches: `docs/dead-ends.md`.
+- Releases: bump `version` in package.json, build both installers, tag `vX.Y.Z`, `gh release create` with both
+  files, then update the Download table in README.md.

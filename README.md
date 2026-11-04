@@ -8,6 +8,17 @@ name at that time, its status and capital (from 1886), and a Wikipedia summary.
 - 1886 to 2019: borders change on the exact day ([CShapes 2.0](https://icr.ethz.ch/data/cshapes/)).
 - From 2020: present-day borders ([Natural Earth](https://www.naturalearthdata.com/)).
 
+## Download
+
+**[Latest release →](https://github.com/thundertiki/history-globe/releases/latest)**
+
+| Platform | File | Notes |
+|---|---|---|
+| Windows 10/11 (64-bit) | [History-Globe-Setup-0.1.0-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.1.0/History-Globe-Setup-0.1.0-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
+| Android 6+ | [History-Globe-0.1.0.apk](https://github.com/thundertiki/history-globe/releases/download/v0.1.0/History-Globe-0.1.0.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
+
+Both work offline (only Wikipedia pictures need the internet).
+
 ## Run it
 ```
 npm install
