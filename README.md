@@ -14,8 +14,8 @@ name at that time, its status and capital (from 1886), and a Wikipedia summary.
 
 | Platform | File | Notes |
 |---|---|---|
-| Windows 10/11 (64-bit) | [History-Globe-Setup-0.1.1-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.1.1/History-Globe-Setup-0.1.1-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
-| Android 6+ | [History-Globe-0.1.1.apk](https://github.com/thundertiki/history-globe/releases/download/v0.1.1/History-Globe-0.1.1.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
+| Windows 10/11 (64-bit) | [History-Globe-Setup-0.1.2-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.1.2/History-Globe-Setup-0.1.2-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
+| Android 6+ | [History-Globe-0.1.2.apk](https://github.com/thundertiki/history-globe/releases/download/v0.1.2/History-Globe-0.1.2.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
 
 Both work offline (only Wikipedia pictures need the internet).
 

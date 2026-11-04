@@ -161,14 +161,25 @@ export class Globe {
     )?.properties ?? undefined;
   }
 
-  onPick(cb: (place: Place | null) => void, tierNow: () => Tier) {
+  /** Pan so a tapped spot is not hidden under the info card (phone sheet below, or desktop card at right). */
+  revealAbove(at: { lngLat: maplibregl.LngLat; point: maplibregl.Point }, card: DOMRect) {
+    const phone = card.width > window.innerWidth * 0.8;
+    const hidden = phone ? at.point.y > card.top - 24 : at.point.x > card.left - 24 && at.point.y < card.bottom;
+    if (!hidden) return;
+    const padding = phone
+      ? { top: 60, bottom: window.innerHeight - card.top + 12, left: 0, right: 0 }
+      : { top: 0, bottom: 0, left: 0, right: window.innerWidth - card.left + 12 };
+    this.map.easeTo({ center: at.lngLat, padding, duration: 500 });
+  }
+
+  onPick(cb: (place: Place | null, at: { lngLat: maplibregl.LngLat; point: maplibregl.Point }) => void, tierNow: () => Tier) {
     let selected: number | string | undefined;
     this.map.on('click', (e) => {
       const f = this.map.queryRenderedFeatures(e.point, { layers: ['borders-fill'] })[0];
       if (selected !== undefined) this.map.setFeatureState({ source: 'borders', id: selected }, { sel: false });
       selected = f?.id;
       if (selected !== undefined) this.map.setFeatureState({ source: 'borders', id: selected }, { sel: true });
-      cb(f ? { tier: tierNow(), props: f.properties } : null);
+      cb(f ? { tier: tierNow(), props: f.properties } : null, { lngLat: e.lngLat, point: e.point });
     });
     this.map.on('mouseenter', 'borders-fill', () => (this.map.getCanvas().style.cursor = 'pointer'));
     this.map.on('mouseleave', 'borders-fill', () => (this.map.getCanvas().style.cursor = ''));

@@ -103,7 +103,23 @@ async function main() {
     if (e.key === 'ArrowRight' && e.shiftKey) $('next').click();
   });
 
-  globe.onPick((place) => (place ? panel.show(place, pick) : panel.hide()), () => pick.tier);
+  // Closing the card lets the map use the whole screen again.
+  const releaseMap = () => globe.map.easeTo({ padding: { top: 0, bottom: 0, left: 0, right: 0 }, duration: 300 });
+  $('panel-close').addEventListener('click', releaseMap);
+  globe.onPick((place, at) => {
+    if (!place) {
+      panel.hide();
+      return releaseMap();
+    }
+    // Once the card has its final size (summary loaded), move the map so the tapped country sits in the
+    // open space above it.
+    panel.show(place, pick).then(() =>
+      requestAnimationFrame(() => {
+        const el = document.getElementById('panel')!;
+        if (!el.hidden) globe.revealAbove(at, el.getBoundingClientRect());
+      })
+    );
+  }, () => pick.tier);
   // Expose for debugging and automated checks.
   (window as any).hg = { globe, nameAt, pick: () => pick, setDate: (s: string) => { date = normalize(parseDate(s)!, today); return render(); } };
   render();

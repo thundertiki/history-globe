@@ -85,17 +85,26 @@ export class Panel {
 
   hide() {
     this.el.hidden = true;
+    this.el.classList.remove('expanded');
     this.token++;
   }
 
+  // Compact card: name, key facts and a 3-line summary beside a small thumbnail, so the map stays visible.
+  // "More" expands the summary in place.
   async show(place: Place, pick: Pick) {
     const t = ++this.token;
     const card = describe(place, pick, this.ownerName);
+    this.el.classList.remove('expanded');
     this.body.innerHTML = `
-      <h2>${esc(card.name)}</h2>
-      <div class="meta">${card.meta.map((m) => `<div>${m}</div>`).join('')}</div>
+      <div class="head">
+        <div class="titles">
+          <h2>${esc(card.name)}</h2>
+          <div class="meta">${card.meta.map((m) => `<div>${m}</div>`).join('')}</div>
+        </div>
+      </div>
       <div id="wiki"><p class="src">Loading Wikipedia…</p></div>`;
     this.el.hidden = false;
+    this.el.scrollTop = 0;
 
     // Wikipedia article: Natural Earth's QID first (exact), else the build-time name table.
     const w = await loadWiki(this.dataRoot);
@@ -112,10 +121,27 @@ export class Panel {
       return;
     }
     // Thumbnails come from Wikimedia; where that host is blocked (the artifact) the image is simply removed.
-    const img = s.t ? `<img src="${esc(s.t)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+    if (s.t) {
+      this.body.querySelector('.head')!.insertAdjacentHTML(
+        'afterbegin',
+        `<img class="thumb" src="${esc(s.t)}" alt="" loading="lazy" onerror="this.remove()">`
+      );
+    }
     const link = s.u ?? `https://en.wikipedia.org/wiki/${encodeURIComponent(title!.replace(/ /g, '_'))}`;
-    wiki.innerHTML = `${img}<p>${esc(s.e)}</p>
+    wiki.innerHTML = `<p class="summary">${esc(s.e)}</p>
+      <button type="button" class="more" aria-expanded="false">More</button>
       <p class="src">From Wikipedia: <a href="${esc(link)}" target="_blank" rel="noopener">${esc(title!)}</a>
       (CC BY-SA 4.0). Describes the entity overall, not only this date.</p>`;
+    const more = wiki.querySelector<HTMLButtonElement>('.more')!;
+    const summary = wiki.querySelector<HTMLElement>('.summary')!;
+    // Hide "More" when the summary already fits in the clamped lines.
+    requestAnimationFrame(() => {
+      if (summary.scrollHeight <= summary.clientHeight + 2) more.hidden = true;
+    });
+    more.addEventListener('click', () => {
+      const open = this.el.classList.toggle('expanded');
+      more.textContent = open ? 'Less' : 'More';
+      more.setAttribute('aria-expanded', String(open));
+    });
   }
 }

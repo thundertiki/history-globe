@@ -22,15 +22,18 @@ a { color: var(--accent); }
 
 .topbar {
   position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 16px; pointer-events: none;
+  /* Clear the phone's status bar and side insets (artifact, browser; the APK also gets native margins) */
+  padding: max(8px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 8px
+    max(16px, env(safe-area-inset-left, 0px));
+  pointer-events: none;
 }
 .topbar > * { pointer-events: auto; }
 .topbar h1 { font-size: 18px; margin: 0; font-weight: 600; text-shadow: 0 1px 3px #000; }
 
 .timebar {
-  position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
+  position: absolute; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
   width: min(760px, calc(100% - 32px)); background: var(--card); border: 1px solid var(--line);
-  border-radius: 14px; padding: 10px 14px calc(8px + env(safe-area-inset-bottom)); backdrop-filter: blur(6px);
+  border-radius: 14px; padding: 10px 14px 8px; backdrop-filter: blur(6px);
 }
 .timebar .row { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
 .timebar .small { font-size: 12px; color: var(--muted); }
@@ -45,17 +48,30 @@ a { color: var(--accent); }
 #precision { text-align: center; }
 
 .panel {
-  position: absolute; top: 60px; right: 16px; width: 340px; overflow: auto;
+  position: absolute; top: calc(60px + env(safe-area-inset-top, 0px)); right: 16px; width: 340px; overflow: auto;
   /* --timebar-h is the date bar's measured height (main.ts), so the card never slides under it */
   max-height: calc(100% - 60px - var(--timebar-h, 140px) - 32px);
   background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
   backdrop-filter: blur(6px);
 }
 .panel .close { position: absolute; top: 4px; right: 4px; }
-.panel h2 { margin: 0 36px 4px 0; font-size: 20px; }
+.panel h2 { margin: 0 36px 2px 0; font-size: 19px; text-wrap: balance; }
 .panel .meta { color: var(--muted); font-size: 13px; margin: 0 0 10px; }
 .panel .meta div { margin: 2px 0; }
-.panel img { width: 100%; max-height: 180px; object-fit: cover; border-radius: 8px; margin: 6px 0; }
+.panel .head { display: flex; gap: 12px; align-items: flex-start; }
+.panel .titles { min-width: 0; flex: 1; }
+.panel .thumb {
+  width: 64px; height: 64px; flex: none; object-fit: cover; border-radius: 8px; background: rgba(255, 255, 255, 0.06);
+}
+.panel .summary {
+  margin: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
+}
+.panel.expanded .summary { display: block; }
+.panel .more {
+  min-height: 32px; min-width: 0; padding: 2px 12px; margin: 6px 0 2px; font-size: 13px; color: var(--accent);
+  background: transparent; border-color: var(--line);
+}
+.panel .src { margin: 6px 0 0; }
 .panel p { line-height: 1.45; font-size: 14px; }
 .panel .src { font-size: 12px; color: var(--muted); }
 
@@ -77,7 +93,10 @@ a { color: var(--accent); }
   .maplibregl-ctrl-bottom-right .maplibregl-ctrl-group { display: none; }
   .panel {
     left: 16px; right: 16px; width: auto; top: auto;
-    bottom: calc(var(--timebar-h, 140px) + 28px); max-height: min(45%, calc(100% - var(--timebar-h, 140px) - 100px));
+    bottom: calc(var(--timebar-h, 140px) + 12px); max-height: min(34%, calc(100% - var(--timebar-h, 140px) - 120px));
+    padding: 12px 14px;
+  }
+  .panel.expanded { max-height: calc(100% - var(--timebar-h, 140px) - 90px - env(safe-area-inset-top, 0px));
   }
   #date-input { font-size: 19px; }
 }
