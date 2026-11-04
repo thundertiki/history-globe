@@ -36,11 +36,12 @@ describe('timeline', () => {
   it('precision grows toward the present', () => {
     expect(normalize({ y: 800, m: 5, d: 2 }, today)).toEqual({ y: 800 });
     expect(normalize({ y: 1700, m: 5, d: 2 }, today)).toEqual({ y: 1700, m: 5 });
+    expect(normalize({ y: 1890, m: 10, d: 3 }, today)).toEqual({ y: 1890, m: 10, d: 3 });
     expect(normalize({ y: 1990, m: 10, d: 3 }, today)).toEqual({ y: 1990, m: 10, d: 3 });
   });
   it('round-trips every year, a sample of months and days', () => {
     for (let y = MIN_YEAR; y < 1500; y += 7) expect(posToDate(dateToPos({ y }, today), today)).toEqual({ y });
-    for (let i = 0; i < 4800; i += 13) {
+    for (let i = 0; i < 386 * 12; i += 13) {
       const h = { y: 1500 + Math.floor(i / 12), m: (i % 12) + 1 };
       expect(posToDate(dateToPos(h, today), today)).toEqual(h);
     }
@@ -52,7 +53,7 @@ describe('timeline', () => {
   it('steps across segment boundaries', () => {
     expect(step({ y: 1499 }, 1, today)).toEqual({ y: 1500, m: 1 });
     expect(step({ y: 1500, m: 1 }, -1, today)).toEqual({ y: 1499 });
-    expect(step({ y: 1899, m: 12 }, 1, today)).toEqual({ y: 1900, m: 1, d: 1 });
+    expect(step({ y: 1885, m: 12 }, 1, today)).toEqual({ y: 1886, m: 1, d: 1 });
     expect(step({ y: 0 }, -1, today)).toEqual({ y: -1 });
     expect(step(today, 1, today)).toEqual(today);
   });

@@ -1,11 +1,11 @@
-// Non-linear slider: years in the deep past, months from 1500, days from 1900 to today.
+// Non-linear slider: years in the deep past, months from 1500, days from 1886 (when day-exact borders begin) to today.
 // Each segment gets a fixed share of the slider track.
 import { HDate, dayIndex, fromDayIndex } from './dates';
 
 export const MIN_YEAR = -2999; // 3000 BC
 export const SLIDER_MAX = 1_000_000;
 const MONTH_START = 1500;
-const DAY_START = 1900;
+const DAY_START = 1886; // CShapes day-exact borders start here
 
 interface Segment {
   f0: number; // track fraction where the segment starts

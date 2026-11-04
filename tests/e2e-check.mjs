@@ -8,7 +8,8 @@ const browser = await chromium.launch({ channel: 'msedge', args: ['--use-angle=s
 const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 const errors = [];
 page.on('pageerror', (e) => errors.push(e.message));
-page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
+page.on('console', (m) => m.type() === 'error' && !m.text().startsWith('Failed to load resource') && errors.push(m.text()));
+page.on('response', (r) => r.status() >= 400 && errors.push(`${r.status()} ${r.url()}`));
 
 await page.goto(URL);
 await page.waitForFunction(() => window.hg?.globe.map.loaded(), null, { timeout: 30000 });

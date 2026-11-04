@@ -6,7 +6,7 @@ Design and status: vault `10 Projects/History Globe.md`.
 ## Layout
 - `src/`: Vite + TypeScript + MapLibre GL 5 (globe projection), no framework.
   - `dates.ts`: `HDate` with astronomical years (1 BC = 0). Never use JS `Date` before 1900.
-  - `timeline.ts`: non-linear slider (years < 1500, months < 1900, days after).
+  - `timeline.ts`: non-linear slider (years < 1500, months < 1886, days after).
   - `borders.ts`: picks the tier for a date. `globe.ts`: map and layers. `panel.ts`: tap card. `about.ts`: credits.
 - `pipeline/`: `fetch.sh` downloads into `raw/` (git-ignored); `build.mjs` simplifies to `public/data/borders/`;
   `entities.mjs` maps names to Wikipedia/Wikidata (`entity-overrides.json` for fixes).

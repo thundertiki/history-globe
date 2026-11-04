@@ -12,3 +12,13 @@
 ## Phase 2+ (see design in the vault)
 - Events near the date, rulers/capital/population (Wikidata, precomputed), then cities and sites, then phone
   polish and GitHub Pages hosting.
+
+## Period-correct names from 1886
+- CShapes `country_name` is the modern Gleditsch-Ward label, so 1914 shows "Russia (Soviet Union)", "Mali",
+  "Tanzania (Tanganyika)". Build a name table keyed by gwcode + date range (Wikidata "official name"/"replaces",
+  or hand-checked for the main cases) and use it for labels and the panel heading.
+
+## Before the repo goes public
+- Add `public/data/LICENSES.md` (and a README note): `borders/a/` is GPL-3.0 (historical-basemaps),
+  `borders/b/` is CC BY-NC-SA 4.0 (CShapes 2.0), `borders/c/` is public domain. The repo GPL LICENSE alone
+  misstates the CShapes files.

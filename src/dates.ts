@@ -33,13 +33,13 @@ export function ordinal(h: HDate): number {
   return h.y * 10000 + (h.m ?? 1) * 100 + (h.d ?? 1);
 }
 
-/** Days since 1900-01-01 for Gregorian dates >= 1900 (safe to use Date here). */
+/** Days since 1886-01-01 (start of day-exact borders) for Gregorian dates (safe to use Date here). */
 export function dayIndex(h: HDate): number {
-  return Math.round((Date.UTC(h.y, (h.m ?? 1) - 1, h.d ?? 1) - Date.UTC(1900, 0, 1)) / 86400000);
+  return Math.round((Date.UTC(h.y, (h.m ?? 1) - 1, h.d ?? 1) - Date.UTC(1886, 0, 1)) / 86400000);
 }
 
 export function fromDayIndex(i: number): HDate {
-  const t = new Date(Date.UTC(1900, 0, 1) + i * 86400000);
+  const t = new Date(Date.UTC(1886, 0, 1) + i * 86400000);
   return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() };
 }
 
