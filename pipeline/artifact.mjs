@@ -8,9 +8,13 @@ const DIR = 'dist-artifact';
 const html = readFileSync(join(DIR, 'index.html'), 'utf8');
 const head = html.match(/<head>([\s\S]*?)<\/head>/)[1];
 const body = html.match(/<body>([\s\S]*?)<\/body>/)[1];
-const keep = [...head.matchAll(/<(title|link|script|style)\b[\s\S]*?(?:<\/\1>|\/?>)/g)]
-  .map((m) => m[0])
-  .filter((t) => !t.includes('rel="icon"'));
+const all = (re) => [...head.matchAll(re)].map((m) => m[0]);
+const keep = [
+  ...all(/<title>[\s\S]*?<\/title>/g),
+  ...all(/<link\b[^>]*>/g).filter((t) => !t.includes('rel="icon"')),
+  ...all(/<style\b[\s\S]*?<\/style>/g),
+  ...all(/<script\b[\s\S]*?<\/script>/g),
+];
 const page = [
   ...keep,
   // Single dark look by design; full-height map inside the artifact's safe-area padding.
@@ -24,7 +28,7 @@ const walk = (d) => {
   for (const f of readdirSync(d)) {
     const p = join(d, f);
     if (statSync(p).isDirectory()) walk(p);
-    else if (!/^(index|page)\.html$/.test(f) || d !== DIR) files.push(relative(DIR, p).replace(/\/g, '/'));
+    else if (!/^(index|page)\.html$/.test(f) || d !== DIR) files.push(relative(DIR, p).split('\\').join('/'));
   }
 };
 walk(DIR);

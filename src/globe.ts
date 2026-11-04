@@ -62,6 +62,18 @@ function load(url: string, tier: Tier): Promise<Layers> {
 }
 
 
+// Glyph ranges ship as base64 JSON (some hosts won't serve .pbf); this protocol decodes them for MapLibre.
+let fontsBase = '';
+maplibregl.addProtocol('hgfont', async (params) => {
+  const [stack, range] = params.url.replace('hgfont://', '').split('/');
+  const res = await fetch(`${fontsBase}${stack}/${range}.json`);
+  if (!res.ok) throw new Error(`glyphs ${res.status}`);
+  const bin = atob(await res.json());
+  const data = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) data[i] = bin.charCodeAt(i);
+  return { data: data.buffer };
+});
+
 export class Globe {
   map: MLMap;
   private ready: Promise<void>;
@@ -70,13 +82,14 @@ export class Globe {
   private shownLabels: FeatureCollection | null = null;
 
   constructor(container: string, private dataRoot: string, fontsUrl: string) {
+    fontsBase = fontsUrl;
     this.map = new maplibregl.Map({
       container,
       style: {
         version: 8,
         projection: { type: 'globe' },
         // Glyphs ship with the app (pipeline/fonts.mjs) so it works where other hosts are blocked.
-        glyphs: `${fontsUrl}{fontstack}/{range}.pbf`,
+        glyphs: 'hgfont://{fontstack}/{range}',
         sky: { 'atmosphere-blend': ['interpolate', ['linear'], ['zoom'], 0, 1, 5, 1, 7, 0] },
         sources: {},
         layers: [{ id: 'ocean', type: 'background', paint: { 'background-color': '#16304d' } }],

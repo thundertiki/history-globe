@@ -25,11 +25,13 @@ const ranges = [...new Set([...codepoints].filter((c) => c <= 0xffff).map((c) =>
 let got = 0;
 for (const r of ranges) {
   const name = `${r}-${r + 255}.pbf`;
-  const dest = join(OUT, name);
+  // Stored as a base64 JSON string: some hosts (the Claude artifact) refuse to serve .pbf files.
+  const out = `${r}-${r + 255}.json`;
+  const dest = join(OUT, out);
   if (existsSync(dest)) continue;
   const res = await fetch(`https://demotiles.maplibre.org/font/${encodeURIComponent(FONT)}/${name}`);
   if (!res.ok) { console.log('no glyphs for', name); continue; }
-  writeFileSync(dest, Buffer.from(await res.arrayBuffer()));
+  writeFileSync(dest, JSON.stringify(Buffer.from(await res.arrayBuffer()).toString('base64')));
   got++;
 }
 console.log(`${ranges.length} ranges needed, ${got} downloaded`);

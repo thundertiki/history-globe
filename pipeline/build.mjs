@@ -26,7 +26,8 @@ async function writeTopo(file, borders, labels, pct) {
       `-o out.json format=topojson quantization=1e5 target=*`,
     { 'borders.json': JSON.stringify(borders), 'labels.json': JSON.stringify(labels) }
   );
-  writeFileSync(file, out['out.json']);
+  // Some source names carry U+FFFD (broken encoding upstream); drop it.
+  writeFileSync(file, String(out['out.json']).replace(/�/g, ''));
 }
 
 /** One label point per key: the inner point of the largest-area feature with that key. */
