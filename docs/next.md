@@ -1,14 +1,12 @@
 # Next (one block per task in flight)
 
-## Audit follow-ups (2026-11-04), not started
-- Search: find a polity or place by name and jump to a date it existed (index from presence.json + CShapes).
-- Fine date control on phones: the day-precision part of the slider moves ~4 months per pixel; add a zoomable
-  "scrub" bar or long-press arrows that repeat.
-- Compare two dates side by side (swipe divider).
-- Release-signed APK (needs a keystore Ben keeps) for Play Store or clean updates; Windows code signing.
-- Events: 108 treaties only (many lack coordinates); add wars by their main battle, and revolutions.
-- 835 names without a Wikipedia article: `pipeline/unmatched.txt`, fix in `entity-overrides.json`.
-- Period names change at snapshot years, not on the real day; a hand-checked table for big renames would fix it.
+## Audit follow-ups (v0.2.1 released 2026-11-04; repo public)
+- Next step: search (find a polity by name, jump to when it existed), using presence.json + CShapes gwcodes.
+- Then: fine date scrub on phones, compare two dates, more events (wars, revolutions), exact rename dates.
+- GitHub Pages is now possible (public repo): `vite build` + Pages workflow would give a plain web link.
+- Also open: release-signed APK (keystore Ben keeps), 835 unmatched names (`pipeline/unmatched.txt`).
+- Read first: src/main.ts, src/panel.ts, src/history.ts. Release steps: the `hg-release` skill.
+- Unverified: APK on a real phone since 0.1.2 (edge-to-edge margins), Windows installer run-through.
 
 ## Phase 3+ (see the vault project note)
 - Cities and sites as points with dated existence; rulers, capital, population.
