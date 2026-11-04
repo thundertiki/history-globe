@@ -1,0 +1,6 @@
+{
+  "appId": "io.github.thundertiki.historyglobe",
+  "appName": "History Globe",
+  "webDir": "dist",
+  "android": { "backgroundColor": "#0b1320" }
+}

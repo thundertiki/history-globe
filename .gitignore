@@ -9,3 +9,8 @@ node_modules/
 dist/
 pipeline/raw/
 dist-artifact/
+release/
+android/app/build/
+android/.gradle/
+android/build/
+android/local.properties

@@ -23,6 +23,9 @@ Design and status: vault `10 Projects/History Globe.md`.
 ## Commands
 - `npm test` (Vitest unit tests), `npm run dev`, `npm run build`.
 - `node tests/e2e-check.mjs [shotDir]` runs headless Edge against the dev server on port 5174.
+- Installers (output in `release/`, git-ignored): `npm run dist:win` (Electron, NSIS x64, unsigned) and
+  `npm run dist:android` (Capacitor, debug-signed APK; needs JDK 21 + Android SDK, see `pipeline/android-build.mjs`).
+  Shells: `desktop/main.cjs` (serves `dist/` over `app://`), `android/` (Capacitor). Icons: `build/`.
 - Data: `npm run data:fetch`, `data:build`, `data:entities` and `data:summaries` (slow, rate-limited), `data:fonts`.
 
 ## Rules
