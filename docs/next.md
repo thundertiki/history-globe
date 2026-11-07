@@ -1,15 +1,16 @@
 # Next (one block per task in flight)
 
-## Audit follow-ups (v0.2.1 released 2026-11-04; repo public)
-- Next step: search (find a polity by name, jump to when it existed), using presence.json + CShapes gwcodes.
-- Then: fine date scrub on phones, compare two dates, more events (wars, revolutions), exact rename dates.
-- Done 2026-11-07: GitHub Pages + installable offline app; card text forced light (artifact host made it black).
-  Share links (`#date/lng,lat,zoom/place`, Share button, always to the Pages URL) done too. Next: search.
-  The card-text fix reaches the artifact and installers only at the next release (`hg-release`).
-- Also open: release-signed APK (keystore Ben keeps), 835 unmatched names (`pipeline/unmatched.txt`).
-- Read first: src/main.ts, src/panel.ts, src/history.ts. Release steps: the `hg-release` skill.
-- Unverified: APK on a real phone since 0.1.2 (edge-to-edge margins), Windows installer run-through.
+Full ordered plan: `docs/roadmap.md`.
 
-## Phase 3+ (see the vault project note)
-- Cities and sites as points with dated existence; rulers, capital, population.
-- Public hosting: make the repo public, then GitHub Pages (free for public repos).
+## Search (next up, not started)
+- Type a polity name, list matches with the years they existed, tap to jump there with the card open.
+- Data: `public/data/presence.json` + CShapes names/gwcodes; reuse `findPlace()` / `showHit()` in `src/main.ts`.
+- Read first: src/main.ts, src/panel.ts, src/history.ts, src/borders.ts.
+- Testing: the Browser pane pauses map rendering while hidden; use headless Edge (`tests/e2e-check.mjs` pattern)
+  against `npm run preview` on port 4173.
+
+## Pending release
+- 2026-11-07 changes (Pages, offline app, share links, light card text) are live on the web only; run `hg-release`
+  to get the card-text fix into the artifact, APK and Windows installer.
+- Unverified: APK on a real phone since 0.1.2 (edge-to-edge margins), Windows installer run-through, the Share
+  button on a phone (share sheet / copy).
