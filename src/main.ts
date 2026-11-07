@@ -9,6 +9,8 @@ import { nameAt } from './names';
 import { timelineFor } from './history';
 
 const DATA = `${import.meta.env.BASE_URL}data`;
+/** Share links always point at the public web app, whichever version (artifact, installer) made them. */
+const SITE = 'https://thundertiki.github.io/history-globe/';
 const now = new Date();
 const today: HDate = { y: now.getFullYear(), m: now.getMonth() + 1, d: now.getDate() };
 
@@ -34,6 +36,23 @@ function showToast(msg: string) {
 function hashOf(h: HDate): string {
   const p = (n: number) => String(n).padStart(2, '0');
   return h.d ? `${h.y}-${p(h.m!)}-${p(h.d)}` : h.m ? `${h.y}-${p(h.m)}` : String(h.y);
+}
+
+/** Link hash: `#<date>/<lng>,<lat>,<zoom>/<place>`; the last two parts are optional. */
+function parseHash(hash: string) {
+  const [d = '', cam = '', place = ''] = hash.replace(/^#/, '').split('/').map((x) => decodeURIComponent(x));
+  const [lng, lat, zoom] = cam.split(',').map(Number);
+  return {
+    date: parseDate(d),
+    cam: cam && [lng, lat, zoom].every(Number.isFinite) ? { center: [lng, lat] as [number, number], zoom } : undefined,
+    place: place || undefined,
+  };
+}
+
+/** The key a link uses for a polity: its name before 1886, its CShapes code to 2019, its name after. */
+function placeKey(pl: { tier: string; props: Record<string, any> }): string {
+  const p = pl.props;
+  return String(pl.tier === 'A' ? p.NAME : pl.tier === 'B' ? p.gwcode : p.name ?? p.NAME ?? p.sov);
 }
 
 function precisionText(p: Pick, date: HDate): string {
@@ -80,10 +99,13 @@ async function main() {
     })
     .catch((e) => console.error('overlays', e));
 
-  let date: HDate = parseDate(decodeURIComponent(location.hash.slice(1))) ?? { y: 1914, m: 7, d: 28 };
+  const link = parseHash(location.hash);
+  if (link.cam) globe.map.jumpTo(link.cam);
+  let date: HDate = link.date ?? { y: 1914, m: 7, d: 28 };
   date = normalize(date, today);
   let pick = pickBorders(date, manifest);
   let renderSeq = 0;
+  let shown: Hit | null = null; // what the card shows, for timeline jumps and links
 
   async function render(fromSlider = false) {
     pick = pickBorders(date, manifest);
@@ -91,11 +113,7 @@ async function main() {
     input.classList.remove('bad');
     precision.textContent = precisionText(pick, date);
     if (!fromSlider) slider.value = String(dateToPos(date, today));
-    try {
-      history.replaceState(null, '', `#${hashOf(date)}`); // shareable link to this date
-    } catch {
-      /* some embedded frames refuse history changes */
-    }
+    writeHash();
     const seq = ++renderSeq;
     extras.then(() => globe.updateOverlays(decimalYear(date), eventWindow(date), layers));
     // Say so when a border file takes a moment (the first 1886–2019 load is about 0.8 MB).
@@ -110,6 +128,46 @@ async function main() {
       clearTimeout(slow);
     }
   }
+
+  /** Keep the address a shareable link to this view: date, camera and the open polity card. */
+  function writeHash(): string {
+    const c = globe.map.getCenter();
+    let h = `#${hashOf(date)}/${c.lng.toFixed(2)},${c.lat.toFixed(2)},${globe.map.getZoom().toFixed(1)}`;
+    if (shown?.kind === 'place' && !$('panel').hidden) h += `/${encodeURIComponent(placeKey(shown.place))}`;
+    try {
+      history.replaceState(null, '', h);
+    } catch {
+      /* some embedded frames refuse history changes */
+    }
+    return h;
+  }
+  globe.map.on('moveend', () => writeHash());
+
+  /** The feature for a link or timeline key in the borders now shown. */
+  function findPlace(key: string) {
+    const iso = pick.iso;
+    return globe.current?.features.find((x) => {
+      const p = x.properties!;
+      if (pick.tier === 'B') return String(p.gwcode) === key && p.start <= iso! && p.end >= iso!;
+      return placeKey({ tier: pick.tier, props: p }) === key;
+    });
+  }
+
+  $('share-btn').addEventListener('click', async () => {
+    const url = SITE + writeHash();
+    const title = `History Globe · ${formatDate(date)}`;
+    try {
+      if (navigator.share) return await navigator.share({ title, url });
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') return; // closed the share sheet
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast('Link copied');
+    } catch {
+      showToast(url); // copying blocked (some embedded frames): show it to copy by hand
+    }
+  });
 
   // ---- Changing the date by hand stops playback and closes the card ----
   const setDate = (h: HDate, fromSlider = false) => {
@@ -212,7 +270,7 @@ async function main() {
 
   // ---- Taps ----
   const releaseMap = () => globe.map.easeTo({ padding: { top: 0, bottom: 0, left: 0, right: 0 }, duration: 300 });
-  $('panel-close').addEventListener('click', () => { globe.select(undefined); releaseMap(); });
+  $('panel-close').addEventListener('click', () => { globe.select(undefined); releaseMap(); writeHash(); });
   const reveal = (at: Parameters<Globe['revealAbove']>[0]) =>
     requestAnimationFrame(() => {
       const el = $('panel');
@@ -220,9 +278,11 @@ async function main() {
     });
   const TYPE: Record<string, string> = { battle: 'Battle', siege: 'Siege', treaty: 'Treaty', city: 'City founded' };
 
-  let shown: Hit | null = null; // what the card shows, for timeline jumps
   function showHit(hit: Hit) {
     shown = hit;
+    return showCard(hit).finally(writeHash); // the link includes the polity once its card is open
+  }
+  function showCard(hit: Hit) {
     if (hit.kind === 'event') {
       const p = hit.props;
       return panel.showInfo(p.label, [`${TYPE[p.type] ?? 'Event'} · ${p.when}`], p.desc, p.title);
@@ -237,6 +297,7 @@ async function main() {
     stopPlay();
     if (!hit) {
       panel.hide();
+      writeHash();
       return releaseMap();
     }
     // Once the card has its final size (summary loaded), move the map so the tapped spot sits above it.
@@ -247,16 +308,11 @@ async function main() {
   panel.onJump = async (d) => {
     const h = parseDate(d);
     if (!h || !shown || shown.kind !== 'place') return;
-    const key = shown.place.props;
+    const from = shown.place;
     date = normalize(h, today);
     await render();
-    const iso = pick.iso;
-    const f = globe.current?.features.find((x) => {
-      const p = x.properties!;
-      if (pick.tier === 'A') return p.NAME === key.NAME;
-      if (pick.tier === 'B') return String(p.gwcode) === String(key.gwcode) && p.start <= iso! && p.end >= iso!;
-      return false;
-    });
+    // Same polity across a tier change only by name (A) or code (B); otherwise close the card.
+    const f = from.tier === pick.tier ? findPlace(placeKey(from)) : undefined;
     if (!f) return panel.hide();
     globe.select(f.id);
     showHit({ kind: 'place', place: { tier: pick.tier, props: f.properties! } });
@@ -267,7 +323,13 @@ async function main() {
     globe, nameAt, pick: () => pick,
     setDate: (s: string) => setDate(normalize(parseDate(s)!, today)),
   };
-  render();
+  await render();
+  // A shared link with a polity opens its card (the link already set the camera).
+  const f = link.place ? findPlace(link.place) : undefined;
+  if (f) {
+    globe.select(f.id);
+    showHit({ kind: 'place', place: { tier: pick.tier, props: f.properties! } });
+  }
 }
 
 // Offline cache and "Install app" for the web version only: not in dev, the Claude artifact, the Electron

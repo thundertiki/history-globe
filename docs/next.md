@@ -4,7 +4,8 @@
 - Next step: search (find a polity by name, jump to when it existed), using presence.json + CShapes gwcodes.
 - Then: fine date scrub on phones, compare two dates, more events (wars, revolutions), exact rename dates.
 - Done 2026-11-07: GitHub Pages + installable offline app; card text forced light (artifact host made it black).
-  Next: share links with the selected country and camera in the hash, then search.
+  Share links (`#date/lng,lat,zoom/place`, Share button, always to the Pages URL) done too. Next: search.
+  The card-text fix reaches the artifact and installers only at the next release (`hg-release`).
 - Also open: release-signed APK (keystore Ben keeps), 835 unmatched names (`pipeline/unmatched.txt`).
 - Read first: src/main.ts, src/panel.ts, src/history.ts. Release steps: the `hg-release` skill.
 - Unverified: APK on a real phone since 0.1.2 (edge-to-edge margins), Windows installer run-through.
