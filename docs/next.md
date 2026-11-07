@@ -12,7 +12,7 @@ Full ordered plan: `docs/roadmap.md`.
   outline for about 2 s plus a "Changed: ..." toast. Tier B only within 400 days; tier A = names new in the snapshot;
   none if more than 12 changed. Slider drags and playback never flash. `node tests/changes-check.mjs` checks it.
 
-## Pending release
+## Pending release (0.3.0 shipped 2026-11-07; card-text fix, search and highlight are in all builds)
 - 2026-11-07 changes (Pages, offline app, share links, light card text) are live on the web only; run `hg-release`
   to get the card-text fix into the artifact, APK and Windows installer.
 - Unverified: APK on a real phone since 0.1.2 (edge-to-edge margins), Windows installer run-through, the Share
