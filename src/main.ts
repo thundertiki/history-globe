@@ -3,12 +3,13 @@ import maplibregl from 'maplibre-gl';
 import { Globe, Hit } from './globe';
 import { Panel } from './panel';
 import { initAbout } from './about';
-import { HDate, decimalYear, formatDate, parseDate, yearLabel } from './dates';
+import { HDate, decimalYear, formatDate, ordinal, parseDate, yearLabel } from './dates';
 import { SLIDER_MAX, posToDate, dateToPos, normalize, step } from './timeline';
 import { Manifest, Pick, pickBorders } from './borders';
 import { nameAt } from './names';
 import { timelineFor } from './history';
 import { Result, Row, search } from './search';
+import { changedFeatures } from './changes';
 
 const DATA = `${import.meta.env.BASE_URL}data`;
 /** Share links always point at the public web app, whichever version (artifact, installer) made them. */
@@ -110,7 +111,11 @@ async function main() {
   let renderSeq = 0;
   let shown: Hit | null = null; // what the card shows, for timeline jumps and links
 
-  async function render(fromSlider = false) {
+  let prevView: { date: HDate; pick: Pick; features: any } | null = null; // what was on the map before this render
+
+  /** `flash`: outline the polities that changed since the previous date (stepping, not dragging or playing). */
+  async function render(fromSlider = false, flash = false) {
+    const before = prevView;
     pick = pickBorders(date, manifest);
     input.value = formatDate(date);
     input.classList.remove('bad');
@@ -123,7 +128,19 @@ async function main() {
     const slow = setTimeout(() => seq === renderSeq && (precision.textContent += ' · loading…'), 300);
     try {
       await globe.show(pick);
-      if (seq === renderSeq) precision.textContent = precisionText(pick, date);
+      if (seq === renderSeq) {
+        precision.textContent = precisionText(pick, date);
+        prevView = { date, pick, features: globe.current };
+        if (flash && before) {
+          const days = Math.abs(ordinal(date) - ordinal(before.date));
+          const ch = changedFeatures(before.features, before.pick, globe.current, pick, days);
+          if (ch.length) {
+            globe.flash(ch.map((f) => f.id!));
+            const names = [...new Set(ch.map((f) => (pick.tier === 'B' ? nameAt(f.properties!, pick.iso!) : f.properties!.NAME)))];
+            showToast('Changed: ' + names.slice(0, 3).join(', ') + (names.length > 3 ? ` +${names.length - 3} more` : ''));
+          }
+        }
+      }
     } catch (e) {
       if (seq === renderSeq) showToast('Could not load borders for this date. Showing the previous map.');
       console.error(e);
@@ -173,11 +190,11 @@ async function main() {
   });
 
   // ---- Changing the date by hand stops playback and closes the card ----
-  const setDate = (h: HDate, fromSlider = false) => {
+  const setDate = (h: HDate, fromSlider = false, flash = false) => {
     date = h;
     panel.hide();
     globe.select(undefined);
-    return render(fromSlider);
+    return render(fromSlider, flash);
   };
   slider.max = String(SLIDER_MAX);
   slider.step = '1';
@@ -185,14 +202,14 @@ async function main() {
     stopPlay();
     setDate(posToDate(Number(slider.value), today), true);
   });
-  $('prev').addEventListener('click', () => { stopPlay(); setDate(step(date, -1, today)); });
-  $('next').addEventListener('click', () => { stopPlay(); setDate(step(date, 1, today)); });
+  $('prev').addEventListener('click', () => { stopPlay(); setDate(step(date, -1, today), false, true); });
+  $('next').addEventListener('click', () => { stopPlay(); setDate(step(date, 1, today), false, true); });
   $('date-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const h = parseDate(input.value);
     if (!h) { input.classList.add('bad'); return; }
     stopPlay();
-    setDate(normalize(h, today));
+    setDate(normalize(h, today), false, true);
     input.blur();
   });
   input.addEventListener('focus', () => input.select());
@@ -388,7 +405,7 @@ async function main() {
     if (!h || !shown || shown.kind !== 'place') return;
     const from = shown.place;
     date = normalize(h, today);
-    await render();
+    await render(false, true);
     // Same polity across a tier change only by name (A) or code (B); otherwise close the card.
     const f = from.tier === pick.tier ? findPlace(placeKey(from)) : undefined;
     if (!f) return panel.hide();

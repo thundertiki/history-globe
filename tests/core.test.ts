@@ -132,3 +132,29 @@ describe('search', () => {
     expect(search(rows, 'roman')[0].date).toBe('0');
   });
 });
+
+import { changedFeatures } from '../src/changes';
+describe('changedFeatures', () => {
+  const f = (id: number, props: object) => ({ type: 'Feature' as const, id, geometry: null as any, properties: props });
+  const fc = (...features: any[]) => ({ type: 'FeatureCollection' as const, features });
+  const B = (iso: string) => ({ tier: 'B' as const, file: 'x', iso, year: 1990 });
+  const all = fc(
+    f(1, { gwcode: 265, start: '1949-10-07', end: '1990-10-02' }),
+    f(2, { gwcode: 260, start: '1990-10-03', end: '2019-12-31' }),
+    f(3, { gwcode: 220, start: '1886-01-01', end: '2019-12-31' })
+  );
+  it('tier B: features that start after the old day', () => {
+    expect(changedFeatures(all, B('1990-10-02'), all, B('1990-10-03'), 1).map((x) => x.id)).toEqual([2]);
+    expect(changedFeatures(all, B('1990-10-03'), all, B('1990-10-02'), 1).map((x) => x.id)).toEqual([1]);
+  });
+  it('ignores big jumps and different tiers', () => {
+    expect(changedFeatures(all, B('1900-01-01'), all, B('1990-10-03'), 30000)).toEqual([]);
+    expect(changedFeatures(all, { tier: 'A', file: 'a', year: 1800, snapshotYear: 1800 }, all, B('1990-10-03'), 1)).toEqual([]);
+  });
+  it('tier A: names new in the snapshot', () => {
+    const A = (y: number) => ({ tier: 'A' as const, file: String(y), snapshotYear: y, year: y });
+    const old = fc(f(1, { NAME: 'Rome' }));
+    const nu = fc(f(1, { NAME: 'Rome' }), f(2, { NAME: 'Goths' }));
+    expect(changedFeatures(old, A(100), nu, A(200), 100).map((x) => x.id)).toEqual([2]);
+  });
+});

@@ -126,6 +126,16 @@ export class Globe {
       id: 'borders-line', type: 'line', source: 'borders',
       paint: { 'line-color': '#10151c', 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.4, 6, 1.4] },
     });
+    // Brief outline of polities that changed since the previous date (feature-state flash).
+    this.map.addLayer({
+      id: 'borders-flash', type: 'line', source: 'borders',
+      layout: { 'line-join': 'round' },
+      paint: {
+        'line-color': '#ffd36a', 'line-width': 3.5,
+        'line-opacity': ['case', ['boolean', ['feature-state', 'flash'], false], 1, 0],
+        'line-opacity-transition': { duration: 500, delay: 0 },
+      },
+    });
     this.map.addLayer({
       id: 'labels', type: 'symbol', source: 'labels',
       layout: {
@@ -222,6 +232,7 @@ export class Globe {
     const layers = await load(url, pick.tier);
     if (this.shownFile !== url) {
       this.map.removeFeatureState({ source: 'borders' }); // ids repeat across files
+      this.flashed = [];
       (this.map.getSource('borders') as GeoJSONSource).setData(layers.borders);
       this.shownFile = url;
       this.current = layers.borders;
@@ -254,6 +265,20 @@ export class Globe {
       : { top: 0, bottom: 0, left: 0, right: window.innerWidth - card.left + 12 };
     this.map.easeTo({ center: at.lngLat, padding, duration: 500 });
   }
+
+  /** Outline these features for a moment (ids from the current borders). */
+  flash(ids: (number | string)[], ms = 2200) {
+    clearTimeout(this.flashTimer);
+    for (const id of this.flashed) this.map.setFeatureState({ source: 'borders', id }, { flash: false });
+    this.flashed = ids;
+    for (const id of ids) this.map.setFeatureState({ source: 'borders', id }, { flash: true });
+    this.flashTimer = setTimeout(() => {
+      for (const id of ids) this.map.setFeatureState({ source: 'borders', id }, { flash: false });
+      this.flashed = [];
+    }, ms);
+  }
+  private flashed: (number | string)[] = [];
+  private flashTimer: ReturnType<typeof setTimeout> | undefined;
 
   /** Highlight one border feature (or none). */
   select(id: number | string | undefined) {

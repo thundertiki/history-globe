@@ -7,6 +7,11 @@ Full ordered plan: `docs/roadmap.md`.
   `data:build`). Jumps to the first date a name appears and opens its card. `node tests/search-check.mjs` checks it.
 - Not done: present-day (tier C) names, and names that only appear as map labels in tier B snapshots.
 
+## Highlight what changed (done 2026-11-07, unverified on a phone)
+- `src/changes.ts`: on prev/next, a typed date or a timeline chip, polities new since the previous date get a gold
+  outline for about 2 s plus a "Changed: ..." toast. Tier B only within 400 days; tier A = names new in the snapshot;
+  none if more than 12 changed. Slider drags and playback never flash. `node tests/changes-check.mjs` checks it.
+
 ## Pending release
 - 2026-11-07 changes (Pages, offline app, share links, light card text) are live on the web only; run `hg-release`
   to get the card-text fix into the artifact, APK and Windows installer.

@@ -15,7 +15,7 @@ Work top to bottom. Tick items off here and move the one being worked on into `d
 - [x] **Search (done 2026-11-07):** type a polity name, list matches with the years they existed, tap to jump there with the card
       open. Data: `presence.json` (which snapshots/years each name appears in) + CShapes names/gwcodes. Reuse
       `findPlace()` and `showHit()` in `src/main.ts`. Must work offline (no runtime calls to other sites).
-- [ ] **Highlight what changed:** when the date crosses a border change, briefly outline the polities that
+- [x] **Highlight what changed (done 2026-11-07; compare-two-dates view not done):** when the date crosses a border change, briefly outline the polities that
       changed (CShapes start/end days; snapshot-to-snapshot differences before 1886). The same diff can drive a
       later "compare two dates" view.
 - [ ] **Fine date scrub on phones:** e.g. long-press the date for a month/day picker.
