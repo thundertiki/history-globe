@@ -19,7 +19,7 @@ Design and status: vault `10 Projects/History Globe.md`.
   `entities.mjs` + `entities-search.mjs` map names to Wikipedia; `summaries.mjs` prebuilds `wiki.json`;
   `fonts.mjs` fetches label glyphs into `public/fonts/`; `events.mjs` pulls Wikidata events into `events.json`;
   `apply-overrides.mjs` applies `entity-overrides.json` and resolves new names; `eras.mjs` maps old-map names
-  like "Egypt" to period articles by date (`pipeline/eras.json`, run before `summaries.mjs`); `artifact.mjs` packages the
+  like "Egypt" to period articles by date (`pipeline/eras.json`, run before `summaries.mjs`); `search.mjs` builds `search.json` for the search box (run after `build.mjs`); `artifact.mjs` packages the
   artifact. `public/data/human.json` (early human sites and routes) is hand-written: keep dates hedged.
 - `public/data/` is generated, but committed so the site builds without running the pipeline.
 

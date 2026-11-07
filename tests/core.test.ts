@@ -111,3 +111,24 @@ describe('period names', () => {
     expect(labelsOn(fc, '1970-01-01').features.map((f) => f.properties!._name)).toEqual(['Mali']);
   });
 });
+
+import { search, Row } from '../src/search';
+describe('search', () => {
+  const rows: Row[] = [
+    ['Roman Empire', 'A', 'Roman Empire', 0, 200],
+    ['Holy Roman Empire', 'A', 'Holy Roman Empire', 1000, 1783],
+    ['Germany', 'B', '255', '1886-01-01', '1945-05-07'],
+    ['Côte d’Ivoire', 'B', '437', '1960-08-07', '2019-12-31'],
+  ];
+  it('ranks prefix before word-start and folds accents', () => {
+    expect(search(rows, 'roman').map((r) => r.name)).toEqual(['Roman Empire', 'Holy Roman Empire']);
+    expect(search(rows, 'cote')[0].name).toBe('Côte d’Ivoire');
+  });
+  it('gives the first date and a span', () => {
+    const g = search(rows, 'germ')[0];
+    expect(g.date).toBe('1886-01-01');
+    expect(g.span).toContain('1945');
+    expect(search(rows, 'cote')[0].span).toContain('now');
+    expect(search(rows, 'roman')[0].date).toBe('0');
+  });
+});

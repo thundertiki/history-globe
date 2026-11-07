@@ -2,12 +2,10 @@
 
 Full ordered plan: `docs/roadmap.md`.
 
-## Search (next up, not started)
-- Type a polity name, list matches with the years they existed, tap to jump there with the card open.
-- Data: `public/data/presence.json` + CShapes names/gwcodes; reuse `findPlace()` / `showHit()` in `src/main.ts`.
-- Read first: src/main.ts, src/panel.ts, src/history.ts, src/borders.ts.
-- Testing: the Browser pane pauses map rendering while hidden; use headless Edge (`tests/e2e-check.mjs` pattern)
-  against `npm run preview` on port 4173.
+## Search (done 2026-11-07, unverified on a phone)
+- Search button in the top bar; `src/search.ts` + `public/data/search.json` (`npm run data:search`, run after
+  `data:build`). Jumps to the first date a name appears and opens its card. `node tests/search-check.mjs` checks it.
+- Not done: present-day (tier C) names, and names that only appear as map labels in tier B snapshots.
 
 ## Pending release
 - 2026-11-07 changes (Pages, offline app, share links, light card text) are live on the web only; run `hg-release`

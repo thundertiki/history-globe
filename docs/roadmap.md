@@ -12,7 +12,7 @@ Work top to bottom. Tick items off here and move the one being worked on into `d
       whether the APK is still needed now the web app installs.
 
 ## 2. Core features
-- [ ] **Search:** type a polity name, list matches with the years they existed, tap to jump there with the card
+- [x] **Search (done 2026-11-07):** type a polity name, list matches with the years they existed, tap to jump there with the card
       open. Data: `presence.json` (which snapshots/years each name appears in) + CShapes names/gwcodes. Reuse
       `findPlace()` and `showHit()` in `src/main.ts`. Must work offline (no runtime calls to other sites).
 - [ ] **Highlight what changed:** when the date crosses a border change, briefly outline the polities that

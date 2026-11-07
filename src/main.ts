@@ -1,4 +1,5 @@
 import './style.css';
+import maplibregl from 'maplibre-gl';
 import { Globe, Hit } from './globe';
 import { Panel } from './panel';
 import { initAbout } from './about';
@@ -7,6 +8,7 @@ import { SLIDER_MAX, posToDate, dateToPos, normalize, step } from './timeline';
 import { Manifest, Pick, pickBorders } from './borders';
 import { nameAt } from './names';
 import { timelineFor } from './history';
+import { Result, Row, search } from './search';
 
 const DATA = `${import.meta.env.BASE_URL}data`;
 /** Share links always point at the public web app, whichever version (artifact, installer) made them. */
@@ -89,6 +91,7 @@ async function main() {
     return p ? nameAt(p, iso) : undefined;
   }, DATA);
   initAbout();
+  const searchRows: Promise<Row[]> = json('search.json').catch(() => []);
 
   // Secondary data loads after the first map is up.
   let presence: Record<string, number[]> = {};
@@ -268,6 +271,81 @@ async function main() {
     });
   }
 
+  // ---- Search: find a polity by name and jump to when it existed ----
+  const sBox = $('search');
+  const sInput = $<HTMLInputElement>('search-input');
+  const sList = $('search-results');
+  const sBtn = $('search-btn');
+  const setSearch = (open: boolean) => {
+    sBox.hidden = !open;
+    sBtn.setAttribute('aria-expanded', String(open));
+    if (open) { menu.hidden = true; sInput.focus(); sInput.select(); }
+  };
+  sBtn.addEventListener('click', (e) => { e.stopPropagation(); setSearch(Boolean(sBox.hidden)); });
+  document.addEventListener('click', (e) => {
+    if (!sBox.hidden && !sBox.contains(e.target as Node)) setSearch(false);
+  });
+  sBox.addEventListener('keydown', (e) => { if (e.key === 'Escape') setSearch(false); });
+  sInput.addEventListener('input', async () => {
+    const found = search(await searchRows, sInput.value);
+    sList.replaceChildren();
+    if (!found.length && sInput.value.trim()) {
+      const li = document.createElement('li');
+      li.className = 'sr-empty';
+      li.textContent = 'No match';
+      sList.append(li);
+    }
+    for (const r of found) {
+      const li = document.createElement('li');
+      li.tabIndex = 0;
+      li.setAttribute('role', 'option');
+      li.innerHTML = '<span class="sr-name"></span><span class="sr-span"></span>';
+      li.children[0].textContent = r.name;
+      li.children[1].textContent = r.span;
+      const go = () => { setSearch(false); goTo(r); };
+      li.addEventListener('click', go);
+      li.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+      sList.append(li);
+    }
+  });
+  sInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') (sList.firstElementChild as HTMLElement | null)?.click();
+  });
+  menu.addEventListener('click', () => setSearch(false));
+  $('layers-btn').addEventListener('click', () => setSearch(false));
+
+  /** Centre of the largest polygon (so Russia or France with far islands centre on the main land). */
+  function centreOf(g: any): [number, number] | undefined {
+    const polys: number[][][][] = g.type === 'Polygon' ? [g.coordinates] : g.type === 'MultiPolygon' ? g.coordinates : [];
+    let best: { a: number; c: [number, number] } | undefined;
+    for (const poly of polys) {
+      let [x0, y0, x1, y1] = [Infinity, Infinity, -Infinity, -Infinity];
+      for (const [x, y] of poly[0]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      const a = (x1 - x0) * (y1 - y0);
+      if (!best || a > best.a) best = { a, c: [(x0 + x1) / 2, (y0 + y1) / 2] };
+    }
+    return best?.c;
+  }
+
+  async function goTo(r: Result) {
+    stopPlay();
+    const h = parseDate(r.date);
+    if (!h) return;
+    date = normalize(h, today);
+    panel.hide();
+    globe.select(undefined);
+    await render();
+    const f = findPlace(r.key);
+    if (!f) return showToast(`Could not find ${r.name} on the map for that date.`);
+    globe.select(f.id);
+    const c = centreOf(f.geometry);
+    if (c) {
+      globe.map.jumpTo({ center: c, zoom: Math.max(2.5, Math.min(globe.map.getZoom(), 4)), padding: { top: 0, bottom: 0, left: 0, right: 0 } });
+    }
+    await showHit({ kind: 'place', place: { tier: pick.tier, props: f.properties! } });
+    if (c) reveal({ lngLat: new maplibregl.LngLat(c[0], c[1]), point: globe.map.project(c) });
+  }
+
   // ---- Taps ----
   const releaseMap = () => globe.map.easeTo({ padding: { top: 0, bottom: 0, left: 0, right: 0 }, duration: 300 });
   $('panel-close').addEventListener('click', () => { globe.select(undefined); releaseMap(); writeHash(); });
@@ -320,7 +398,7 @@ async function main() {
 
   // Expose for debugging and automated checks.
   (window as any).hg = {
-    globe, nameAt, pick: () => pick,
+    globe, goTo, search: async (q: string) => search(await searchRows, q), nameAt, pick: () => pick,
     setDate: (s: string) => setDate(normalize(parseDate(s)!, today)),
   };
   await render();
