@@ -9,7 +9,9 @@
   color: var(--text);
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; height: 100%; background: var(--bg); overflow: hidden; }
+/* Text colour set on body and the card too: the Claude artifact wraps the page in its own body, whose
+   (light-theme) text colour otherwise wins and turns the card text black. */
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
 #map { position: absolute; inset: 0; }
 
 button {
@@ -51,7 +53,7 @@ a { color: var(--accent); }
   position: absolute; top: calc(60px + env(safe-area-inset-top, 0px)); right: 16px; width: 340px; overflow: auto;
   /* --timebar-h is the date bar's measured height (main.ts), so the card never slides under it */
   max-height: calc(100% - 60px - var(--timebar-h, 140px) - 32px);
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+  background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
   backdrop-filter: blur(6px);
 }
 .panel .close { position: absolute; top: 4px; right: 4px; }

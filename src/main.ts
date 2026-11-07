@@ -270,6 +270,13 @@ async function main() {
   render();
 }
 
+// Offline cache and "Install app" for the web version only: not in dev, the Claude artifact, the Electron
+// app (app://, not a secure web origin) or the Android app (Capacitor injects window.Capacitor).
+if (import.meta.env.PROD && import.meta.env.MODE !== 'artifact' && 'serviceWorker' in navigator &&
+    window.isSecureContext && location.protocol.startsWith('http') && !(window as any).Capacitor) {
+  navigator.serviceWorker.register('./sw.js').catch((e) => console.warn('service worker', e));
+}
+
 main().catch((e) => {
   console.error(e);
   showToast('Failed to start: ' + e.message);

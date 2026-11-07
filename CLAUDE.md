@@ -1,7 +1,10 @@
 # history-globe: pick a date, see the world's borders on a 3D globe
 
-Free, open-source (GPL-3.0) web app; public repo since 2026-11-04 (no personal paths or secrets in it). Phone version: a Claude
-artifact built from the same code (`npm run build:artifact`, publish `dist-artifact/page.html` + its files).
+Free, open-source (GPL-3.0) web app; public repo since 2026-11-04 (no personal paths or secrets in it). Web:
+https://thundertiki.github.io/history-globe/, deployed by `.github/workflows/pages.yml` on every push to `main`;
+installable offline app via `public/manifest.webmanifest` + `src/sw.js` (a template that `vite.config.ts` fills in;
+registered only on http(s) web, not in the artifact, Electron or Capacitor). Also a Claude artifact built from the
+same code (`npm run build:artifact`, publish `dist-artifact/page.html` + its files).
 Design and status: vault `10 Projects/History Globe.md`.
 
 ## Layout

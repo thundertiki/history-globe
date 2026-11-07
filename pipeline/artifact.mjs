@@ -11,7 +11,7 @@ const body = html.match(/<body>([\s\S]*?)<\/body>/)[1];
 const all = (re) => [...head.matchAll(re)].map((m) => m[0]);
 const keep = [
   ...all(/<title>[\s\S]*?<\/title>/g),
-  ...all(/<link\b[^>]*>/g).filter((t) => !t.includes('rel="icon"')),
+  ...all(/<link\b[^>]*>/g).filter((t) => !/rel="(icon|manifest|apple-touch-icon)"/.test(t)),
   ...all(/<style\b[\s\S]*?<\/style>/g),
   ...all(/<script\b[\s\S]*?<\/script>/g),
 ];
