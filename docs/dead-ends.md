@@ -18,3 +18,6 @@
   expected"), so the layer is never created. Use `['boolean', false]`. Revisit if: never.
 - **Raw Wikidata query-service dates** (2026-11-04, confirmed): astronomical years (-1456 = 1457 BC) and always
   Gregorian, so Hastings read 20 Oct; `events.mjs` converts Julian items back. Revisit if: never.
+- **Testing the map in a hidden Browser pane** (2026-11-07, confirmed): the hidden pane runs 0 animation frames,
+  so MapLibre never fires `load` and the date bar stays on "loading…" (not an app bug). Use headless Edge
+  (`tests/e2e-check.mjs` pattern) instead. Revisit if: the pane renders while hidden.
