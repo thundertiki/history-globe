@@ -76,9 +76,11 @@ function precisionText(p: Pick, date: HDate): string {
 const eventWindow = (h: HDate) => (h.y < 1500 ? 25 : h.y < 1886 ? 5 : 1);
 
 // Layer toggles are a per-device preference.
-const layers = { events: true, human: true };
+// Early humans always show before AD 1500; only the events dots can be turned off.
+const layers = { events: true };
+const overlays = () => ({ events: layers.events, human: true });
 try {
-  Object.assign(layers, JSON.parse(localStorage.getItem('hg-layers') ?? '{}'));
+  layers.events = JSON.parse(localStorage.getItem('hg-layers') ?? '{}').events !== false;
 } catch {
   /* storage unavailable */
 }
@@ -118,7 +120,7 @@ async function main() {
   let overlayTimer: ReturnType<typeof setTimeout> | undefined;
   function refreshOverlays(moving: boolean) {
     clearTimeout(overlayTimer);
-    const apply = () => extras.then(() => globe.updateOverlays(decimalYear(date), eventWindow(date), layers));
+    const apply = () => extras.then(() => globe.updateOverlays(decimalYear(date), eventWindow(date), overlays()));
     if (!moving) return void apply();
     extras.then(() => globe.hideOverlays());
     overlayTimer = setTimeout(apply, 250);
@@ -339,28 +341,34 @@ async function main() {
     requestAnimationFrame(frame);
   });
 
-  // ---- Layers menu ----
-  const menu = $('layers');
-  const ev = $<HTMLInputElement>('layer-events');
-  const hu = $<HTMLInputElement>('layer-human');
-  ev.checked = layers.events;
-  hu.checked = layers.human;
-  $('layers-btn').addEventListener('click', (e) => {
+  // ---- More menu and Events toggle ----
+  const menu = $('more-menu');
+  const moreBtn = $('more-btn');
+  const setMenu = (open: boolean) => {
+    menu.hidden = !open;
+    moreBtn.setAttribute('aria-expanded', String(open));
+  };
+  moreBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    menu.hidden = !menu.hidden;
-    $('layers-btn').setAttribute('aria-expanded', String(!menu.hidden));
+    setMenu(Boolean(menu.hidden));
   });
+  menu.addEventListener('click', () => setMenu(false));
   document.addEventListener('click', (e) => {
-    if (!menu.hidden && !menu.contains(e.target as Node)) menu.hidden = true;
+    if (!menu.hidden && !menu.contains(e.target as Node)) setMenu(false);
   });
-  for (const box of [ev, hu]) {
-    box.addEventListener('change', () => {
-      layers.events = ev.checked;
-      layers.human = hu.checked;
-      try { localStorage.setItem('hg-layers', JSON.stringify(layers)); } catch { /* storage unavailable */ }
-      extras.then(() => globe.updateOverlays(decimalYear(date), eventWindow(date), layers));
-    });
-  }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  const evBtn = $('events-btn');
+  const showEvents = () => {
+    evBtn.setAttribute('aria-pressed', String(layers.events));
+    evBtn.classList.toggle('off', !layers.events);
+  };
+  showEvents();
+  evBtn.addEventListener('click', () => {
+    layers.events = !layers.events;
+    showEvents();
+    try { localStorage.setItem('hg-layers', JSON.stringify(layers)); } catch { /* storage unavailable */ }
+    refreshOverlays(false);
+  });
 
   // ---- Search: find a polity by name and jump to when it existed ----
   const sBox = $('search');
@@ -370,7 +378,7 @@ async function main() {
   const setSearch = (open: boolean) => {
     sBox.hidden = !open;
     sBtn.setAttribute('aria-expanded', String(open));
-    if (open) { menu.hidden = true; sInput.focus(); sInput.select(); }
+    if (open) { setMenu(false); sInput.focus(); sInput.select(); }
   };
   sBtn.addEventListener('click', (e) => { e.stopPropagation(); setSearch(Boolean(sBox.hidden)); });
   document.addEventListener('click', (e) => {
@@ -402,8 +410,7 @@ async function main() {
   sInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') (sList.firstElementChild as HTMLElement | null)?.click();
   });
-  menu.addEventListener('click', () => setSearch(false));
-  $('layers-btn').addEventListener('click', () => setSearch(false));
+  moreBtn.addEventListener('click', () => setSearch(false));
 
   /** Centre of the largest polygon (so Russia or France with far islands centre on the main land). */
   function centreOf(g: any): [number, number] | undefined {

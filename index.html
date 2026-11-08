@@ -16,18 +16,19 @@
     <header class="topbar">
       <h1>History Globe</h1>
       <div class="top-actions">
-        <button id="search-btn" class="ghost" aria-haspopup="true" aria-expanded="false" aria-label="Search for a country or empire">Search</button>
-        <button id="layers-btn" class="ghost" aria-haspopup="true" aria-expanded="false">Layers</button>
+        <button id="search-btn" class="ghost icon" aria-haspopup="true" aria-expanded="false" aria-label="Search for a country or empire">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        </button>
+        <button id="more-btn" class="ghost icon" aria-haspopup="true" aria-expanded="false" aria-label="More">⋯</button>
+      </div>
+      <div id="more-menu" class="layers menu" hidden>
         <button id="share-btn" class="ghost" aria-label="Share a link to this view">Share</button>
+        <a class="menu-link" href="https://ko-fi.com/J2Y62A9SV0" target="_blank" rel="noopener">Support on Ko-fi</a>
         <button id="about-btn" class="ghost" aria-label="About and sources">About</button>
       </div>
       <div id="search" class="layers searchbox" hidden>
         <input id="search-input" type="search" placeholder="Find a country or empire…" aria-label="Search by name" autocomplete="off" spellcheck="false" />
         <ul id="search-results" role="listbox"></ul>
-      </div>
-      <div id="layers" class="layers" hidden>
-        <label><input type="checkbox" id="layer-events" checked /> <span class="dot ev"></span> Battles, treaties and cities</label>
-        <label><input type="checkbox" id="layer-human" checked /> <span class="dot hu"></span> Early humans (before AD 1500)</label>
       </div>
     </header>
 
@@ -35,6 +36,8 @@
       <button id="panel-close" class="ghost close" aria-label="Close">✕</button>
       <div id="panel-body"></div>
     </aside>
+
+    <button id="events-btn" class="map-btn" aria-pressed="true" aria-label="Show battles, treaties and cities" title="Battles, treaties and cities"><span class="dot ev"></span></button>
 
     <footer class="timebar">
       <div class="row">
