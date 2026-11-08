@@ -31,6 +31,8 @@ present-day borders. Ancient borders are approximate.</p>
 <ul>
   <li>From 1886, names are matched to the period from the historical-basemaps snapshots, so 1914 shows the
     Russian Empire rather than Russia. They change when a snapshot changes, which is not always the exact day.</li>
+  <li>The ruler and capital on a card come from Wikidata, which lists them for about a quarter of polities and
+    mostly for modern states. A missing line means Wikidata has no dated entry, not that there was none.</li>
   <li>Wikipedia summaries were collected when the app was built and describe each place overall.</li>
 </ul>
 <p>Free and open source (GPL-3.0). Non-commercial.

@@ -12,6 +12,13 @@ Full ordered plan: `docs/roadmap.md`.
   outline for about 2 s plus a "Changed: ..." toast. Tier B only within 400 days; tier A = names new in the snapshot;
   none if more than 12 changed. Slider drags and playback never flash. `node tests/changes-check.mjs` checks it.
 
+## Rulers and capitals (done 2026-11-07, unreleased)
+- `pipeline/rulers.mjs` (`npm run data:rulers`, about 40 min, rate-limited) -> `public/data/rulers.json`; `src/rulers.ts`
+  picks the entry for the card's year; `panel.ts` adds "Ruler"/"Capital" lines. `node tests/rulers-check.mjs` checks it.
+- Coverage: 549 of 2,004 polities. Modern states are good (head of state, falling back to head of government);
+  ancient ones mostly have a capital only (Wikidata rarely dates their rulers). Possible next step: a hand-written
+  or Wikipedia-list-based pass for big empires. Same names on old snapshot polygons only match through `entities.json`.
+
 ## Next up (decided 2026-11-07)
 - Release 0.4.0 (`hg-release`): era tabs, Next change, flicker fix.
 - Then rulers and capitals on the card, tours, quizzes (roadmap sections 2 to 4). Ko-fi link once Ben has a page.

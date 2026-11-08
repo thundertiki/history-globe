@@ -28,6 +28,7 @@ fall back to tier A snapshots) and add Wikimedia image credits. The app's code i
 | `borders/b/` | CShapes, simplified, with period names added from historical-basemaps |
 | `borders/c/` | Natural Earth, simplified |
 | `events.json` | Wikidata |
+| `rulers.json` | Wikidata (head of state, capital, with dates; `npm run data:rulers`) |
 | `human.json` | hand-written |
 | `presence.json`, `search.json` | the border files above (which snapshots and dates each name appears in); `search.json` powers Search |
 | `wiki.json`, `entities.json`, `eras.json` | Wikipedia and Wikidata (titles, intro text, period articles like "Old Kingdom of Egypt" matched by date) |

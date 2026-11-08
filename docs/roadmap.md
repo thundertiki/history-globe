@@ -21,7 +21,7 @@ Work top to bottom. Tick items off here and move the one being worked on into `d
 - [ ] **Fine date scrub on phones:** e.g. long-press the date for a month/day picker.
 
 ## 3. Content (vault phases 2-3)
-- [ ] Rulers and capitals on the card from Wikidata (head of state / capital with dates), prebuilt like `wiki.json`.
+- [x] (done 2026-11-07, coverage thin before 1800) Rulers and capitals on the card from Wikidata (head of state / capital with dates), prebuilt like `wiki.json`.
 - [ ] Cities as dated points: start with about 200 major historical capitals.
 - [ ] Wars as dated areas/spans, not only point events.
 
