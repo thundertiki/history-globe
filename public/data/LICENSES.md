@@ -5,16 +5,20 @@ app uses it for. Keep this table, `src/about.ts` and `CLAUDE.md` ("Data tiers") 
 
 ## Sources
 
-| Source | Licence | Used for |
-|---|---|---|
-| [historical-basemaps](https://github.com/aourednik/historical-basemaps), André Ourednik and contributors | GPL-3.0 | Tier A borders for every date before 1886 (about 40 snapshots, 123,000 BC to 1880); also the period names (e.g. "Russian Empire") given to 1886+ polities |
-| [CShapes 2.0](https://icr.ethz.ch/data/cshapes/), Schvitz, Girardin, Rüegger, Weidmann, Cederman & Gleditsch (2022) | **CC BY-NC-SA 4.0** (non-commercial, share alike) | Tier B borders, day-exact, 1886-01-01 to 2019-12-31; country codes for share links; border-change dates ("Next change", "what changed") |
-| [Natural Earth](https://www.naturalearthdata.com/) admin-0 | Public domain | Tier C present-day borders (2020 on) and the grey land base |
-| [Wikidata](https://www.wikidata.org/) | CC0 | Battles, sieges, treaties and city foundings (event dots); Wikipedia article titles and IDs |
-| [Wikipedia](https://www.wikipedia.org/) | CC BY-SA 4.0 | Intro text on each card, collected at build time and credited on the card. The small thumbnail is the article's lead image, loaded from Wikimedia when the card opens (hidden if it fails; each image has its own Commons licence) |
-| Early human sites and routes, compiled for this app from published estimates | GPL-3.0, like the app | The early-humans layer (approximate dates) |
-| [Open Sans](https://fonts.google.com/specimen/Open+Sans) glyphs | Apache-2.0 | Map labels (`public/fonts/`) |
-| [MapLibre GL JS](https://maplibre.org/) | BSD-3-Clause | Rendering the globe |
+| Source | Licence | Used for | What the licence allows | Blocks selling? |
+|---|---|---|---|---|
+| [historical-basemaps](https://github.com/aourednik/historical-basemaps), André Ourednik and contributors | GPL-3.0 | Tier A borders for every date before 1886 (about 40 snapshots, 123,000 BC to 1880); also the period names (e.g. "Russian Empire") given to 1886+ polities | Use, change and sell, including commercially, as long as anything built from it is also released under GPL-3.0 with its source and credit | No, but the source must stay open |
+| [CShapes 2.0](https://icr.ethz.ch/data/cshapes/), Schvitz, Girardin, Rüegger, Weidmann, Cederman & Gleditsch (2022) | CC BY-NC-SA 4.0 | Tier B borders, day-exact, 1886-01-01 to 2019-12-31; country codes for share links; border-change dates ("Next change", "what changed") | Copy and adapt with credit, for non-commercial use only, and share changes under the same licence | **Yes**: no ads, paid features, in-app purchases or paid downloads |
+| [Natural Earth](https://www.naturalearthdata.com/) admin-0 | Public domain | Tier C present-day borders (2020 on) and the grey land base | Anything, no credit needed | No |
+| [Wikidata](https://www.wikidata.org/) | CC0 | Battles, sieges, treaties and city foundings (event dots); Wikipedia article titles and IDs | Anything, no credit needed | No |
+| [Wikipedia](https://www.wikipedia.org/) text | CC BY-SA 4.0 | Intro text on each card, collected at build time and credited on the card | Use and sell with credit and a link to the licence; changed text must be shared under the same licence | No |
+| Wikipedia thumbnails (Wikimedia Commons) | Each image has its own licence (CC BY, CC BY-SA, public domain...) | The article's lead image on each card, loaded from Wikimedia when the card opens (hidden if it fails) | Commons only holds images that allow commercial use, but most need per-image credit, which the app does not show yet | No, but a paid version would need per-image credits |
+| Early human sites and routes, compiled for this app from published estimates | GPL-3.0, like the app | The early-humans layer (approximate dates) | Ours: anything, since we wrote it | No |
+| [Open Sans](https://fonts.google.com/specimen/Open+Sans) glyphs | Apache-2.0 | Map labels (`public/fonts/`) | Use and sell, keep the licence notice | No |
+| [MapLibre GL JS](https://maplibre.org/) | BSD-3-Clause | Rendering the globe | Use and sell, keep the licence notice | No |
+
+Only CShapes blocks monetization. To sell the app or take ads, replace it (tier B would need other day-exact data, or
+fall back to tier A snapshots) and add Wikimedia image credits. The app's code is GPL-3.0 and stays open either way.
 
 ## Files in `public/data/`
 
