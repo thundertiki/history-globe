@@ -84,3 +84,32 @@ weaker for fine date precision and for 1900-1945 colonies. Worth a prototype bra
 
 **Unanswered:** accuracy against historians' maps; why areas overlap; what MemberOf does to the drawing order;
 whether a gap year (Germany 1945 to 1949) is common.
+
+## 7. Is there anything better? Could we build our own? (2026-11-07)
+
+**More granular global sources: none found.** CShapes 2.0 calls itself the only global GIS dataset of historical
+borders (1886 to 2019, day-exact). Everything else is regional or snapshots: Euratlas (Europe from AD 0, 150 EUR per
+layer, commercial licence), Centennia (Europe from 1000), REGIS (Europe 1870 to 2020, regional borders), U Minnesota
+Historical National Boundaries (global snapshots 1800, 1914, 1918, 1939, 1945, 1970, 1990, 2000; CC BY 3.0 US),
+CHGIS (China) and the Atlas of Historical County Boundaries (US). Not checked: CLIO Atlas, Correlates of War, GeaCron
+data (proprietary).
+
+**OpenHistoricalMap:** CC0 and versioned in time, but coverage is uneven (assessed as "very sparse" in 2021; per-country
+work exists, e.g. Poland 1815/1939/1945; some 1900 to 1945 country borders exist but several are flagged incomplete).
+No bulk download or tile route was found yet.
+
+**Cliopatria paper:** Scientific Data 12, 247 (12 Feb 2025), CC BY, a polity enters only if written sources attest its
+location and extent in particular years. No formal accuracy measure found.
+
+**Best option today:** Cliopatria as the base (CC BY, 3400 BCE to 2024, annual from about 1850, Wikidata links).
+
+**Building our own on top (hybrid), cheapest first:**
+1. Snap Cliopatria polity start and end years to exact days using Wikidata inception and dissolution dates (CC0).
+   Gives day-exact appearance and disappearance of states, not day-exact border shifts.
+2. Add a hand-kept `pipeline/overrides` set for known gaps (Germany 1945 to 1949, colonies in 1914), composed from
+   Natural Earth admin-1 (public domain) plus cited treaty dates. A few dozen events cover the famous ones.
+3. Contribute and consume through OpenHistoricalMap (CC0): fixes help everyone and come back to us.
+4. Do not derive from CShapes for a paid build. Its dates are facts, but the border selection is covered by the
+   NC-SA licence; get legal advice before reusing even the dates.
+Fully hand-built day-exact borders worldwide (1886 to 2019 has well over a thousand CShapes shapes) is a multi-year
+job and not realistic for one person without community help.
