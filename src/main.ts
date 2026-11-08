@@ -215,7 +215,7 @@ async function main() {
   const tabs = ERAS.map((e, i) => {
     const b = document.createElement('button');
     b.className = 'era';
-    b.textContent = e.label;
+    b.setAttribute('aria-label', e.label);
     b.setAttribute('role', 'tab');
     b.addEventListener('click', () => {
       stopPlay();
@@ -227,6 +227,11 @@ async function main() {
     erasEl.append(b);
     return b;
   });
+  // Below 360 px the era names abbreviate so six tabs fit one row.
+  const narrow = window.matchMedia('(max-width: 359px)');
+  const labelTabs = () => tabs.forEach((b, i) => (b.textContent = narrow.matches ? ERAS[i].tiny : ERAS[i].short));
+  narrow.addEventListener('change', labelTabs);
+  labelTabs();
   function showEra(i: number) {
     if (i === era) return;
     era = i;
@@ -242,11 +247,7 @@ async function main() {
     endLabels[1].textContent = i + 1 < ERAS.length ? yearLabel(ERAS[i + 1].start) : 'Today';
   }
   // "Next change": jump to the next date the map changes, and outline what changed.
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'era change';
-  nextBtn.textContent = 'Next change ▸';
-  nextBtn.title = 'Jump to the next date the borders change';
-  nextBtn.addEventListener('click', () => {
+  $('next-change').addEventListener('click', () => {
     stopPlay();
     let to: HDate | null = null;
     if (pick.tier === 'A') {
@@ -262,7 +263,6 @@ async function main() {
     globe.select(undefined);
     render(false, true, true);
   });
-  erasEl.append(nextBtn);
   slider.addEventListener('input', () => {
     stopPlay();
     setDate(posToDate(Number(slider.value), today), true);
@@ -314,7 +314,20 @@ async function main() {
     if (pos >= Number(slider.max)) return stopPlay();
     requestAnimationFrame(frame);
   }
+  // Long press on play cycles the speed (a tap still plays or pauses).
+  let pressTimer: ReturnType<typeof setTimeout> | undefined;
+  let longPressed = false;
+  playBtn.addEventListener('pointerdown', () => {
+    longPressed = false;
+    pressTimer = setTimeout(() => {
+      longPressed = true;
+      speed = (speed + 1) % SPEEDS.length;
+      showToast(`Speed ${SPEEDS[speed]}×`);
+    }, 500);
+  });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) playBtn.addEventListener(ev, () => clearTimeout(pressTimer));
   playBtn.addEventListener('click', () => {
+    if (longPressed) return void (longPressed = false);
     if (playing) return stopPlay();
     panel.hide();
     globe.select(undefined);
@@ -324,10 +337,6 @@ async function main() {
     playBtn.textContent = '❚❚';
     playBtn.setAttribute('aria-label', 'Pause');
     requestAnimationFrame(frame);
-  });
-  $('speed').addEventListener('click', () => {
-    speed = (speed + 1) % SPEEDS.length;
-    $('speed').textContent = `${SPEEDS[speed]}×`;
   });
 
   // ---- Layers menu ----

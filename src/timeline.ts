@@ -103,12 +103,12 @@ export function step(h: HDate, dir: 1 | -1, today: HDate): HDate {
 
 /** Era tabs: each narrows the slider to one stretch of history so a date is easier to find. */
 export const ERAS = [
-  { label: 'Prehistory', start: MIN_YEAR },
-  { label: 'Ancient', start: YEAR_START },
-  { label: 'Medieval', start: 500 },
-  { label: '1500–1800', start: 1500 },
-  { label: '1800–1945', start: 1800 },
-  { label: '1945–now', start: 1945 },
+  { label: 'Prehistory', short: 'Pre', tiny: 'Pre', start: MIN_YEAR },
+  { label: 'Ancient', short: 'Ancient', tiny: 'Anc.', start: YEAR_START },
+  { label: 'Medieval', short: 'Medieval', tiny: 'Med.', start: 500 },
+  { label: '1500–1800', short: '1500s', tiny: '1500s', start: 1500 },
+  { label: '1800–1945', short: '1800s', tiny: '1800s', start: 1800 },
+  { label: '1945–now', short: '1945+', tiny: '1945+', start: 1945 },
 ];
 
 /** Index of the era a date falls in. */
