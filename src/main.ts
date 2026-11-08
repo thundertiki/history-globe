@@ -104,6 +104,13 @@ async function main() {
   const sheet = new Sheet($('panel'), $('peek'), { card: $('panel-body'), search: $('view-search') }, (state, height) => {
     const pad = sheetPadding(state, height, phone.matches);
     const map = globe.map;
+    document.body.classList.toggle('sheet-full', state === 'full');
+    if (state === 'peek') {
+      // Closed by any route (close button, Escape, swipe, date change): clear the outline and the search state.
+      globe.select(undefined);
+      $('search-btn').setAttribute('aria-expanded', 'false');
+      writeHash();
+    }
     if (state === 'peek' || !phone.matches) {
       if (!sheetZoom && !map.getPadding().bottom) return;
       // Put the zoom back only if the person has not zoomed since the sheet opened.
@@ -112,8 +119,10 @@ async function main() {
       map.easeTo({ padding: pad, ...back, duration: 300 });
       return;
     }
+    // Zoom out once when the sheet opens; later height changes (summary loads, More) only move the padding.
+    const opening = !sheetZoom;
     if (!sheetZoom) sheetZoom = { before: map.getZoom(), applied: Math.max(1, map.getZoom() - 0.3) };
-    map.easeTo({ padding: pad, zoom: sheetZoom.applied, ...(sheetCentre && { center: sheetCentre }), duration: 300 });
+    map.easeTo({ padding: pad, ...(opening && { zoom: sheetZoom.applied }), ...(sheetCentre && { center: sheetCentre }), duration: 300 });
     sheetCentre = undefined;
   });
   const searchRows: Promise<Row[]> = json('search.json').catch(() => []);

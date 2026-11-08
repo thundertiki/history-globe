@@ -42,7 +42,9 @@ export class Sheet {
   private sync() {
     const s = this.read();
     this.peekEl.hidden = s !== 'peek';
-    if (s !== 'peek' && this.el.dataset.sheet !== s) this.el.dataset.sheet = s;
+    // A closed sheet forgets its height, so the next card opens at half and no CSS for a height can show it.
+    if (s === 'peek') delete this.el.dataset.sheet;
+    else if (this.el.dataset.sheet !== s) this.el.dataset.sheet = s;
     if (s === this.state) return;
     this.state = s;
     this.onChange(s, this.el.offsetHeight);

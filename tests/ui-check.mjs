@@ -120,6 +120,58 @@ async function open(width, setup) {
   await page.close();
 }
 
+// ---- Review fixes (390 px) ----
+{
+  const page = await open(390);
+  const wait = (ms = 900) => page.waitForTimeout(ms);
+  const goFrance = () => page.evaluate(() => window.hg.goTo({ name: 'France', tier: 'B', key: '220', date: '1914-07-28', span: '' }));
+  const panelShown = () => page.evaluate(() => { const el = document.getElementById('panel'); return getComputedStyle(el).display !== 'none' && el.offsetHeight > 0; });
+  await page.evaluate(() => window.hg.setDate('1914-07-28'));
+  await wait(600);
+
+  // 1. Closing from full must really hide the sheet (not just set the hidden attribute).
+  await page.click('#search-btn');
+  await wait(600);
+  check(await panelShown(), 'search sheet is visible when open');
+  await page.keyboard.press('Escape');
+  await wait(600);
+  check(!(await panelShown()), 'sheet is not drawn after closing from full');
+  check(await page.evaluate(() => document.getElementById('search-btn').getAttribute('aria-expanded') === 'false'), 'search button says collapsed after Escape');
+
+  // 4. A card opened after a full sheet was closed opens at half.
+  await goFrance();
+  await wait();
+  check(await page.evaluate(() => document.getElementById('panel').dataset.sheet === 'half'), 'card reopens at half after a full sheet was closed');
+
+  // 7. Escape also clears the outline on the map.
+  await page.keyboard.press('Escape');
+  await wait(600);
+  check(await page.evaluate(() => window.hg.globe.selected === undefined), 'Escape deselects the country');
+
+  // 2. At full height the close button is not covered by the Events button.
+  await page.click('#search-btn');
+  await wait(600);
+  const top = await page.evaluate(() => {
+    const r = document.getElementById('panel-close').getBoundingClientRect();
+    const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+    return el && (el.id || el.className);
+  });
+  check(top === 'panel-close' || top === 'ghost close', `close button is tappable at full height (top element: ${top})`);
+  await page.keyboard.press('Escape');
+  await wait(600);
+
+  // 3. A card changing height (summary loads, More tapped) must not undo the person's zoom.
+  await goFrance();
+  await wait(1500);
+  await page.evaluate(() => window.hg.globe.map.jumpTo({ zoom: 4.4 }));
+  await wait(300);
+  await page.evaluate(() => document.getElementById('panel').classList.add('expanded'));
+  await wait(1200);
+  const z = await page.evaluate(() => window.hg.globe.map.getZoom());
+  check(Math.abs(z - 4.4) < 0.05, `resizing the card keeps the zoom the person chose (${z.toFixed(2)})`);
+  await page.close();
+}
+
 // ---- Desktop keeps the right-hand card (1280 px) ----
 {
   const page = await open(1280);

@@ -6,11 +6,13 @@ const errors = [];
 let fail = 0;
 const check = (ok, msg) => { if (!ok) fail++; console.log(ok ? 'PASS' : 'FAIL', msg); };
 
-for (const width of [320, 390]) {
+for (const width of [320, 360, 375, 390]) {
   const page = await browser.newPage({ viewport: { width, height: 800 } });
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(URL);
   await page.waitForFunction(() => window.hg?.globe.map.loaded(), null, { timeout: 30000 });
+  await page.click('.era:nth-child(3)');
+  await page.waitForTimeout(400);
   const layout = await page.evaluate(() => {
     const eras = document.getElementById('eras');
     const row = document.querySelector('.timebar .row');
