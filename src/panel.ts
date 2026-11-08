@@ -4,6 +4,7 @@ import { HDate, formatDate, yearLabel } from './dates';
 import type { Pick } from './borders';
 import { nameAt, nameList } from './names';
 import type { Row } from './history';
+import { Rulers, rulerLines } from './rulers';
 
 type Entities = Record<string, { title: string; qid: string | null }>;
 
@@ -41,6 +42,15 @@ function loadEras(dataRoot: string): Promise<Eras> {
     .then((r) => (r.ok ? r.json() : { eras: {}, history: {} }))
     .catch(() => ((eras = null), { eras: {}, history: {} }));
   return eras;
+}
+
+// Rulers and capitals are prebuilt from Wikidata (pipeline/rulers.mjs).
+let rulers: Promise<Rulers> | null = null;
+function loadRulers(dataRoot: string): Promise<Rulers> {
+  rulers ??= fetch(`${dataRoot}/rulers.json`)
+    .then((r) => (r.ok ? r.json() : {}))
+    .catch(() => ((rulers = null), {}));
+  return rulers;
 }
 
 interface Card {
@@ -87,6 +97,7 @@ export class Panel {
   private el = document.getElementById('panel')!;
   private body = document.getElementById('panel-body')!;
   private token = 0;
+  private year: number | undefined; // chosen date's year, for rulers and capitals; unset for events and sites
 
   constructor(
     private entities: Entities,
@@ -108,6 +119,7 @@ export class Panel {
   onJump: (date: string) => void = () => {};
 
   async show(place: Place, pick: Pick, rows: Row[] = []) {
+    this.year = pick.year;
     const card = describe(place, pick, this.ownerName);
     // Old maps often just say "Egypt": use the period's article (New Kingdom, Mamluk Sultanate...) for the
     // chosen date, or "History of Egypt" before 1800 when no period is listed, never the modern country.
@@ -129,6 +141,7 @@ export class Panel {
 
   /** Card for an event or an early-human site: its own text, plus Wikipedia when the summary was prebuilt. */
   async showInfo(name: string, meta: string[], text: string, wikiTitle?: string) {
+    this.year = undefined;
     return this.render(name, meta, [], wikiTitle ? [wikiTitle] : [], undefined, text, wikiTitle);
   }
 
@@ -164,6 +177,21 @@ export class Panel {
     let title: string | null = qid ? w.qids[qid] ?? null : null;
     for (const n of lookups) if (!title && this.entities[n]) title = this.entities[n].title;
     title ??= directTitle ?? null;
+    // Ruler and capital on the chosen date, once the polity's Wikidata item is known.
+    const item = qid ?? lookups.map((n) => this.entities[n]?.qid).find(Boolean) ??
+      Object.values(this.entities).find((e) => e.title === title)?.qid;
+    const year = this.year;
+    if (item && year !== undefined) {
+      loadRulers(this.dataRoot).then((r) => {
+        if (t !== this.token) return;
+        const metaEl = this.body.querySelector('.meta');
+        const has = metaEl?.textContent?.includes('Capital:');
+        for (const l of rulerLines(r[item], year)) {
+          if (l.label === 'Capital' && has) continue; // CShapes already gave the capital
+          metaEl?.insertAdjacentHTML('beforeend', `<div>${l.label}: ${esc(l.text)}</div>`);
+        }
+      });
+    }
     const s = title ? w.pages[title] : undefined;
     if (t !== this.token) return; // a newer tap replaced this one
 

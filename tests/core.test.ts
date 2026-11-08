@@ -177,3 +177,22 @@ describe('eras', () => {
     }
   });
 });
+
+import { rulerLines, atYear } from '../src/rulers';
+describe('rulers', () => {
+  const data = {
+    h: [[-27, 14, 'Augustus'], [14, 37, 'Tiberius'], [-27, null, 'Emperor (generic)']] as [number | null, number | null, string][],
+    c: [[null, null, 'Rome']] as [number | null, number | null, string][],
+  };
+  it('picks the most specific ruler for a year', () => {
+    expect(atYear(data.h, 20)[0][2]).toBe('Tiberius');
+    expect(atYear(data.h, -100)).toEqual([]);
+  });
+  it('builds card lines with labels', () => {
+    const l = rulerLines(data, 20);
+    expect(l[0].label).toBe('Rulers');
+    expect(l[0].text).toContain('Tiberius (AD 14–AD 37)');
+    expect(l[1]).toEqual({ label: 'Capital', text: 'Rome' });
+    expect(rulerLines(undefined, 20)).toEqual([]);
+  });
+});
