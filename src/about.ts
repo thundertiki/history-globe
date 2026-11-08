@@ -33,7 +33,8 @@ present-day borders. Ancient borders are approximate.</p>
     Russian Empire rather than Russia. They change when a snapshot changes, which is not always the exact day.</li>
   <li>Wikipedia summaries were collected when the app was built and describe each place overall.</li>
 </ul>
-<p>Free and open source (GPL-3.0). Non-commercial.</p>
+<p>Free and open source (GPL-3.0). Non-commercial.
+  <a href="https://ko-fi.com/J2Y62A9SV0" target="_blank" rel="noopener">Support on Ko-fi</a> (a voluntary tip; nothing is locked behind it).</p>
 <form method="dialog"><button>Close</button></form>`;
 
 export function initAbout() {

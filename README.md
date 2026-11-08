@@ -9,6 +9,8 @@ name at that time, its status and capital (from 1886), and a Wikipedia summary.
 - 1886 to 2019: borders change on the exact day ([CShapes 2.0](https://icr.ethz.ch/data/cshapes/)).
 - From 2020: present-day borders ([Natural Earth](https://www.naturalearthdata.com/)).
 
+Enjoying it? [Support on Ko-fi](https://ko-fi.com/J2Y62A9SV0): voluntary, nothing is locked behind it.
+
 ## Use it
 
 **[Open History Globe in your browser →](https://thundertiki.github.io/history-globe/)**
