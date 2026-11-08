@@ -113,3 +113,26 @@ location and extent in particular years. No formal accuracy measure found.
    NC-SA licence; get legal advice before reusing even the dates.
 Fully hand-built day-exact borders worldwide (1886 to 2019 has well over a thousand CShapes shapes) is a multi-year
 job and not realistic for one person without community help.
+
+## 8. Cliopatria + OpenHistoricalMap + Wikidata: enough? (2026-11-07)
+
+**Wikidata day-precision test** (`pipeline/probes/cliopatria-wikidata-dates.mjs`, queried the Wikidata Query Service
+for P571 inception and P576 dissolved dates of Cliopatria's polities):
+- 1,420 of 1,637 polities carry a Wikidata id (5 records have none).
+- Start date present for 1,144; at day precision for 294 (21%). End date present for 946; day precision 216.
+- Polities that end before 2024: 1,231, of which 206 (17%) have a day-precision end date.
+- Modern polities (start 1850 or later): 260, of which 166 (64%) have a day-precision start.
+- Only P571 and P576 were queried; many states use P580 and P582 (start and end time), so real coverage is
+  probably somewhat higher. Not checked.
+
+**Conclusion:** Wikidata can give day-exact births and deaths of states for most modern polities, not all, and says
+nothing about border shifts inside a state's life (annexations, treaty transfers). Those stay at year precision
+unless added by hand with cited dates.
+
+**OpenHistoricalMap access (from its wiki):** Overpass endpoint `overpass-api.openhistoricalmap.org/api/`; the full
+database as planet.osm on Amazon S3; features carry `start_date` and `end_date` (YYYY, YYYY-MM or YYYY-MM-DD) plus
+optional `:edtf` range tags; changing shapes are grouped with chronology relations. Licence: CC0 unless a feature's
+`license=*` tag says CC BY or CC BY-SA. Not verified: whether Cliopatria (CC BY) may be imported into OHM, how many
+countries have 1886 to 2019 borders, or how many OHM boundaries carry `wikidata=*` tags for matching to Cliopatria.
+
+**Possible shortcut not yet tried:** ask the CShapes authors (ETH Zurich) whether they grant a commercial licence.
