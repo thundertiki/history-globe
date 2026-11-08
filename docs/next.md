@@ -13,14 +13,10 @@ Full ordered plan: `docs/roadmap.md`.
   none if more than 12 changed. Slider drags and playback never flash. `node tests/changes-check.mjs` checks it.
 
 ## Timeline tabs, flicker fix (done 2026-11-07, unreleased)
-- Era tabs above the slider ( in ): the slider covers one era; a typed or searched date switches the tab.
+- Era tabs above the slider (`ERAS` in `src/timeline.ts`): the slider covers one era; a typed or searched date switches the tab.
 - "Next change ▸" button jumps to the next border-change date and outlines what changed.
 - Event/early-human dots hide while the slider moves or plays and return 250 ms after it settles; polity names draw above dots.
-- start {"date":"28 Jul 1914","on":"1800–1945","min":"575462","max":"779175","ends":["1800","Borders on this day","1945"],"toast":""}
-medieval {"date":"AD 500","on":"Medieval","min":"353352","max":"420021","ends":["AD 500","Borders as of c. AD 500 (snapshot)","1500"],"toast":""}
-next change {"date":"AD 600","on":"Medieval","min":"353352","max":"420021","ends":["AD 500","Borders as of c. AD 600 (snapshot)","1500"],"toast":""}
-1945-now {"date":"1 Jan 1945","on":"1945–now","min":"779176","max":"1000000","ends":["1945","Borders on this day","Today"],"toast":""}
-PASS [] checks tabs and the button.
+- `node tests/eras-check.mjs` checks the tabs and the button.
 
 ## Pending release (0.3.0 shipped 2026-11-07; card-text fix, search and highlight are in all builds)
 - 2026-11-07 changes (Pages, offline app, share links, light card text) are live on the web only; run `hg-release`
