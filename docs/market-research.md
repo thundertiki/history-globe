@@ -52,3 +52,35 @@ No Android app showing borders by date turned up (store search not possible here
 3. Check the DRUM licence page and OHM coverage for 1886 to 2019.
 4. Look at Google Play and the App Store by hand for competitors' ratings and prices.
 5. Decide: stay free and non-commercial (donations only), or plan a Cliopatria-based commercial build.
+
+## 6. Cliopatria trial (2026-11-07)
+
+Downloaded v0.2.1 (Zenodo 10.5281/zenodo.23128623, licence field `cc-by-4.0`, `LICENSE.md` says CC BY 4.0) into
+git-ignored `pipeline/raw/cliopatria/` (zip 299 MB; `cliopatria_polities_only_v021.geojson` 173 MB). Probes:
+`pipeline/probes/cliopatria-stats.mjs <geojson>` and `cliopatria-render.mjs <geojson> <outdir> <years...>`
+(flat-map PNG per year; needs `playwright-core`, run with `node --max-old-space-size=4096`).
+
+**What it has:** 13,797 shape records, 1,637 polity names, fields `Name, FromYear, ToYear, Area, Type, Wikipedia,
+Wikidata, SeshatID, Components, MemberOf`. 508 distinct start years: sparse in antiquity (frame years every 100 to
+200 years), then **near-annual from about 1850** (median span of a shape from 1886 on is 2 years). Polities alive:
+4 in 3000 BC, 48 in 500 BC, 133 in AD 1000, 141 in 1200 and 1500, 130 in 1800, 79 in 1914, 77 in 1945, 165 in
+1990, 195 in 2020 and 2024. A bonus over our data: 2020 to 2024 are covered, and every polity has a Wikipedia and
+Wikidata link (could replace our hand-built `entities.json` matching).
+
+**Compared with today's data:**
+- 1914: Cliopatria draws 79 polities where CShapes plus period names gives about 124. Colonies are merged into their
+  empire (Components/MemberOf), so the 1914 map is coarser but cleaner. Total area at 1914 is 171 million km² against
+  about 149 million of land, so shapes overlap somewhere (not investigated).
+- 1945: 77 polities; Germany has no shape for 1945 to 1949 (the Federal Republic starts 1950).
+- 1990: 165 polities, looks complete and accurate at world scale.
+- Not day-exact: nothing here replaces CShapes' daily borders, so the "Next change" button and the
+  "Changed: Germany" outline would work by year, not by day.
+- Size: simplified to 5% with mapshaper (`-simplify 5% keep-shapes`, quantization 1e5), all eras in one TopoJSON is
+  16 MB (172,465 intersections could not be repaired). Our whole tier A is 5 MB, so it would need splitting by era
+  and a tighter simplification.
+
+**Verdict:** a commercial-safe base for tier A and for 1886 to 2024 at year precision. Good for coverage and links;
+weaker for fine date precision and for 1900-1945 colonies. Worth a prototype branch before deciding.
+
+**Unanswered:** accuracy against historians' maps; why areas overlap; what MemberOf does to the drawing order;
+whether a gap year (Germany 1945 to 1949) is common.
