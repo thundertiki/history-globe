@@ -34,3 +34,13 @@ Work top to bottom. Tick items off here and move the one being worked on into `d
 - [ ] Clean `pipeline/unmatched.txt` (blank lines, fragments like "(Russian and Japanese claim)"), then give
       peoples/cultures a plain "people / culture" card without a Wikipedia link.
 - [ ] Still unverified: APK on a real phone since 0.1.2; full Windows installer run-through.
+
+## Strategy (decided 2026-11-07)
+- **Stay free and non-commercial for now.** CShapes (CC BY-NC-SA) gives the best data (day-exact borders 1886 to
+  2019) and rules out ads, paid features and in-app purchases. We will not ask the CShapes authors for a licence.
+- **Make the free app feature rich** (sections 2 to 4 above), then release (0.4.0 has era tabs and Next change).
+- **Ko-fi donation link** (voluntary, no features behind it): create the Ko-fi page first (Ben), then add a
+  "Support" link to the About dialog, README and web page. Do not invent the URL.
+- **Paid features only if we find comparably good free-to-sell data.** Plan and evidence: `docs/market-research.md`
+  (Cliopatria CC BY base + Wikidata day dates + our overrides + filtered OpenHistoricalMap). Trial data is in
+  git-ignored `pipeline/raw/cliopatria/`; probes in `pipeline/probes/`. Revisit when the free app's feature list is done.

@@ -41,6 +41,7 @@ Design and status: vault `10 Projects/History Globe.md`.
 - No runtime calls to other sites (the artifact blocks them): Wikipedia text and glyphs are prebuilt.
 - Data licences: `public/data/LICENSES.md`. CShapes is non-commercial, so no ads or paid features.
 - Say how precise the borders are wherever a date is shown.
-- In flight: `docs/next.md`. Ordered plan: `docs/roadmap.md`. Failed approaches: `docs/dead-ends.md`.
+- In flight: `docs/next.md`. Ordered plan and strategy: `docs/roadmap.md`. Failed approaches: `docs/dead-ends.md`.
+  Data alternatives, competitors, monetization: `docs/market-research.md`.
 - Releases: follow the `hg-release` skill (version bump, Windows + Android + artifact builds, artifact republish,
   tag, GitHub release, README Download table).
