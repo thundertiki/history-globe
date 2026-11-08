@@ -12,6 +12,12 @@ Full ordered plan: `docs/roadmap.md`.
   outline for about 2 s plus a "Changed: ..." toast. Tier B only within 400 days; tier A = names new in the snapshot;
   none if more than 12 changed. Slider drags and playback never flash. `node tests/changes-check.mjs` checks it.
 
+## Next up (decided 2026-11-07)
+- Release 0.4.0 (`hg-release`): era tabs, Next change, flicker fix.
+- Then rulers and capitals on the card, tours, quizzes (roadmap sections 2 to 4). Ko-fi link once Ben has a page.
+- Check dot density around 1945 on a phone.
+- Data and money research: `docs/market-research.md`. No commercial work yet.
+
 ## Timeline tabs, flicker fix (done 2026-11-07, unreleased)
 - Era tabs above the slider (`ERAS` in `src/timeline.ts`): the slider covers one era; a typed or searched date switches the tab.
 - "Next change ▸" button jumps to the next border-change date and outlines what changed.
