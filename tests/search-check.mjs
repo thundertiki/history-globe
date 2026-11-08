@@ -14,7 +14,7 @@ for (const [q, title, dateLike] of [['roman empire', 'Roman Empire', '0'], ['uss
   const first = await page.textContent('#search-results li .sr-name');
   await page.keyboard.press('Enter');
   await page.waitForFunction(() => !document.getElementById('panel').hidden && document.querySelector('#panel h2')?.textContent, null, { timeout: 15000 }).catch(() => {});
-  const r = await page.evaluate(() => ({ h2: document.querySelector('#panel h2')?.textContent, date: document.getElementById('date-input').value, hash: location.hash, searchHidden: document.getElementById('search').hidden }));
+  const r = await page.evaluate(() => ({ h2: document.querySelector('#panel h2')?.textContent, date: document.getElementById('date-input').value, hash: location.hash, searchHidden: document.getElementById('view-search').hidden }));
   const ok = r.searchHidden && !!r.h2;
   if (!ok) fail++;
   console.log(ok ? 'PASS' : 'FAIL', q, '->', first, JSON.stringify(r));

@@ -26,16 +26,18 @@
         <a class="menu-link" href="https://ko-fi.com/J2Y62A9SV0" target="_blank" rel="noopener">Support on Ko-fi</a>
         <button id="about-btn" class="ghost" aria-label="About and sources">About</button>
       </div>
-      <div id="search" class="layers searchbox" hidden>
-        <input id="search-input" type="search" placeholder="Find a country or empire…" aria-label="Search by name" autocomplete="off" spellcheck="false" />
-        <ul id="search-results" role="listbox"></ul>
-      </div>
     </header>
 
     <aside id="panel" class="panel" hidden>
+      <div class="grab" aria-hidden="true"></div>
       <button id="panel-close" class="ghost close" aria-label="Close">✕</button>
       <div id="panel-body"></div>
+      <div id="view-search" hidden>
+        <input id="search-input" type="search" placeholder="Find a country or empire…" aria-label="Search by name" autocomplete="off" spellcheck="false" />
+        <ul id="search-results" role="listbox"></ul>
+      </div>
     </aside>
+    <div id="peek" class="peek">Tap a country, or search</div>
 
     <button id="events-btn" class="map-btn" aria-pressed="true" aria-label="Show battles, treaties and cities" title="Battles, treaties and cities"><span class="dot ev"></span></button>
 

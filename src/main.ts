@@ -10,6 +10,7 @@ import { nameAt } from './names';
 import { timelineFor } from './history';
 import { Result, Row, search } from './search';
 import { changedFeatures } from './changes';
+import { Sheet, sheetPadding } from './sheet';
 
 const DATA = `${import.meta.env.BASE_URL}data`;
 /** Share links always point at the public web app, whichever version (artifact, installer) made them. */
@@ -94,6 +95,27 @@ async function main() {
     return p ? nameAt(p, iso) : undefined;
   }, DATA);
   initAbout();
+
+  // The bottom sheet (phones) and the right-hand card (wide screens) are the same element. While it is open on
+  // a phone the map is padded by its height and zoomed out a little, so the globe stays centred in what is visible.
+  const phone = window.matchMedia('(max-width: 640px)');
+  let sheetZoom: { before: number; applied: number } | null = null;
+  let sheetCentre: [number, number] | undefined; // tapped spot to bring into view when the sheet opens
+  const sheet = new Sheet($('panel'), $('peek'), { card: $('panel-body'), search: $('view-search') }, (state, height) => {
+    const pad = sheetPadding(state, height, phone.matches);
+    const map = globe.map;
+    if (state === 'peek' || !phone.matches) {
+      if (!sheetZoom && !map.getPadding().bottom) return;
+      // Put the zoom back only if the person has not zoomed since the sheet opened.
+      const back = sheetZoom && Math.abs(map.getZoom() - sheetZoom.applied) < 0.05 ? { zoom: sheetZoom.before } : {};
+      sheetZoom = null;
+      map.easeTo({ padding: pad, ...back, duration: 300 });
+      return;
+    }
+    if (!sheetZoom) sheetZoom = { before: map.getZoom(), applied: Math.max(1, map.getZoom() - 0.3) };
+    map.easeTo({ padding: pad, zoom: sheetZoom.applied, ...(sheetCentre && { center: sheetCentre }), duration: 300 });
+    sheetCentre = undefined;
+  });
   const searchRows: Promise<Row[]> = json('search.json').catch(() => []);
 
   // Secondary data loads after the first map is up.
@@ -166,7 +188,7 @@ async function main() {
   function writeHash(): string {
     const c = globe.map.getCenter();
     let h = `#${hashOf(date)}/${c.lng.toFixed(2)},${c.lat.toFixed(2)},${globe.map.getZoom().toFixed(1)}`;
-    if (shown?.kind === 'place' && !$('panel').hidden) h += `/${encodeURIComponent(placeKey(shown.place))}`;
+    if (shown?.kind === 'place' && !$('panel').hidden && sheet.viewName === 'card') h += `/${encodeURIComponent(placeKey(shown.place))}`;
     try {
       history.replaceState(null, '', h);
     } catch {
@@ -371,20 +393,23 @@ async function main() {
   });
 
   // ---- Search: find a polity by name and jump to when it existed ----
-  const sBox = $('search');
   const sInput = $<HTMLInputElement>('search-input');
   const sList = $('search-results');
   const sBtn = $('search-btn');
+  const searchOpen = () => sheet.viewName === 'search' && sheet.state !== 'peek';
   const setSearch = (open: boolean) => {
-    sBox.hidden = !open;
     sBtn.setAttribute('aria-expanded', String(open));
-    if (open) { setMenu(false); sInput.focus(); sInput.select(); }
+    if (open) {
+      setMenu(false);
+      panel.hide();
+      globe.select(undefined);
+      sheet.view('search');
+      sheet.set('full');
+      sInput.focus();
+      sInput.select();
+    } else if (searchOpen()) sheet.set('peek');
   };
-  sBtn.addEventListener('click', (e) => { e.stopPropagation(); setSearch(Boolean(sBox.hidden)); });
-  document.addEventListener('click', (e) => {
-    if (!sBox.hidden && !sBox.contains(e.target as Node)) setSearch(false);
-  });
-  sBox.addEventListener('keydown', (e) => { if (e.key === 'Escape') setSearch(false); });
+  sBtn.addEventListener('click', (e) => { e.stopPropagation(); setSearch(!searchOpen()); });
   sInput.addEventListener('input', async () => {
     const found = search(await searchRows, sInput.value);
     sList.replaceChildren();
@@ -401,7 +426,7 @@ async function main() {
       li.innerHTML = '<span class="sr-name"></span><span class="sr-span"></span>';
       li.children[0].textContent = r.name;
       li.children[1].textContent = r.span;
-      const go = () => { setSearch(false); goTo(r); };
+      const go = () => { sBtn.setAttribute('aria-expanded', 'false'); goTo(r); };
       li.addEventListener('click', go);
       li.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
       sList.append(li);
@@ -410,7 +435,7 @@ async function main() {
   sInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') (sList.firstElementChild as HTMLElement | null)?.click();
   });
-  moreBtn.addEventListener('click', () => setSearch(false));
+  moreBtn.addEventListener('click', () => searchOpen() && setSearch(false));
 
   /** Centre of the largest polygon (so Russia or France with far islands centre on the main land). */
   function centreOf(g: any): [number, number] | undefined {
@@ -441,21 +466,18 @@ async function main() {
       globe.map.jumpTo({ center: c, zoom: Math.max(2.5, Math.min(globe.map.getZoom(), 4)), padding: { top: 0, bottom: 0, left: 0, right: 0 } });
     }
     await showHit({ kind: 'place', place: { tier: pick.tier, props: f.properties! } });
-    if (c) reveal({ lngLat: new maplibregl.LngLat(c[0], c[1]), point: globe.map.project(c) });
   }
 
   // ---- Taps ----
-  const releaseMap = () => globe.map.easeTo({ padding: { top: 0, bottom: 0, left: 0, right: 0 }, duration: 300 });
-  $('panel-close').addEventListener('click', () => { globe.select(undefined); releaseMap(); writeHash(); });
-  const reveal = (at: Parameters<Globe['revealAbove']>[0]) =>
-    requestAnimationFrame(() => {
-      const el = $('panel');
-      if (!el.hidden) globe.revealAbove(at, el.getBoundingClientRect());
-    });
+  $('panel-close').addEventListener('click', () => { globe.select(undefined); sheet.set('peek'); writeHash(); });
   const TYPE: Record<string, string> = { battle: 'Battle', siege: 'Siege', treaty: 'Treaty', city: 'City founded' };
 
   function showHit(hit: Hit) {
     shown = hit;
+    if (sheet.viewName !== 'card') {
+      sheet.view('card');
+      sheet.set('half');
+    }
     return showCard(hit).finally(writeHash); // the link includes the polity once its card is open
   }
   function showCard(hit: Hit) {
@@ -473,11 +495,10 @@ async function main() {
     stopPlay();
     if (!hit) {
       panel.hide();
-      writeHash();
-      return releaseMap();
+      return writeHash();
     }
-    // Once the card has its final size (summary loaded), move the map so the tapped spot sits above it.
-    showHit(hit).then(() => reveal(at));
+    sheetCentre = [at.lngLat.lng, at.lngLat.lat]; // the sheet's padding then keeps the tapped spot in view
+    showHit(hit);
   }, () => pick.tier);
 
   // Timeline chips: jump to that date and keep the same polity's card open.

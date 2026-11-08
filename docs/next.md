@@ -19,6 +19,13 @@ Full ordered plan: `docs/roadmap.md`.
   ancient ones mostly have a capital only (Wikidata rarely dates their rulers). Possible next step: a hand-written
   or Wikipedia-list-based pass for big empires. Same names on old snapshot polygons only match through `entities.json`.
 
+## UI redesign (built 2026-11-07, unreleased, not yet tried on a phone)
+- Spec `docs/ui-redesign.md`, plan `docs/ui-redesign-plan.md`. Date bar: tabs fit one row, Next change beside the arrows,
+  speed on long-press of play. Top bar: search icon and a menu (Share, Support, About). Layers menu replaced by an
+  Events button (top right on phones, bottom left on desktop); early humans always on before 1500.
+- `src/sheet.ts`: one bottom sheet (peek/half/full) for the card and search; map padding follows its height.
+- Checks: `tests/ui-check.mjs`, `tests/eras-check.mjs`. To tune on a phone: sheet heights, long-press speed.
+
 ## Next up (decided 2026-11-07)
 - Release 0.4.0 (`hg-release`): era tabs, Next change, flicker fix.
 - Then rulers and capitals on the card, tours, quizzes (roadmap sections 2 to 4). Ko-fi link once Ben has a page.
