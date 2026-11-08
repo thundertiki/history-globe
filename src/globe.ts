@@ -188,6 +188,15 @@ export class Globe {
       },
       paint: { 'text-color': '#ffe2c8', 'text-halo-color': 'rgba(0,0,0,0.8)', 'text-halo-width': 1.2 },
     });
+    // Polity names stay readable above the dots.
+    this.map.moveLayer('labels');
+  }
+
+  /** Hide the overlay dots while the date is dragged or played (updateOverlays brings them back). */
+  async hideOverlays() {
+    await this.ready;
+    const off: FilterSpecification = ['boolean', false];
+    for (const id of ['events', 'events-label', 'human-sites', 'human-sites-label', 'human-routes']) this.map.setFilter(id, off);
   }
 
   /** Load overlay data (events and the early-human layer) once. */

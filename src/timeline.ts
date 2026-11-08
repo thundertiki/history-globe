@@ -100,3 +100,27 @@ export function step(h: HDate, dir: 1 | -1, today: HDate): HDate {
   }
   return s.toDate(i);
 }
+
+/** Era tabs: each narrows the slider to one stretch of history so a date is easier to find. */
+export const ERAS = [
+  { label: 'Prehistory', start: MIN_YEAR },
+  { label: 'Ancient', start: YEAR_START },
+  { label: 'Medieval', start: 500 },
+  { label: '1500–1800', start: 1500 },
+  { label: '1800–1945', start: 1800 },
+  { label: '1945–now', start: 1945 },
+];
+
+/** Index of the era a date falls in. */
+export function eraOf(h: HDate): number {
+  let i = 0;
+  for (let k = 0; k < ERAS.length; k++) if (h.y >= ERAS[k].start) i = k;
+  return i;
+}
+
+/** Slider track range [min, max] for an era; each era ends where the next begins. */
+export function eraRange(i: number, today: HDate): [number, number] {
+  const lo = i === 0 ? 0 : dateToPos({ y: ERAS[i].start }, today);
+  const hi = i + 1 < ERAS.length ? dateToPos({ y: ERAS[i + 1].start }, today) - 1 : SLIDER_MAX;
+  return [lo, hi];
+}

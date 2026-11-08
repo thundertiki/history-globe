@@ -158,3 +158,22 @@ describe('changedFeatures', () => {
     expect(changedFeatures(old, A(100), nu, A(200), 100).map((x) => x.id)).toEqual([2]);
   });
 });
+
+import { ERAS, eraOf, eraRange } from '../src/timeline';
+describe('eras', () => {
+  const today = { y: 2026, m: 11, d: 7 };
+  it('cover the whole track without overlap', () => {
+    expect(eraRange(0, today)[0]).toBe(0);
+    expect(eraRange(ERAS.length - 1, today)[1]).toBe(SLIDER_MAX);
+    for (let i = 0; i + 1 < ERAS.length; i++) expect(eraRange(i, today)[1]).toBeLessThan(eraRange(i + 1, today)[0]);
+  });
+  it('place dates in an era whose range holds their slider position', () => {
+    for (const y of [-200000, -3000, -2999, 0, 499, 500, 1499, 1500, 1914, 1944, 1945, 2026]) {
+      const i = eraOf({ y });
+      const [lo, hi] = eraRange(i, today);
+      const p = dateToPos({ y }, today);
+      expect(p).toBeGreaterThanOrEqual(lo);
+      expect(p).toBeLessThanOrEqual(hi);
+    }
+  });
+});

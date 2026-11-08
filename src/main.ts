@@ -4,7 +4,7 @@ import { Globe, Hit } from './globe';
 import { Panel } from './panel';
 import { initAbout } from './about';
 import { HDate, decimalYear, formatDate, ordinal, parseDate, yearLabel } from './dates';
-import { SLIDER_MAX, posToDate, dateToPos, normalize, step } from './timeline';
+import { SLIDER_MAX, ERAS, eraOf, eraRange, posToDate, dateToPos, normalize, step } from './timeline';
 import { Manifest, Pick, pickBorders } from './borders';
 import { nameAt } from './names';
 import { timelineFor } from './history';
@@ -114,16 +114,27 @@ async function main() {
   let prevView: { date: HDate; pick: Pick; features: any } | null = null; // what was on the map before this render
 
   /** `flash`: outline the polities that changed since the previous date (stepping, not dragging or playing). */
-  async function render(fromSlider = false, flash = false) {
+  /** Dots follow the date; while the slider is moving they hide and return once it settles (no flicker). */
+  let overlayTimer: ReturnType<typeof setTimeout> | undefined;
+  function refreshOverlays(moving: boolean) {
+    clearTimeout(overlayTimer);
+    const apply = () => extras.then(() => globe.updateOverlays(decimalYear(date), eventWindow(date), layers));
+    if (!moving) return void apply();
+    extras.then(() => globe.hideOverlays());
+    overlayTimer = setTimeout(apply, 250);
+  }
+
+  async function render(fromSlider = false, flash = false, force = false) {
     const before = prevView;
     pick = pickBorders(date, manifest);
     input.value = formatDate(date);
     input.classList.remove('bad');
     precision.textContent = precisionText(pick, date);
+    showEra(eraOf(date));
     if (!fromSlider) slider.value = String(dateToPos(date, today));
     writeHash();
     const seq = ++renderSeq;
-    extras.then(() => globe.updateOverlays(decimalYear(date), eventWindow(date), layers));
+    refreshOverlays(fromSlider);
     // Say so when a border file takes a moment (the first 1886–2019 load is about 0.8 MB).
     const slow = setTimeout(() => seq === renderSeq && (precision.textContent += ' · loading…'), 300);
     try {
@@ -132,7 +143,7 @@ async function main() {
         precision.textContent = precisionText(pick, date);
         prevView = { date, pick, features: globe.current };
         if (flash && before) {
-          const days = Math.abs(ordinal(date) - ordinal(before.date));
+          const days = force ? 0 : Math.abs(ordinal(date) - ordinal(before.date));
           const ch = changedFeatures(before.features, before.pick, globe.current, pick, days);
           if (ch.length) {
             globe.flash(ch.map((f) => f.id!));
@@ -196,8 +207,62 @@ async function main() {
     globe.select(undefined);
     return render(fromSlider, flash);
   };
-  slider.max = String(SLIDER_MAX);
   slider.step = '1';
+  // ---- Era tabs: the slider covers one era at a time ----
+  const erasEl = $('eras');
+  const endLabels = document.querySelectorAll<HTMLElement>('.timebar .row.small > span:not(#precision)');
+  let era = -1;
+  const tabs = ERAS.map((e, i) => {
+    const b = document.createElement('button');
+    b.className = 'era';
+    b.textContent = e.label;
+    b.setAttribute('role', 'tab');
+    b.addEventListener('click', () => {
+      stopPlay();
+      const [lo, hi] = eraRange(i, today);
+      const pos = Number(slider.value);
+      showEra(i);
+      if (pos < lo || pos > hi) setDate(posToDate(lo, today));
+    });
+    erasEl.append(b);
+    return b;
+  });
+  function showEra(i: number) {
+    if (i === era) return;
+    era = i;
+    const [lo, hi] = eraRange(i, today);
+    slider.min = String(lo);
+    slider.max = String(hi);
+    tabs.forEach((b, k) => {
+      b.classList.toggle('on', k === i);
+      b.setAttribute('aria-selected', String(k === i));
+    });
+    tabs[i].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    endLabels[0].textContent = i === 0 ? '300,000 BC' : yearLabel(ERAS[i].start);
+    endLabels[1].textContent = i + 1 < ERAS.length ? yearLabel(ERAS[i + 1].start) : 'Today';
+  }
+  // "Next change": jump to the next date the map changes, and outline what changed.
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'era change';
+  nextBtn.textContent = 'Next change ▸';
+  nextBtn.title = 'Jump to the next date the borders change';
+  nextBtn.addEventListener('click', () => {
+    stopPlay();
+    let to: HDate | null = null;
+    if (pick.tier === 'A') {
+      const y = manifest.tierA.map((s) => s.year).find((s) => s > pick.snapshotYear!);
+      to = y !== undefined ? { y } : { y: 1886, m: 1, d: 1 };
+    } else if (pick.tier === 'B') {
+      const later = (globe.current?.features ?? []).map((f) => f.properties!.start as string).filter((s) => s > pick.iso!).sort()[0];
+      to = later ? parseDate(later) : { y: 2020, m: 1, d: 1 };
+    }
+    if (!to) return showToast('No later changes: this is the present-day map.');
+    date = normalize(to, today);
+    panel.hide();
+    globe.select(undefined);
+    render(false, true, true);
+  });
+  erasEl.append(nextBtn);
   slider.addEventListener('input', () => {
     stopPlay();
     setDate(posToDate(Number(slider.value), today), true);
@@ -239,21 +304,21 @@ async function main() {
     const dt = last ? Math.min(ts - last, 100) : 0;
     last = ts;
     // 1× crosses the whole track in about 4 minutes.
-    pos = Math.min(SLIDER_MAX, pos + (SLIDER_MAX / 240000) * SPEEDS[speed] * dt);
-    if (ts - lastRender > 120 || pos >= SLIDER_MAX) {
+    pos = Math.min(Number(slider.max), pos + (SLIDER_MAX / 240000) * SPEEDS[speed] * dt);
+    if (ts - lastRender > 120 || pos >= Number(slider.max)) {
       lastRender = ts;
       slider.value = String(Math.round(pos));
       const h = posToDate(Math.round(pos), today);
       if (hashOf(h) !== hashOf(date)) { date = h; render(true); }
     }
-    if (pos >= SLIDER_MAX) return stopPlay();
+    if (pos >= Number(slider.max)) return stopPlay();
     requestAnimationFrame(frame);
   }
   playBtn.addEventListener('click', () => {
     if (playing) return stopPlay();
     panel.hide();
     globe.select(undefined);
-    pos = Number(slider.value) >= SLIDER_MAX ? 0 : Number(slider.value);
+    pos = Number(slider.value) >= Number(slider.max) ? Number(slider.min) : Number(slider.value);
     playing = true;
     last = 0;
     playBtn.textContent = '❚❚';
