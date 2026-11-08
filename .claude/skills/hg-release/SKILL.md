@@ -17,7 +17,9 @@ Run from `history-globe`. Use `npm --prefix <repo>` and absolute paths (no `cd <
    - `npm run build:artifact` → `dist-artifact/page.html` + `files.json`
 4. **Artifact:** publish `dist-artifact/page.html` with `root: history-globe/dist-artifact` to the same URL
    (https://claude.ai/artifact/3Ck65tQB94o5MNWLYACfxv). Pass only changed files in `files` (always `app.js`,
-   `app.css`; plus any `data/...` the change touched; `files.json` lists them all). Untouched files are kept.
+   `app.css`; plus any `data/...` the change touched; `files.json` lists them all). Untouched files are kept. The tool may refuse until it has seen the live
+   version and the old `app.js`/`app.css`: publish again, then pass `overwrite_unread: ["app.js", "app.css"]`
+   (they are build outputs of this repo, so replacing them is the point).
 5. **README:** replace the old version number in the Download table (`sed s/<old>/<new>/g README.md`).
 6. **Commit and push**, then `git tag v<v>` and `git push origin v<v>`.
 7. **GitHub release:** `gh release create v<v> --repo thundertiki/history-globe --title "History Globe <v>"`

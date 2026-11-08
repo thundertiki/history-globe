@@ -21,3 +21,8 @@
 - **Testing the map in a hidden Browser pane** (2026-11-07, confirmed): the hidden pane runs 0 animation frames,
   so MapLibre never fires `load` and the date bar stays on "loading…" (not an app bug). Use headless Edge
   (`tests/e2e-check.mjs` pattern) instead. Revisit if: the pane renders while hidden.
+- **Multi-line Node/Bash edits with apostrophes or backticks in a heredoc** (2026-11-07, confirmed): the shell
+  mangled the text (lost backticks, "unexpected EOF"), once corrupting a doc. Use the Edit tool or write a script
+  file instead. Revisit if: never.
+- **Hand-building day-exact borders worldwide** (2026-11-07, unconfirmed): CShapes has well over a thousand shapes
+  for 1886 to 2019, so it is a multi-year job alone. Revisit if: a community (e.g. OpenHistoricalMap) fills it in.
