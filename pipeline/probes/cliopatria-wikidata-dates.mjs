@@ -14,7 +14,7 @@ console.log('polities', new Set(fs.map((f) => f.properties.Name)).size, 'with Wi
 const res = new Map();
 for (let i = 0; i < qs.length; i += 150) {
   const vals = qs.slice(i, i + 150).map((q) => `wd:${q.replace(/^.*\//, '')}`).join(' ');
-  const q = `SELECT ?s ?p ?t ?prec WHERE { VALUES ?s { ${vals} } VALUES ?pp { p:P571 p:P576 } ?s ?pp ?st . ?st ?ps ?t . ?st psv:P571|psv:P576 ?v . ?v wikibase:timePrecision ?prec . BIND(IF(?pp = p:P571, "start", "end") AS ?p) FILTER(?ps IN (ps:P571, ps:P576)) }`;
+  const q = `SELECT ?s ?p ?t ?prec WHERE { VALUES ?s { ${vals} } VALUES ?pp { p:P571 p:P580 p:P576 p:P582 } ?s ?pp ?st . ?st ?ps ?t . ?st psv:P571|psv:P580|psv:P576|psv:P582 ?v . ?v wikibase:timePrecision ?prec . BIND(IF(?pp IN (p:P571, p:P580), "start", "end") AS ?p) FILTER(?ps IN (ps:P571, ps:P580, ps:P576, ps:P582)) }`;
   const r = await fetch('https://query.wikidata.org/sparql?format=json&query=' + encodeURIComponent(q), { headers: { 'User-Agent': 'history-globe-research/0.1 (github.com/thundertiki/history-globe)', Accept: 'application/sparql-results+json' } });
   if (!r.ok) { console.log('batch', i, r.status, (await r.text()).slice(0, 200)); continue; }
   for (const b of (await r.json()).results.bindings) {

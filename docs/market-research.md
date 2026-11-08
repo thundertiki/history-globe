@@ -136,3 +136,33 @@ optional `:edtf` range tags; changing shapes are grouped with chronology relatio
 countries have 1886 to 2019 borders, or how many OHM boundaries carry `wikidata=*` tags for matching to Cliopatria.
 
 **Possible shortcut not yet tried:** ask the CShapes authors (ETH Zurich) whether they grant a commercial licence.
+
+## 9. Correction and the plan (2026-11-07)
+
+**Wikidata dates, rerun with start/end time too (P580, P582):** start date present for 1,187 of 1,420 polities
+(84%), end date for 989 of the 1,231 that ended (80%). Most are year or century precision because the sources only
+give that; day precision is 295 starts and 218 ends overall, but 166 of 260 (64%) for states that began after 1850.
+So Wikidata is not missing dates; it mostly lacks *days* for old states, which also don't exist in the sources.
+
+**Decision (2026-11-07): we are not asking the CShapes authors for a licence.**
+
+**OpenHistoricalMap, exactly what a monetized app may use:** features with no `license` tag (CC0, the default) and
+features tagged `license=CC BY` (keep the credit). Leave out `CC BY-SA` features (share-alike on the data used) and
+anything with another or unclear tag. Natural Earth and Atlas of Historical County Boundaries material inside OHM
+is public domain / unrestricted. Contributions we make would be CC0.
+
+**Plan (commercial-safe build).** Base shapes come from Cliopatria (CC BY 4.0, credit Seshat and link the licence):
+antiquity to 2024, replacing historical-basemaps and CShapes. Exact start and end days come from Wikidata
+(P571/P580 and P576/P582, CC0), snapping each polity's appearance and disappearance to the day where Wikidata has
+one (about two thirds of states since 1850) and to the year otherwise. Names, summaries, links and events keep
+coming from Wikipedia and Wikidata. Gaps are fixed in our own `pipeline/overrides` files with cited treaty dates
+and shapes composed from Natural Earth admin-1 (public domain); regions where OpenHistoricalMap is better (filtered
+as above) are merged in. What we would fix first: Germany 1945 to 1949, merged colonies in 1914, overlapping shapes,
+file size (split by era). What we give up: day-exact border shifts inside a state's life, so "Next change" and the
+change outline work at year precision. How to earn: free download with an optional paid pack (quizzes, tours) or a
+one-off price for the app, plus donations; none of that is possible with CShapes in the data.
+
+**Non-commercial app (what we ship now):** keeps CShapes day-exact borders for 1886 to 2019. It is the best-data
+version; the commercial build is a downgrade in date precision for 1886 to 2019 and needs the work above. Donations
+(GitHub Sponsors, Ko-fi) are not payment for the data, but CC BY-NC's "non-commercial" is not defined precisely:
+keep them voluntary, with no features behind them, and check if it matters.
