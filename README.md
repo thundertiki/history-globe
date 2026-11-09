@@ -24,8 +24,8 @@ On a phone, choose *Add to Home screen* (Android Chrome: ⋮ menu → *Install a
 
 | Platform | File | Notes |
 |---|---|---|
-| Windows 10/11 (64-bit) | [History-Globe-Setup-0.4.0-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.4.0/History-Globe-Setup-0.4.0-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
-| Android 6+ | [History-Globe-0.4.0.apk](https://github.com/thundertiki/history-globe/releases/download/v0.4.0/History-Globe-0.4.0.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
+| Windows 10/11 (64-bit) | [History-Globe-Setup-0.5.0-x64.exe](https://github.com/thundertiki/history-globe/releases/download/v0.5.0/History-Globe-Setup-0.5.0-x64.exe) | Unsigned: on the SmartScreen warning click *More info* → *Run anyway*. |
+| Android 6+ | [History-Globe-0.5.0.apk](https://github.com/thundertiki/history-globe/releases/download/v0.5.0/History-Globe-0.5.0.apk) | Allow installs from your browser; if Play Protect warns, tap *More details* → *Install anyway*. |
 
 Both work offline (only Wikipedia pictures need the internet).
 

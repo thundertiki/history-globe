@@ -1,6 +1,6 @@
 {
   "name": "history-globe",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Pick a date, see the world's borders on a 3D globe",
   "scripts": {
     "dev": "vite",
