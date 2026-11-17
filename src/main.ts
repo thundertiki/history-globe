@@ -105,6 +105,8 @@ async function main() {
   let sheetZoom: { before: number; applied: number } | null = null;
   let sheetCentre: [number, number] | undefined; // tapped spot to bring into view when the sheet opens
   let tourState: { tour: Tour; stop: string } | null = null; // the open tour and the stop the map shows
+  // While a stop's camera flight runs, sheet height changes only record the padding (applied when it lands).
+  let tourFlight: { pad: ReturnType<typeof sheetPadding> | null } | null = null;
   const sheet = new Sheet($('panel'), $('peek'), { card: $('panel-body'), search: $('view-search'), tour: $('view-tour') }, (state, height) => {
     const pad = sheetPadding(state, height, phone.matches);
     const map = globe.map;
@@ -122,6 +124,11 @@ async function main() {
       const back = sheetZoom && Math.abs(map.getZoom() - sheetZoom.applied) < 0.05 ? { zoom: sheetZoom.before } : {};
       sheetZoom = null;
       map.easeTo({ padding: pad, ...back, duration: 300 });
+      return;
+    }
+    // A tour stop's camera flight already uses the sheet's padding; an ease here would cancel the flight.
+    if (tourFlight) {
+      tourFlight.pad = pad;
       return;
     }
     // Zoom out once when the sheet opens; later height changes (summary loads, More) only move the padding.
@@ -607,10 +614,24 @@ async function main() {
     if (show === 'tour') tp.showTour(t, id);
     else tp.showStop(t, id);
     syncTourChrome();
+    writeHash();
     date = normalize(parseDate(s.date)!, today);
     globe.setFlat(s.view === 'flat');
     const c = s.camera;
-    globe.map.flyTo({ center: c.center, zoom: c.zoom, bearing: c.bearing ?? 0, pitch: c.pitch ?? 0, duration: 1200 });
+    // Fly with the sheet's padding as it will be once laid out; padding changes during the flight wait for it.
+    const flight: { pad: ReturnType<typeof sheetPadding> | null } = { pad: null };
+    tourFlight = flight;
+    await new Promise<void>((r) => requestAnimationFrame(() => r()));
+    if (tourState?.tour !== t || tourState.stop !== id) return;
+    const padding = sheetPadding(sheet.state, $('panel').offsetHeight, phone.matches);
+    globe.map.flyTo({ center: c.center, zoom: c.zoom, bearing: c.bearing ?? 0, pitch: c.pitch ?? 0, padding, duration: 1200 });
+    globe.map.once('moveend', () => {
+      if (tourFlight !== flight) return;
+      tourFlight = null;
+      if (flight.pad && JSON.stringify(flight.pad) !== JSON.stringify(globe.map.getPadding())) {
+        globe.map.easeTo({ padding: flight.pad, duration: 300 });
+      }
+    });
     // Stops say what to outline; the automatic "what changed" outline and toast only add noise here.
     const latest = await render(false, false);
     if (!latest || tourState?.tour !== t || tourState.stop !== id) return;

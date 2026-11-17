@@ -224,6 +224,8 @@ export class Globe {
     });
   }
 
+  private showSeq = 0;
+
   // ---- Tour map state ----
   private blocIds: (number | string)[] = [];
   private hlIds: (number | string)[] = [];
@@ -329,7 +331,10 @@ export class Globe {
   async show(pick: Pick): Promise<void> {
     await this.ready;
     const url = `${this.dataRoot}/borders/${pick.file}`;
+    const seq = ++this.showSeq;
     const layers = await load(url, pick.tier);
+    // A later call may have finished first (its file was cached): never let an older, slower file replace it.
+    if (seq !== this.showSeq) return;
     if (this.shownFile !== url) {
       this.map.removeFeatureState({ source: 'borders' }); // ids repeat across files
       this.flashed = [];

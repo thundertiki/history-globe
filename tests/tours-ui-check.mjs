@@ -154,6 +154,49 @@ for (const width of [390, 1280]) {
   await bad.close();
 }
 
+// Real tours: borders from slow and fast snapshot files must not land out of order, and the camera must reach the stop.
+{
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  page.on('pageerror', (e) => errors.push(`race: ${e.message}`));
+  // The 400 AD snapshot answers slowly; the 300 AD one is already loaded when we step back to it.
+  await page.route('**/borders/a/400.json', async (route) => { await new Promise((r) => setTimeout(r, 1500)); route.continue(); });
+  await page.goto(URL + '#tour=rome/tetrarchy');
+  await page.waitForFunction(() => window.hg?.tour()?.stop === 'tetrarchy' && window.hg.globe.map.loaded(), null, { timeout: 30000 });
+  await idle(page);
+  await page.click('.tour-nav button[aria-label="Next stop"]'); // to 400 AD (slow)
+  await page.waitForTimeout(100);
+  await page.click('.tour-nav button[aria-label="Previous stop"]'); // back to 300 AD (cached)
+  await page.waitForTimeout(2500);
+  const shown = await page.evaluate(() => ({ file: window.hg.globe.shownFile, want: window.hg.pick().file, hl: window.hg.globe.hlIds.length }));
+  check(shown.file.endsWith(shown.want), `quick ▶ ◀ across snapshots leaves the right borders (${shown.file} vs ${shown.want})`);
+  check(shown.hl === 4, `and the stop's highlight survives (${shown.hl})`);
+  await page.close();
+}
+for (const [width, how] of [[390, 'link'], [390, 'list']]) {
+  const page = await browser.newPage({ viewport: { width, height: 800 } });
+  page.on('pageerror', (e) => errors.push(`camera: ${e.message}`));
+  await page.goto(URL + (how === 'link' ? '#tour=rome/east-west' : ''));
+  await page.waitForFunction(() => window.hg?.globe.map.loaded(), null, { timeout: 30000 });
+  if (how === 'list') {
+    await page.click('#more-btn');
+    await page.click('#tours-btn');
+    await page.waitForSelector('.tour-row');
+    await page.locator('.tour-row').first().click(); // Rome: its first stop is the section intro
+  }
+  await page.waitForFunction(() => window.hg.tour(), null, { timeout: 10000 });
+  await page.waitForTimeout(2500);
+  const cam = await page.evaluate(async () => {
+    const st = window.hg.tour();
+    const t = await fetch(`data/tours/${st.id}.json`).then((r) => r.json());
+    const s = t.sections.flatMap((x) => [x, ...x.items]).find((x) => x.id === st.stop);
+    const c = window.hg.globe.map.getCenter();
+    return { want: s.camera, got: [c.lng, c.lat], zoom: window.hg.globe.map.getZoom() };
+  });
+  const near = Math.abs(cam.got[0] - cam.want.center[0]) < 1.5 && Math.abs(cam.got[1] - cam.want.center[1]) < 1.5 && Math.abs(cam.zoom - cam.want.zoom) < 0.3;
+  check(near, `${width}px (${how}): the camera reaches the stop (${cam.got.map((n) => n.toFixed(1))} z${cam.zoom.toFixed(1)} vs ${cam.want.center} z${cam.want.zoom})`);
+  await page.close();
+}
+
 check(errors.length === 0, `no page errors${errors.length ? ': ' + errors.join(' | ') : ''}`);
 await browser.close();
 console.log(fail ? `${fail} FAILED` : 'ALL PASS');
