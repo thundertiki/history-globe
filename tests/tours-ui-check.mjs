@@ -1,6 +1,7 @@
 // Headless check of guided tours against a running dev server (npm run dev -- --port 5174).
-// TOUR (default "sample") names the tour; the check walks its first stops, so any tour with 6+ stops works.
+// TOUR (default "sample", served from tests/fixtures) names the tour. The bloc checks need a tour with blocs.
 import { chromium } from 'playwright-core';
+import { readFileSync } from 'node:fs';
 const URL = process.env.HG_URL || 'http://localhost:5174/';
 const TOUR = process.env.TOUR || 'sample';
 const SHOTS = process.env.SHOTS; // optional folder for screenshots
@@ -9,9 +10,23 @@ const errors = [];
 let fail = 0;
 const check = (ok, msg) => { if (!ok) fail++; console.log(ok ? 'PASS' : 'FAIL', msg); };
 
+// The sample tour (blocs, treaty lines, a flat stop) is a test fixture: serve it as if it were listed.
+const SAMPLE = readFileSync(new globalThis.URL('./fixtures/sample-tour.json', import.meta.url), 'utf-8');
+async function serveSample(page) {
+  const s = JSON.parse(SAMPLE);
+  const items = s.sections.reduce((n, x) => n + 1 + x.items.length, 0);
+  await page.route('**/data/tours/index.json', async (route) => {
+    const res = await route.fetch();
+    const list = await res.json();
+    route.fulfill({ response: res, json: [...list, { id: s.id, title: s.title, years: s.years, summary: s.summary, items }] });
+  });
+  await page.route('**/data/tours/sample.json', (route) => route.fulfill({ contentType: 'application/json', body: SAMPLE }));
+}
+
 async function open(width, hash = '') {
   const page = await browser.newPage({ viewport: { width, height: 800 } });
   page.on('pageerror', (e) => errors.push(`${width}px: ${e.message}`));
+  if (TOUR === 'sample') await serveSample(page);
   await page.goto(URL + hash);
   await page.waitForFunction(() => window.hg?.globe.map.loaded(), null, { timeout: 30000 });
   return page;

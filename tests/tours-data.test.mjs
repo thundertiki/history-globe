@@ -28,6 +28,11 @@ function exists(ref, date) {
 }
 
 describe('tour data', () => {
+  it('the sample tour fixture used by tours-ui-check is valid', () => {
+    const t = JSON.parse(readFileSync(join(DATA, '..', '..', 'tests', 'fixtures', 'sample-tour.json'), 'utf-8'));
+    expect(validateTour(t)).toEqual([]);
+    for (const s of stops(t)) for (const ref of s.highlight ?? []) expect(exists(ref, s.date), `${s.id} ${ref}`).toBe(true);
+  });
   for (const entry of index) {
     it(`${entry.id}: file exists and is valid`, () => {
       const file = `tours/${entry.id}.json`;

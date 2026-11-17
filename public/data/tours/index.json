@@ -1,6 +1,5 @@
 [
   { "id": "rome", "title": "Fall of Rome", "years": "293–476", "summary": "How the Western Roman Empire broke up into kingdoms while the East survived.", "items": 7 },
   { "id": "mongols", "title": "The Mongol Empire", "years": "1206–1405", "summary": "From the steppe to the largest land empire yet, and how it split apart.", "items": 11 },
-  { "id": "ussr", "title": "Breakup of the USSR", "years": "1985–1991", "summary": "From Gorbachev's reforms to fifteen independent states, with day-by-day borders.", "items": 8 },
-  { "id": "sample", "title": "Sample tour", "years": "1914", "summary": "A placeholder tour used to build and test the tour feature.", "items": 6 }
+  { "id": "ussr", "title": "Breakup of the USSR", "years": "1985–1991", "summary": "From Gorbachev's reforms to fifteen independent states, with day-by-day borders.", "items": 8 }
 ]
