@@ -2,7 +2,7 @@
 // heights and the map is padded so its centre stays in the visible area; on wide screens it is the right-hand
 // card and nothing here changes the map.
 export type SheetState = 'peek' | 'half' | 'full';
-export type View = 'card' | 'search';
+export type View = 'card' | 'search' | 'tour';
 
 export interface Padding { top: number; bottom: number; left: number; right: number }
 

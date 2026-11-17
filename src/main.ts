@@ -11,6 +11,8 @@ import { timelineFor } from './history';
 import { Result, Row, search } from './search';
 import { changedFeatures } from './changes';
 import { Sheet, sheetPadding } from './sheet';
+import { type Tour, type TourIndexEntry, validateTour, stops, findStop, blocsAt, parseTourHash, tourHash } from './tours';
+import { TourPanel } from './tour-panel';
 
 const DATA = `${import.meta.env.BASE_URL}data`;
 /** Share links always point at the public web app, whichever version (artifact, installer) made them. */
@@ -23,6 +25,7 @@ const slider = $<HTMLInputElement>('slider');
 const input = $<HTMLInputElement>('date-input');
 const precision = $('precision');
 const toast = $('toast');
+const PEEK_TEXT = $('peek').textContent ?? '';
 
 // Keep the info card above the date bar, whose height depends on the device's font size and safe area.
 const timebar = document.querySelector<HTMLElement>('.timebar')!;
@@ -101,7 +104,8 @@ async function main() {
   const phone = window.matchMedia('(max-width: 640px)');
   let sheetZoom: { before: number; applied: number } | null = null;
   let sheetCentre: [number, number] | undefined; // tapped spot to bring into view when the sheet opens
-  const sheet = new Sheet($('panel'), $('peek'), { card: $('panel-body'), search: $('view-search') }, (state, height) => {
+  let tourState: { tour: Tour; stop: string } | null = null; // the open tour and the stop the map shows
+  const sheet = new Sheet($('panel'), $('peek'), { card: $('panel-body'), search: $('view-search'), tour: $('view-tour') }, (state, height) => {
     const pad = sheetPadding(state, height, phone.matches);
     const map = globe.map;
     document.body.classList.toggle('sheet-full', state === 'full');
@@ -111,6 +115,7 @@ async function main() {
       $('search-btn').setAttribute('aria-expanded', 'false');
       writeHash();
     }
+    syncTourChrome();
     if (state === 'peek' || !phone.matches) {
       if (!sheetZoom && !map.getPadding().bottom) return;
       // Put the zoom back only if the person has not zoomed since the sheet opened.
@@ -136,6 +141,7 @@ async function main() {
     })
     .catch((e) => console.error('overlays', e));
 
+  const tourLink = parseTourHash(location.hash); // read before the first render rewrites the address
   const link = parseHash(location.hash);
   if (link.cam) globe.map.jumpTo(link.cam);
   let date: HDate = link.date ?? { y: 1914, m: 7, d: 28 };
@@ -157,7 +163,8 @@ async function main() {
     overlayTimer = setTimeout(apply, 250);
   }
 
-  async function render(fromSlider = false, flash = false, force = false) {
+  /** Resolves true when this render is still the latest one (its borders are the ones shown). */
+  async function render(fromSlider = false, flash = false, force = false): Promise<boolean> {
     const before = prevView;
     pick = pickBorders(date, manifest);
     input.value = formatDate(date);
@@ -188,13 +195,20 @@ async function main() {
     } catch (e) {
       if (seq === renderSeq) showToast('Could not load borders for this date. Showing the previous map.');
       console.error(e);
+      return false;
     } finally {
       clearTimeout(slow);
     }
+    return seq === renderSeq;
   }
 
   /** Keep the address a shareable link to this view: date, camera and the open polity card. */
   function writeHash(): string {
+    if (tourState) {
+      const t = tourHash(tourState.tour.id, tourState.stop);
+      try { history.replaceState(null, '', t); } catch { /* some embedded frames refuse history changes */ }
+      return t;
+    }
     const c = globe.map.getCenter();
     let h = `#${hashOf(date)}/${c.lng.toFixed(2)},${c.lat.toFixed(2)},${globe.map.getZoom().toFixed(1)}`;
     if (shown?.kind === 'place' && !$('panel').hidden && sheet.viewName === 'card') h += `/${encodeURIComponent(placeKey(shown.place))}`;
@@ -219,7 +233,7 @@ async function main() {
 
   $('share-btn').addEventListener('click', async () => {
     const url = SITE + writeHash();
-    const title = `History Globe · ${formatDate(date)}`;
+    const title = tourState ? `History Globe · ${tourState.tour.title}` : `History Globe · ${formatDate(date)}`;
     try {
       if (navigator.share) return await navigator.share({ title, url });
     } catch (e) {
@@ -235,6 +249,7 @@ async function main() {
 
   // ---- Changing the date by hand stops playback and closes the card ----
   const setDate = (h: HDate, fromSlider = false, flash = false) => {
+    exitTour();
     date = h;
     panel.hide();
     globe.select(undefined);
@@ -291,6 +306,7 @@ async function main() {
       to = later ? parseDate(later) : { y: 2020, m: 1, d: 1 };
     }
     if (!to) return showToast('No later changes: this is the present-day map.');
+    exitTour();
     date = normalize(to, today);
     panel.hide();
     globe.select(undefined);
@@ -362,6 +378,7 @@ async function main() {
   playBtn.addEventListener('click', () => {
     if (longPressed) return void (longPressed = false);
     if (playing) return stopPlay();
+    exitTour();
     panel.hide();
     globe.select(undefined);
     pos = Number(slider.value) >= Number(slider.max) ? Number(slider.min) : Number(slider.value);
@@ -410,6 +427,7 @@ async function main() {
     sBtn.setAttribute('aria-expanded', String(open));
     if (open) {
       setMenu(false);
+      exitTour();
       panel.hide();
       globe.select(undefined);
       sheet.view('search');
@@ -478,7 +496,13 @@ async function main() {
   }
 
   // ---- Taps ----
-  $('panel-close').addEventListener('click', () => { globe.select(undefined); sheet.set('peek'); writeHash(); });
+  $('panel-close').addEventListener('click', () => {
+    globe.select(undefined);
+    // During a tour: ✕ on the tour ends it; ✕ on a card opened from the tour goes back to the tour.
+    if (tourState) return sheet.viewName === 'tour' ? exitTour() : reopenTour();
+    sheet.set('peek');
+    writeHash();
+  });
   const TYPE: Record<string, string> = { battle: 'Battle', siege: 'Siege', treaty: 'Treaty', city: 'City founded' };
 
   function showHit(hit: Hit) {
@@ -487,6 +511,7 @@ async function main() {
       sheet.view('card');
       sheet.set('half');
     }
+    syncTourChrome();
     return showCard(hit).finally(writeHash); // the link includes the polity once its card is open
   }
   function showCard(hit: Hit) {
@@ -503,6 +528,7 @@ async function main() {
   globe.onPick((hit, at) => {
     stopPlay();
     if (!hit) {
+      if (tourState) return; // tapping open sea keeps the tour panel
       panel.hide();
       return writeHash();
     }
@@ -514,6 +540,7 @@ async function main() {
   panel.onJump = async (d) => {
     const h = parseDate(d);
     if (!h || !shown || shown.kind !== 'place') return;
+    exitTour();
     const from = shown.place;
     date = normalize(h, today);
     await render(false, true);
@@ -524,12 +551,139 @@ async function main() {
     showHit({ kind: 'place', place: { tier: pick.tier, props: f.properties! } });
   };
 
+  // ---- Tours ----
+  const peekEl = $('peek');
+  const backBtn = $('back-to-tour');
+  /** The bits outside the tour view that follow the tour: the Back button on cards and the peek hint. */
+  function syncTourChrome() {
+    // The sheet can call this before the lines above run (function declarations are hoisted).
+    const backBtn = $('back-to-tour');
+    const peekEl = $('peek');
+    backBtn.hidden = !(tourState && sheet.viewName === 'card');
+    peekEl.classList.toggle('tour', Boolean(tourState));
+    peekEl.textContent = tourState ? `▲ Tour: ${tourState.tour.title}` : PEEK_TEXT;
+  }
+  function reopenTour() {
+    if (!tourState) return;
+    sheet.view('tour');
+    sheet.set('half');
+    tp.showStop(tourState.tour, tourState.stop, precisionText(pick, date));
+    syncTourChrome();
+  }
+  peekEl.addEventListener('click', reopenTour);
+  backBtn.addEventListener('click', reopenTour);
+
+  let tourIndex: Promise<TourIndexEntry[]> | null = null;
+  const loadIndex = () =>
+    (tourIndex ??= (json('tours/index.json') as Promise<TourIndexEntry[]>).catch((e) => {
+      tourIndex = null;
+      throw e;
+    }));
+  /** A tour by id, or undefined when it is not listed, fails to load or is invalid. */
+  async function loadTour(id: string): Promise<Tour | undefined> {
+    const list = await loadIndex().catch(() => [] as TourIndexEntry[]);
+    if (!list.some((e) => e.id === id)) return undefined;
+    const t = await json(`tours/${id}.json`).catch(() => undefined);
+    const problems = t ? validateTour(t) : ['not loaded'];
+    if (problems.length) {
+      console.error(`tour ${id}`, problems);
+      return undefined;
+    }
+    return t as Tour;
+  }
+
+  /** Show a stop: date, camera, flat view, then (for the latest render only) highlight, blocs and treaty lines. */
+  async function applyStop(t: Tour, id: string, show: 'stop' | 'tour' = 'stop') {
+    const found = findStop(t, id);
+    if (!found) return;
+    const s = found.stop;
+    stopPlay();
+    tourState = { tour: t, stop: id };
+    globe.select(undefined);
+    if (sheet.viewName !== 'tour' || sheet.state === 'peek') {
+      sheet.view('tour');
+      sheet.set('half');
+    }
+    if (show === 'tour') tp.showTour(t, id);
+    else tp.showStop(t, id);
+    syncTourChrome();
+    date = normalize(parseDate(s.date)!, today);
+    globe.setFlat(s.view === 'flat');
+    const c = s.camera;
+    globe.map.flyTo({ center: c.center, zoom: c.zoom, bearing: c.bearing ?? 0, pitch: c.pitch ?? 0, duration: 1200 });
+    // A stop that names what to outline skips the automatic "what changed" outline.
+    const latest = await render(false, !s.highlight?.length);
+    if (!latest || tourState?.tour !== t || tourState.stop !== id) return;
+    tp.setPrecision(precisionText(pick, date));
+    const idsOf = (refs: string[]) => refs.map((r) => findPlace(r)?.id).filter((x): x is number | string => x !== undefined);
+    globe.setHighlight(idsOf(s.highlight ?? []));
+    const colours = new Map<number | string, string>();
+    if (s.blocs && t.blocs) {
+      for (const [ref, b] of blocsAt(t.blocs, s.date)) {
+        const fid = findPlace(ref)?.id;
+        if (fid !== undefined) colours.set(fid, b.color);
+      }
+    }
+    globe.setBlocs(colours);
+    await globe.setArrows((s.arrows ?? []).flatMap((a) => t.arrows?.filter((x) => x.id === a) ?? []));
+    writeHash();
+  }
+
+  /** End the tour: clear its map state, go back to the globe and the normal link. */
+  function exitTour() {
+    if (!tourState) return;
+    tourState = null;
+    globe.clearTour();
+    syncTourChrome();
+    if (sheet.viewName === 'tour' && sheet.state !== 'peek') sheet.set('peek');
+    writeHash();
+  }
+
+  const tp = new TourPanel($('view-tour'), {
+    open: async (id) => {
+      const t = await loadTour(id);
+      if (!t) return showToast('Tour not found');
+      applyStop(t, stops(t)[0].id, 'tour');
+    },
+    go: (stopId) => void (tourState && applyStop(tourState.tour, stopId)),
+  });
+  globe.onArrow((aid) => {
+    const a = tourState?.tour.arrows?.find((x) => x.id === aid);
+    if (!tourState || !a) return;
+    sheet.view('tour');
+    sheet.set('half');
+    tp.showArrow(tourState.tour, a, tourState.stop);
+    syncTourChrome();
+  });
+  $('tours-btn').addEventListener('click', async () => {
+    stopPlay();
+    exitTour();
+    globe.select(undefined);
+    sheet.view('tour');
+    sheet.set('half');
+    try {
+      tp.showIndex(await loadIndex());
+    } catch {
+      showToast('Could not load tours.');
+    }
+  });
+
   // Expose for debugging and automated checks.
   (window as any).hg = {
     globe, goTo, search: async (q: string) => search(await searchRows, q), nameAt, pick: () => pick,
     setDate: (s: string) => setDate(normalize(parseDate(s)!, today)),
+    tour: () => (tourState ? { id: tourState.tour.id, stop: tourState.stop } : null),
   };
   await render();
+  // A tour link opens that tour at that stop; an unknown tour or stop starts normally.
+  if (tourLink) {
+    const t = await loadTour(tourLink.tour);
+    const target = t && (tourLink.item ? findStop(t, tourLink.item)?.stop : stops(t)[0]);
+    if (t && target) return void applyStop(t, target.id);
+    showToast('Tour not found');
+    writeHash();
+    return;
+  }
   // A shared link with a polity opens its card (the link already set the camera).
   const f = link.place ? findPlace(link.place) : undefined;
   if (f) {
