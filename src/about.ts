@@ -35,6 +35,11 @@ present-day borders. Ancient borders are approximate.</p>
     mostly for modern states. A missing line means Wikidata has no dated entry, not that there was none.</li>
   <li>Wikipedia summaries were collected when the app was built and describe each place overall.</li>
 </ul>
+<h3>Tours</h3>
+<ul>
+  <li>Guided tours (menu → Tours) are written for this app; their facts are checked against the linked Wikipedia
+    articles. Each stop shows how precise its borders are, as everywhere else.</li>
+</ul>
 <p>Free and open source (GPL-3.0). Non-commercial.
   <a href="https://ko-fi.com/J2Y62A9SV0" target="_blank" rel="noopener">Support on Ko-fi</a> (a voluntary tip; nothing is locked behind it).</p>
 <form method="dialog"><button>Close</button></form>`;

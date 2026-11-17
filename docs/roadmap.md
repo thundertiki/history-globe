@@ -8,8 +8,7 @@ Work top to bottom. Tick items off here and move the one being worked on into `d
       `vite.config.ts`; shell cached on install, data cached on first use).
 - [x] Share links: `#<date>/<lng>,<lat>,<zoom>/<place>` (place = NAME before 1886, CShapes gwcode to 2019, name
       after); Share button always links to the Pages URL.
-- [ ] Release so the artifact, APK and Windows installer get the card-text fix (`hg-release` skill). Consider
-      whether the APK is still needed now the web app installs.
+- [x] Release with the card-text fix (shipped by 0.5.0). Open question: is the APK still needed now the web app installs?
 
 ## 2. Core features
 - [x] **Search (done 2026-11-07):** type a polity name, list matches with the years they existed, tap to jump there with the card
@@ -26,8 +25,10 @@ Work top to bottom. Tick items off here and move the one being worked on into `d
 - [ ] Wars as dated areas/spans, not only point events.
 
 ## 4. Exploring
-- [ ] Guided tours ("Fall of Rome", "Mongol expansion", "Decolonisation of Africa"): one JSON file per tour of
-      steps (date, camera, caption), played with the existing date/camera code.
+- [x] Guided tours (0.6.0, 2026-11-17): Fall of Rome, Mongol Empire, Breakup of the USSR. Sections and stops,
+      alliance shading, treaty lines, flat view, `#tour=` links. Design: `docs/superpowers/specs/2026-11-16-guided-tours-design.md`.
+- [ ] More tours: World War I (large, with alliances; next release), then European empires 1886–1975 and WWII.
+- [ ] Tour or feature suggestion box (Google Form or GitHub issue form; not decided).
 - [ ] Quiz mode: "Who ruled here in 1200?" Tap the map, then see the answer.
 
 ## 5. Data housekeeping

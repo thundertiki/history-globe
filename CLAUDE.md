@@ -14,6 +14,10 @@ Design and status: vault `10 Projects/History Globe.md`.
     from 1500, days from 1886).
   - `history.ts`: the card's timeline chips. Overlays (events, early humans) live in `globe.ts`.
   - `borders.ts`: picks the tier for a date. `globe.ts`: map and layers. `panel.ts`: tap card. `about.ts`: credits.
+  - Tours: hand-written `public/data/tours/<id>.json` + `index.json`; `tours.ts` (types, checks, `#tour=` links),
+    `tour-panel.ts` (sheet view), `applyStop`/`exitTour` in `main.ts`. Text rules: tone section of
+    `docs/superpowers/specs/2026-11-16-guided-tours-design.md`. Checks: `npm run check:tours`,
+    `node tests/tours-ui-check.mjs` (uses `tests/fixtures/sample-tour.json`).
 - `pipeline/` (run in this order): `fetch.sh` downloads into `raw/` (git-ignored); `build.mjs` simplifies to
   `public/data/borders/` (each file: `borders` + one-per-polity `labels`) and adds 1886+ period names;
   `entities.mjs` + `entities-search.mjs` map names to Wikipedia; `summaries.mjs` prebuilds `wiki.json`;

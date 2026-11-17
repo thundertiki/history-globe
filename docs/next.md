@@ -2,22 +2,21 @@
 
 Full ordered plan: `docs/roadmap.md`.
 
-## Released in 0.5.0 (2026-11-10)
-- Contents: bottom-sheet UI for card and search, era tabs, Next change button, flicker fix, rulers and capitals,
-  Ko-fi link, search, change highlight. Specs: `docs/ui-redesign.md`, `docs/ui-redesign-plan.md`.
-- Search: `src/search.ts` + `public/data/search.json` (`npm run data:search`, after `data:build`);
-  `node tests/search-check.mjs`. Not done: present-day (tier C) names, names only on tier B map labels.
-- Change highlight: `src/changes.ts`; `node tests/changes-check.mjs`.
-- Rulers and capitals: `pipeline/rulers.mjs` (`npm run data:rulers`, about 40 min) -> `public/data/rulers.json`;
-  `node tests/rulers-check.mjs`. Covers 549 of 2,004 polities; ancient ones mostly capital only.
-- UI: `src/sheet.ts` (peek/half/full); checks `tests/ui-check.mjs`, `tests/eras-check.mjs`.
+## Guided tours (0.6.0, 2026-11-17)
+- Fall of Rome, Mongol Empire, Breakup of the USSR. Design and tone rules:
+  `docs/superpowers/specs/2026-11-16-guided-tours-design.md`; plan: `docs/superpowers/plans/2026-11-17-guided-tours.md`.
+- Engine supports alliance blocs, treaty lines and flat view; only the test fixture uses them so far.
+- Next: World War I tour (large, alliances; Ben reviews the text before release). Then empires 1886–1975, WWII,
+  and a suggestion box (Google Form vs GitHub issue form not decided).
 
 ## Unverified on a real phone
-- Sheet drag and heights, long-press on play for speed, keyboard with full-height search, Medieval tab label width.
+- Tours: panel at half height, ▲ Tour peek hint, Back to tour, treaty line taps, flat view.
+- 0.5.0: sheet drag and heights, long-press on play for speed, keyboard with full-height search, Medieval tab label width.
 - Older: APK since 0.1.2 (edge-to-edge margins), Windows installer run-through, Share button (share sheet / copy).
 - Dot density around 1945.
 
-## Next up
-- Tours, then quizzes (roadmap sections 3 and 4).
+## Released in 0.5.0 (2026-11-10)
+- Bottom-sheet UI, era tabs, Next change, flicker fix, rulers and capitals (549 of 2,004 polities; ancient ones
+  mostly capital only), Ko-fi link, search, change highlight. Checks in `tests/` (`*-check.mjs`).
 - Possible: hand-written or Wikipedia-list pass for rulers of big ancient empires.
 - Data and money research: `docs/market-research.md`. No commercial work yet (CShapes is non-commercial).
