@@ -31,6 +31,7 @@ fall back to tier A snapshots) and add Wikimedia image credits. The app's code i
 | `rulers.json` | Wikidata (head of state, capital, with dates; `npm run data:rulers`) |
 | `human.json` | hand-written |
 | `presence.json`, `search.json` | the border files above (which snapshots and dates each name appears in); `search.json` powers Search |
+| `tours/*.json` | hand-written tour text (GPL-3.0 with the app); facts checked against the linked Wikipedia articles |
 | `wiki.json`, `entities.json`, `eras.json` | Wikipedia and Wikidata (titles, intro text, period articles like "Old Kingdom of Egypt" matched by date) |
 
 Because of CShapes, this app and any copy of `borders/b/` (and files built from it: `search.json`, parts of
