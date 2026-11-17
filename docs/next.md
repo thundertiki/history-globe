@@ -2,44 +2,22 @@
 
 Full ordered plan: `docs/roadmap.md`.
 
-## Search (done 2026-11-07, unverified on a phone)
-- Search button in the top bar; `src/search.ts` + `public/data/search.json` (`npm run data:search`, run after
-  `data:build`). Jumps to the first date a name appears and opens its card. `node tests/search-check.mjs` checks it.
-- Not done: present-day (tier C) names, and names that only appear as map labels in tier B snapshots.
+## Released in 0.5.0 (2026-11-10)
+- Contents: bottom-sheet UI for card and search, era tabs, Next change button, flicker fix, rulers and capitals,
+  Ko-fi link, search, change highlight. Specs: `docs/ui-redesign.md`, `docs/ui-redesign-plan.md`.
+- Search: `src/search.ts` + `public/data/search.json` (`npm run data:search`, after `data:build`);
+  `node tests/search-check.mjs`. Not done: present-day (tier C) names, names only on tier B map labels.
+- Change highlight: `src/changes.ts`; `node tests/changes-check.mjs`.
+- Rulers and capitals: `pipeline/rulers.mjs` (`npm run data:rulers`, about 40 min) -> `public/data/rulers.json`;
+  `node tests/rulers-check.mjs`. Covers 549 of 2,004 polities; ancient ones mostly capital only.
+- UI: `src/sheet.ts` (peek/half/full); checks `tests/ui-check.mjs`, `tests/eras-check.mjs`.
 
-## Highlight what changed (done 2026-11-07, unverified on a phone)
-- `src/changes.ts`: on prev/next, a typed date or a timeline chip, polities new since the previous date get a gold
-  outline for about 2 s plus a "Changed: ..." toast. Tier B only within 400 days; tier A = names new in the snapshot;
-  none if more than 12 changed. Slider drags and playback never flash. `node tests/changes-check.mjs` checks it.
+## Unverified on a real phone
+- Sheet drag and heights, long-press on play for speed, keyboard with full-height search, Medieval tab label width.
+- Older: APK since 0.1.2 (edge-to-edge margins), Windows installer run-through, Share button (share sheet / copy).
+- Dot density around 1945.
 
-## Rulers and capitals (done 2026-11-07, unreleased)
-- `pipeline/rulers.mjs` (`npm run data:rulers`, about 40 min, rate-limited) -> `public/data/rulers.json`; `src/rulers.ts`
-  picks the entry for the card's year; `panel.ts` adds "Ruler"/"Capital" lines. `node tests/rulers-check.mjs` checks it.
-- Coverage: 549 of 2,004 polities. Modern states are good (head of state, falling back to head of government);
-  ancient ones mostly have a capital only (Wikidata rarely dates their rulers). Possible next step: a hand-written
-  or Wikipedia-list-based pass for big empires. Same names on old snapshot polygons only match through `entities.json`.
-
-## UI redesign (built 2026-11-07, unreleased, not yet tried on a phone)
-- Spec `docs/ui-redesign.md`, plan `docs/ui-redesign-plan.md`. Date bar: tabs fit one row, Next change beside the arrows,
-  speed on long-press of play. Top bar: search icon and a menu (Share, Support, About). Layers menu replaced by an
-  Events button (top right on phones, bottom left on desktop); early humans always on before 1500.
-- `src/sheet.ts`: one bottom sheet (peek/half/full) for the card and search; map padding follows its height.
-- Checks: `tests/ui-check.mjs`, `tests/eras-check.mjs`. To tune on a phone: sheet heights, long-press speed.
-
-## Next up (decided 2026-11-07)
-- Release 0.4.0 (`hg-release`): era tabs, Next change, flicker fix.
-- Then rulers and capitals on the card, tours, quizzes (roadmap sections 2 to 4). Ko-fi link once Ben has a page.
-- Check dot density around 1945 on a phone.
-- Data and money research: `docs/market-research.md`. No commercial work yet.
-
-## Timeline tabs, flicker fix (done 2026-11-07, unreleased)
-- Era tabs above the slider (`ERAS` in `src/timeline.ts`): the slider covers one era; a typed or searched date switches the tab.
-- "Next change ▸" button jumps to the next border-change date and outlines what changed.
-- Event/early-human dots hide while the slider moves or plays and return 250 ms after it settles; polity names draw above dots.
-- `node tests/eras-check.mjs` checks the tabs and the button.
-
-## Pending release (0.3.0 shipped 2026-11-07; card-text fix, search and highlight are in all builds)
-- 2026-11-07 changes (Pages, offline app, share links, light card text) are live on the web only; run `hg-release`
-  to get the card-text fix into the artifact, APK and Windows installer.
-- Unverified: APK on a real phone since 0.1.2 (edge-to-edge margins), Windows installer run-through, the Share
-  button on a phone (share sheet / copy).
+## Next up
+- Tours, then quizzes (roadmap sections 3 and 4).
+- Possible: hand-written or Wikipedia-list pass for rulers of big ancient empires.
+- Data and money research: `docs/market-research.md`. No commercial work yet (CShapes is non-commercial).
