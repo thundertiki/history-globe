@@ -231,6 +231,10 @@ export class Globe {
 
   /** Shade features by bloc: feature id -> colour. An empty map clears the shading. */
   setBlocs(colours: Map<number | string, string>) {
+    // While blocs are shown, everyone else is dimmed to grey so the blocs stand out from the normal colours.
+    const on = colours.size > 0;
+    this.map.setPaintProperty('borders-bloc', 'fill-color', ['coalesce', ['feature-state', 'bloc'], '#2b3038']);
+    this.map.setPaintProperty('borders-bloc', 'fill-opacity', on ? ['case', ['to-boolean', ['feature-state', 'bloc']], 0.88, 0.7] : 0);
     for (const id of this.blocIds) this.map.setFeatureState({ source: 'borders', id }, { bloc: null });
     this.blocIds = [...colours.keys()];
     for (const [id, c] of colours) this.map.setFeatureState({ source: 'borders', id }, { bloc: c });

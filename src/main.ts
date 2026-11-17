@@ -611,8 +611,8 @@ async function main() {
     globe.setFlat(s.view === 'flat');
     const c = s.camera;
     globe.map.flyTo({ center: c.center, zoom: c.zoom, bearing: c.bearing ?? 0, pitch: c.pitch ?? 0, duration: 1200 });
-    // A stop that names what to outline skips the automatic "what changed" outline.
-    const latest = await render(false, !s.highlight?.length);
+    // Stops say what to outline; the automatic "what changed" outline and toast only add noise here.
+    const latest = await render(false, false);
     if (!latest || tourState?.tour !== t || tourState.stop !== id) return;
     tp.setPrecision(precisionText(pick, date));
     const idsOf = (refs: string[]) => refs.map((r) => findPlace(r)?.id).filter((x): x is number | string => x !== undefined);
