@@ -6,6 +6,7 @@ import type { Topology } from 'topojson-specification';
 import type { FeatureCollection, Feature } from 'geojson';
 import type { Pick, Tier } from './borders';
 import { labelsOn } from './names';
+import type { Arrow } from './tours';
 
 /** Common shape for a border feature, whatever dataset it came from. Raw props kept for date lookups. */
 export interface Place {
@@ -122,9 +123,23 @@ export class Globe {
         'fill-opacity': ['case', ['boolean', ['feature-state', 'sel'], false], 0.95, 0.72],
       },
     });
+    // Tours: alliance shading by bloc (feature-state `bloc` holds the colour).
+    this.map.addLayer({
+      id: 'borders-bloc', type: 'fill', source: 'borders',
+      paint: {
+        'fill-color': ['coalesce', ['feature-state', 'bloc'], '#000000'],
+        'fill-opacity': ['case', ['to-boolean', ['feature-state', 'bloc']], 0.62, 0],
+      },
+    });
     this.map.addLayer({
       id: 'borders-line', type: 'line', source: 'borders',
       paint: { 'line-color': '#10151c', 'line-width': ['interpolate', ['linear'], ['zoom'], 1, 0.4, 6, 1.4] },
+    });
+    // Tours: lasting gold outline of the polities a stop is about.
+    this.map.addLayer({
+      id: 'borders-hl', type: 'line', source: 'borders',
+      layout: { 'line-join': 'round' },
+      paint: { 'line-color': '#ffd36a', 'line-width': 3, 'line-opacity': ['case', ['boolean', ['feature-state', 'hl'], false], 1, 0] },
     });
     // Brief outline of polities that changed since the previous date (feature-state flash).
     this.map.addLayer({
@@ -190,6 +205,78 @@ export class Globe {
     });
     // Polity names stay readable above the dots.
     this.map.moveLayer('labels');
+
+    // Tours: treaty lines between capitals, a dot at each end and the treaty name at the middle.
+    this.map.addSource('tour-arrows', { type: 'geojson', data: empty });
+    this.map.addLayer({
+      id: 'tour-arrows', type: 'line', source: 'tour-arrows', filter: ['==', ['geometry-type'], 'LineString'],
+      layout: { 'line-cap': 'round' },
+      paint: { 'line-color': '#f4f1ea', 'line-width': 2.5, 'line-opacity': 0.9, 'line-dasharray': [2, 1] },
+    });
+    this.map.addLayer({
+      id: 'tour-arrows-end', type: 'circle', source: 'tour-arrows', filter: ['==', ['get', 'role'], 'end'],
+      paint: { 'circle-radius': 4.5, 'circle-color': '#f4f1ea', 'circle-stroke-color': '#0b1320', 'circle-stroke-width': 1.5 },
+    });
+    this.map.addLayer({
+      id: 'tour-arrows-label', type: 'symbol', source: 'tour-arrows', filter: ['==', ['get', 'role'], 'mid'],
+      layout: { 'text-field': ['get', 'label'], 'text-font': ['OpenSansSemibold'], 'text-size': 12, 'text-max-width': 9, 'text-allow-overlap': true },
+      paint: { 'text-color': '#ffffff', 'text-halo-color': 'rgba(0,0,0,0.85)', 'text-halo-width': 1.5 },
+    });
+  }
+
+  // ---- Tour map state ----
+  private blocIds: (number | string)[] = [];
+  private hlIds: (number | string)[] = [];
+  private arrowCb: ((id: string) => void) | undefined;
+
+  /** Shade features by bloc: feature id -> colour. An empty map clears the shading. */
+  setBlocs(colours: Map<number | string, string>) {
+    for (const id of this.blocIds) this.map.setFeatureState({ source: 'borders', id }, { bloc: null });
+    this.blocIds = [...colours.keys()];
+    for (const [id, c] of colours) this.map.setFeatureState({ source: 'borders', id }, { bloc: c });
+  }
+
+  /** Lasting gold outline (unlike `flash`). An empty list clears it. */
+  setHighlight(ids: (number | string)[]) {
+    for (const id of this.hlIds) this.map.setFeatureState({ source: 'borders', id }, { hl: false });
+    this.hlIds = ids;
+    for (const id of ids) this.map.setFeatureState({ source: 'borders', id }, { hl: true });
+  }
+
+  /** Treaty lines between two points; an empty list clears them. */
+  async setArrows(arrows: Arrow[]) {
+    await this.ready;
+    const features: Feature[] = [];
+    for (const a of arrows) {
+      const n = 32;
+      const line = Array.from({ length: n + 1 }, (_, i) => [a.from[0] + ((a.to[0] - a.from[0]) * i) / n, a.from[1] + ((a.to[1] - a.from[1]) * i) / n]);
+      features.push({ type: 'Feature', id: features.length, geometry: { type: 'LineString', coordinates: line }, properties: { arrow: a.id, role: 'line' } });
+      for (const p of [a.from, a.to]) features.push({ type: 'Feature', geometry: { type: 'Point', coordinates: p }, properties: { arrow: a.id, role: 'end' } });
+      features.push({ type: 'Feature', geometry: { type: 'Point', coordinates: line[n / 2] }, properties: { arrow: a.id, role: 'mid', label: a.label } });
+    }
+    (this.map.getSource('tour-arrows') as GeoJSONSource).setData({ type: 'FeatureCollection', features });
+  }
+
+  /** Taps on a treaty line or its label call `cb` with the arrow id (before any polity pick). */
+  onArrow(cb: (id: string) => void) {
+    this.arrowCb = cb;
+    for (const id of ['tour-arrows', 'tour-arrows-label']) {
+      this.map.on('mouseenter', id, () => (this.map.getCanvas().style.cursor = 'pointer'));
+      this.map.on('mouseleave', id, () => (this.map.getCanvas().style.cursor = ''));
+    }
+  }
+
+  /** Top-down (flat) map or the globe. */
+  setFlat(flat: boolean) {
+    this.map.setProjection({ type: flat ? 'mercator' : 'globe' });
+  }
+
+  /** Remove everything a tour put on the map and go back to the globe. */
+  clearTour() {
+    this.setBlocs(new Map());
+    this.setHighlight([]);
+    void this.setArrows([]);
+    this.setFlat(false);
   }
 
   /** Hide the overlay dots while the date is dragged or played (updateOverlays brings them back). */
@@ -242,6 +329,8 @@ export class Globe {
     if (this.shownFile !== url) {
       this.map.removeFeatureState({ source: 'borders' }); // ids repeat across files
       this.flashed = [];
+      this.blocIds = [];
+      this.hlIds = [];
       (this.map.getSource('borders') as GeoJSONSource).setData(layers.borders);
       this.shownFile = url;
       this.current = layers.borders;
@@ -249,7 +338,7 @@ export class Globe {
     const filter: FilterSpecification | null = pick.iso
       ? ['all', ['<=', ['get', 'start'], pick.iso], ['>=', ['get', 'end'], pick.iso]]
       : null;
-    for (const id of ['borders-fill', 'borders-line']) this.map.setFilter(id, filter);
+    for (const id of ['borders-fill', 'borders-bloc', 'borders-line', 'borders-hl']) this.map.setFilter(id, filter);
     const labels = pick.iso ? labelsOn(layers.labels, pick.iso) : layers.labels;
     if (labels !== this.shownLabels) {
       (this.map.getSource('labels') as GeoJSONSource).setData(labels);
@@ -302,6 +391,12 @@ export class Globe {
     this.map.on('click', (e) => {
       const r = 12;
       const box: [maplibregl.PointLike, maplibregl.PointLike] = [[e.point.x - r, e.point.y - r], [e.point.x + r, e.point.y + r]];
+      if (this.arrowCb) {
+        const a = 8;
+        const near: [maplibregl.PointLike, maplibregl.PointLike] = [[e.point.x - a, e.point.y - a], [e.point.x + a, e.point.y + a]];
+        const arrow = this.map.queryRenderedFeatures(near, { layers: ['tour-arrows', 'tour-arrows-label'] })[0];
+        if (arrow) return this.arrowCb(String(arrow.properties.arrow));
+      }
       const over = this.map.queryRenderedFeatures(box, { layers: ['human-sites', 'events'] })[0];
       const at = { lngLat: e.lngLat, point: e.point };
       if (over) {
