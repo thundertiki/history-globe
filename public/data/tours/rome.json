@@ -1,0 +1,81 @@
+{
+  "id": "rome",
+  "title": "Fall of Rome",
+  "years": "293–476",
+  "summary": "How the Western Roman Empire broke up into kingdoms while the East survived.",
+  "sections": [
+    {
+      "id": "rome-holding",
+      "title": "Holding the empire together",
+      "intro": "By the late 200s the Roman Empire was fighting on two fronts at once: Germanic peoples on the Rhine and Danube, and the Sasanian Persian Empire in the east. Armies were expensive, and the empire paid for them partly by debasing its silver coinage, which drove prices up. Between 235 and 284 more than twenty emperors were proclaimed, mostly by their own troops, and most died violently.",
+      "date": "300",
+      "camera": { "center": [18, 42], "zoom": 2.8 },
+      "items": [
+        {
+          "id": "tetrarchy",
+          "kind": "text",
+          "title": "The Tetrarchy",
+          "when": "293–324",
+          "text": "Diocletian's answer was to divide the work. From 293 four emperors, two senior and two junior, each ran a quarter of the empire with his own army and court, closer to the frontiers they defended. He also enlarged the army and reorganised taxation around regular assessments of land and people, collected partly in goods.\n\nTo keep that revenue steady, later laws increasingly tied tenant farmers (coloni) to the land they worked. The four-way division did not outlast Diocletian: by 324 Constantine had reunited the empire under one ruler.",
+          "date": "300",
+          "camera": { "center": [18, 42], "zoom": 2.9 },
+          "highlight": ["Rome (Constantinus)", "Rome (Maximian)", "Rome (Galerius)", "Rome (Diocletianus)"],
+          "wiki": "Tetrarchy"
+        },
+        {
+          "id": "east-west",
+          "kind": "text",
+          "title": "East and West",
+          "when": "395",
+          "text": "When Theodosius I died in 395, the empire was divided between his two sons, and it was never ruled as one again.\n\nThe halves were not equal. The East had more cities, more trade and a larger tax base, and its capital, Constantinople, was very hard to attack. The West had long land frontiers and less revenue to defend them with, and its armies relied more and more on Germanic recruits and allied bands.",
+          "date": "400",
+          "camera": { "center": [20, 42], "zoom": 2.9 },
+          "highlight": ["Western Roman Empire", "Eastern Roman Empire"],
+          "wiki": "Western Roman Empire"
+        }
+      ]
+    },
+    {
+      "id": "rome-west-falls",
+      "title": "The West falls apart",
+      "intro": "Within eighty years of the division, the Western empire had been replaced by kingdoms ruled by Gothic, Vandal, Frankish and other leaders. Most of these kingdoms kept Roman law, Latin and the Church, and many of their rulers had served Rome as allies or generals.",
+      "date": "400",
+      "camera": { "center": [10, 45], "zoom": 3 },
+      "items": [
+        {
+          "id": "goths",
+          "kind": "battle",
+          "title": "The Goths cross the Danube",
+          "when": "376–410",
+          "text": "In 376 large numbers of Goths, pushed west by the Huns, asked to settle inside the empire. Roman officials let them cross the Danube but mismanaged their food supply, and the Goths revolted. At Adrianople in 378 they destroyed an eastern Roman army and killed Emperor Valens.\n\nRome never removed them; instead it settled them as allies under their own leaders. When the western government failed to pay and supply them, the Visigoths under Alaric invaded Italy and sacked Rome in 410.",
+          "date": "400",
+          "camera": { "center": [24, 45], "zoom": 3.4 },
+          "highlight": ["Visigoths", "Hunnic Empire"],
+          "wiki": "Battle of Adrianople"
+        },
+        {
+          "id": "vandals",
+          "kind": "event",
+          "title": "The Vandals take Carthage",
+          "when": "439",
+          "text": "The Vandals crossed from Spain to Africa in 429 and took Carthage in 439. This was the heaviest blow the Western empire suffered. Roman Africa was its richest remaining province and a major source of the grain and taxes that fed Rome and paid the army.\n\nWithout that revenue the West could pay fewer soldiers, which made it depend even more on allied forces it could not control.",
+          "date": "500",
+          "camera": { "center": [9, 37], "zoom": 4 },
+          "highlight": ["Vandals"],
+          "wiki": "Vandal Kingdom"
+        },
+        {
+          "id": "last-emperor",
+          "kind": "event",
+          "title": "The last western emperor",
+          "when": "476",
+          "text": "In 476 Odoacer, a Germanic general commanding the army in Italy, deposed the boy emperor Romulus Augustulus and did not name a replacement. He ruled Italy as king while formally recognising the emperor in Constantinople. Little changed for most people that year: the West had already been divided into kingdoms.\n\nThe map for 500 shows the result: Ostrogoths in Italy, Visigoths in Spain, Franks and Burgundians in Gaul, and Vandals in Africa. The Eastern empire lasted nearly another thousand years.",
+          "date": "500",
+          "camera": { "center": [8, 43], "zoom": 3.1 },
+          "highlight": ["Ostrogoths", "Visigoths", "Franks", "Burgundians", "Vandals"],
+          "wiki": "Fall of the Western Roman Empire"
+        }
+      ]
+    }
+  ]
+}

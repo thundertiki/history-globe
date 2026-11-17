@@ -1,0 +1,122 @@
+{
+  "id": "mongols",
+  "title": "The Mongol Empire",
+  "years": "1206–1405",
+  "summary": "From the steppe to the largest land empire yet, and how it split apart.",
+  "sections": [
+    {
+      "id": "mongols-steppe",
+      "title": "Uniting the steppe",
+      "intro": "The steppe of Mongolia supported herders of horses, sheep and cattle, not cities. Herding peoples needed grain, cloth and metal goods from their settled neighbours, which they got by trade, tribute or raids. Their way of life also made most men mounted archers, so a leader who could unite the rival clans commanded a very mobile army.",
+      "date": "1200",
+      "camera": { "center": [100, 45], "zoom": 2.6 },
+      "items": [
+        {
+          "id": "genghis",
+          "kind": "player",
+          "title": "Temüjin becomes Genghis Khan",
+          "when": "1206",
+          "text": "Temüjin spent two decades defeating rival Mongol and Turkic tribes. In 1206 an assembly proclaimed him Genghis Khan.\n\nHe broke up old tribal loyalties by reorganising his followers into units of ten, a hundred and a thousand, commanded by men he chose. That army needed war and plunder to keep its commanders rewarded, and within a few years it turned on the Western Xia and Jin states of northern China.",
+          "date": "1206",
+          "camera": { "center": [105, 47], "zoom": 3.2 },
+          "highlight": ["Mongol Empire"],
+          "wiki": "Genghis Khan"
+        },
+        {
+          "id": "khwarazm",
+          "kind": "battle",
+          "title": "War with Khwarazm",
+          "when": "1219–1221",
+          "text": "In 1218 a governor of the Khwarazmian Empire killed the merchants of a Mongol trade caravan at Otrar, and the shah then had one of Genghis Khan's envoys executed. Genghis Khan answered with a campaign across Central Asia from 1219.\n\nBukhara, Samarkand, Urgench and Merv fell, and several cities that resisted were destroyed and their people killed or deported. Skilled craftsmen were often spared and sent east to work for the Mongols.",
+          "date": "1219",
+          "camera": { "center": [64, 38], "zoom": 3.6 },
+          "highlight": ["Khwarazmian dynasty"],
+          "wiki": "Otrar Catastrophe"
+        }
+      ]
+    },
+    {
+      "id": "mongols-largest",
+      "title": "The largest land empire",
+      "intro": "Genghis Khan's sons and grandsons kept expanding after his death in 1227: into Russia and eastern Europe, Iran and Iraq, and China. By 1279 the Mongols ruled the largest contiguous land empire there had yet been, but it was no longer one state.",
+      "date": "1279",
+      "camera": { "center": [80, 45], "zoom": 2.2 },
+      "items": [
+        {
+          "id": "khanates",
+          "kind": "player",
+          "title": "Four khanates",
+          "when": "1260–1264",
+          "text": "When Great Khan Möngke died in 1259, his brothers Kublai and Ariq Böke fought over the succession. Kublai won in 1264, but the western branches no longer obeyed him.\n\nThe empire split into four states: the Golden Horde on the western steppe, the Chagatai Khanate in Central Asia, the Ilkhanate in Iran, and Kublai's realm in China and Mongolia. Each ruled very different economies, and each khan's interests tied him more to his own region than to the others.",
+          "date": "1279",
+          "camera": { "center": [80, 45], "zoom": 2.3 },
+          "highlight": ["Great Khanate", "Khanate of the Golden Horde", "Chagatai Khanate", "Ilkhanate"],
+          "wiki": "Division of the Mongol Empire"
+        },
+        {
+          "id": "baghdad",
+          "kind": "battle",
+          "title": "The fall of Baghdad",
+          "when": "1258",
+          "text": "In 1258 an army under Hülegü took Baghdad, the seat of the Abbasid caliphs for five centuries. The caliph was killed and much of the city was sacked.\n\nHülegü's state, the Ilkhanate, then ruled Iran and Iraq. Its advance west was stopped in 1260, when the Mamluks of Egypt defeated a Mongol army at Ain Jalut.",
+          "date": "1279",
+          "camera": { "center": [48, 33], "zoom": 4 },
+          "highlight": ["Ilkhanate"],
+          "wiki": "Siege of Baghdad"
+        },
+        {
+          "id": "song",
+          "kind": "battle",
+          "title": "The conquest of the Song",
+          "when": "1268–1279",
+          "text": "Southern China under the Song was the richest and most populous state in the world, defended by rivers, walled cities and a large navy. Kublai built a navy of his own and besieged the key city of Xiangyang for about five years, using engineers from the Middle East to build counterweight siege engines.\n\nAfter Xiangyang fell in 1273 the Song state collapsed; its last forces were destroyed at sea at Yamen in 1279. Kublai, who had taken the Chinese dynastic name Yuan in 1271, now ruled all of China.",
+          "date": "1279",
+          "camera": { "center": [112, 32], "zoom": 3.4 },
+          "highlight": ["Great Khanate"],
+          "wiki": "Battle of Yamen"
+        },
+        {
+          "id": "trade",
+          "kind": "text",
+          "title": "Trade across Eurasia",
+          "when": "c. 1250–1350",
+          "text": "Once the conquests were done, Mongol rulers profited from trade and protected the routes across their lands. Merchants, envoys and missionaries travelled from the Black Sea to China, and goods, techniques and ideas moved with them.\n\nThe same routes probably helped spread the Black Death, which reached the Black Sea ports in the 1340s and Europe from there.",
+          "date": "1300",
+          "camera": { "center": [70, 42], "zoom": 2.2 },
+          "wiki": "Pax Mongolica"
+        }
+      ]
+    },
+    {
+      "id": "mongols-breakup",
+      "title": "Breakup",
+      "intro": "By the late 1300s the Mongol states were falling apart. Rule over settled lands depended on local officials and taxes, and as the khans fought each other, local powers took over.",
+      "date": "1400",
+      "camera": { "center": [75, 45], "zoom": 2.3 },
+      "items": [
+        {
+          "id": "ming",
+          "kind": "event",
+          "title": "The Yuan driven from China",
+          "when": "1368",
+          "text": "In China, floods, famine and heavy taxes fed revolts from the 1350s. In 1368 the rebel leader Zhu Yuanzhang founded the Ming dynasty and drove the Yuan court out of Beijing.\n\nThe court withdrew to Mongolia, where it continued as the Northern Yuan (shown on this map as the Great Khanate).",
+          "date": "1400",
+          "camera": { "center": [108, 40], "zoom": 3 },
+          "highlight": ["Great Khanate"],
+          "wiki": "Yuan dynasty"
+        },
+        {
+          "id": "timur",
+          "kind": "player",
+          "title": "Timur",
+          "when": "1370–1405",
+          "text": "Timur, a Turkic-Mongol commander from the Chagatai lands, never took the title of khan because he did not descend from Genghis Khan; he ruled through puppet khans instead. From his capital at Samarkand he campaigned from Delhi to Anatolia, sacking cities and bringing their craftsmen to build up Samarkand.\n\nHis empire split among his heirs soon after his death in 1405.",
+          "date": "1400",
+          "camera": { "center": [60, 37], "zoom": 3.4 },
+          "highlight": ["Timurid Empire"],
+          "wiki": "Timur"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "ussr",
+  "title": "Breakup of the USSR",
+  "years": "1985–1991",
+  "summary": "From Gorbachev's reforms to fifteen independent states, with day-by-day borders.",
+  "sections": [
+    {
+      "id": "ussr-reform",
+      "title": "Reform and its limits",
+      "intro": "By the 1980s the Soviet economy was growing slowly. Central planning delivered heavy industry and weapons but struggled with consumer goods and new technology, and a large share of output went to the military. Hard-currency income depended heavily on oil and gas exports, and the oil price fell sharply in 1986. The war in Afghanistan, from 1979, added to the cost.",
+      "date": "1985-03-11",
+      "camera": { "center": [60, 55], "zoom": 2.2 },
+      "items": [
+        {
+          "id": "gorbachev",
+          "kind": "player",
+          "title": "Gorbachev's reforms",
+          "when": "1985–1990",
+          "text": "Mikhail Gorbachev became Soviet leader in 1985. He tried to revive the economy by giving enterprises more freedom (perestroika) and allowing more open criticism (glasnost), and he cut military commitments abroad.\n\nLoosening central control without a working market made shortages worse, and the new openness let national movements in the republics organise in public.",
+          "date": "1987-01-01",
+          "camera": { "center": [60, 55], "zoom": 2.4 },
+          "highlight": ["365"],
+          "wiki": "Perestroika"
+        },
+        {
+          "id": "1989",
+          "kind": "event",
+          "title": "Eastern Europe breaks away",
+          "when": "1989",
+          "text": "Gorbachev made it clear that the Soviet Union would no longer use force to keep its allies' communist governments in power. In 1989 they fell one after another: Poland held partly free elections in June, Hungary opened its border with Austria, and on 9 November East Germany opened the Berlin Wall.\n\nMost of these changes were peaceful; in Romania, the regime's fall in December was violent.",
+          "date": "1989-11-09",
+          "camera": { "center": [18, 51], "zoom": 3.8 },
+          "highlight": ["265"],
+          "wiki": "Revolutions of 1989"
+        },
+        {
+          "id": "germany",
+          "kind": "event",
+          "title": "German reunification",
+          "when": "3 Oct 1990",
+          "text": "East Germany's economy could not survive open borders with the much richer West, and its people kept leaving. Less than a year after the Wall opened, East Germany joined the Federal Republic on 3 October 1990.\n\nThe Soviet Union agreed to withdraw its troops, with West Germany paying much of the cost.",
+          "date": "1990-10-03",
+          "camera": { "center": [11, 51], "zoom": 4.2 },
+          "highlight": ["260"],
+          "wiki": "German reunification"
+        }
+      ]
+    },
+    {
+      "id": "ussr-1991",
+      "title": "1991: the Union dissolves",
+      "intro": "In 1990 and 1991 the republics, including Russia itself under Boris Yeltsin, declared that their own laws took precedence over the Union's. Gorbachev negotiated a new Union Treaty that would give them much more power.",
+      "date": "1991-08-01",
+      "camera": { "center": [60, 55], "zoom": 2.2 },
+      "items": [
+        {
+          "id": "coup",
+          "kind": "event",
+          "title": "The August coup",
+          "when": "19–21 Aug 1991",
+          "text": "On 19 August 1991, the day before the new Union Treaty was due to be signed, hardliners in the government and the KGB put Gorbachev under house arrest and declared a state of emergency. Crowds gathered at the Russian parliament in Moscow, Yeltsin defied the plotters, and army units refused to attack. The coup collapsed within three days.\n\nIt destroyed what authority the central government had left, and the republics began declaring full independence.",
+          "date": "1991-08-19",
+          "camera": { "center": [37.6, 55.75], "zoom": 4.5 },
+          "highlight": ["365"],
+          "wiki": "1991 Soviet coup attempt"
+        },
+        {
+          "id": "baltics",
+          "kind": "event",
+          "title": "The Baltic states",
+          "when": "6 Sep 1991",
+          "text": "Estonia, Latvia and Lithuania had been annexed by the Soviet Union in 1940 and had never accepted it. Lithuania declared independence in March 1990, and in January 1991 Soviet troops killed fourteen civilians in Vilnius without reversing it. After the coup, the Soviet State Council recognised all three on 6 September 1991.\n\nThe map counts a state from the day its independence was recognised, which is why their borders appear on that date.",
+          "date": "1991-09-06",
+          "camera": { "center": [24, 57], "zoom": 4.5 },
+          "highlight": ["366", "367", "368"],
+          "wiki": "Singing Revolution"
+        },
+        {
+          "id": "end",
+          "kind": "event",
+          "title": "The end of the Soviet Union",
+          "when": "Dec 1991",
+          "text": "On 1 December 1991 Ukraine voted for independence by more than 90 percent. A week later the leaders of Russia, Ukraine and Belarus agreed to dissolve the Soviet Union and form a Commonwealth of Independent States, which eight more republics joined on 21 December.\n\nGorbachev resigned on 25 December, and the Union formally ceased to exist the next day. Fifteen independent states took its place. Russia inherited the Soviet seat at the United Nations and, after later agreements, all of its nuclear weapons.",
+          "date": "1991-12-26",
+          "camera": { "center": [60, 50], "zoom": 2.2 },
+          "highlight": ["365", "369", "370", "371", "372", "373", "701", "702", "703", "704", "705"],
+          "wiki": "Dissolution of the Soviet Union"
+        }
+      ]
+    }
+  ]
+}
