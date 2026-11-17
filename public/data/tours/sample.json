@@ -1,0 +1,31 @@
+{
+  "id": "sample",
+  "title": "Sample tour",
+  "years": "1914",
+  "summary": "A placeholder tour used to build and test the tour feature.",
+  "blocs": [
+    { "id": "entente", "name": "Entente", "color": "#4f7fd6", "members": [{ "ref": "200", "from": "1914-08-04" }, { "ref": "220", "from": "1914-08-03" }, { "ref": "365", "from": "1914-08-01" }] },
+    { "id": "central", "name": "Central Powers", "color": "#c25450", "members": [{ "ref": "255", "from": "1914-08-01" }, { "ref": "300", "from": "1914-07-28" }] }
+  ],
+  "arrows": [
+    { "id": "franco-russian", "from": [2.35, 48.86], "to": [30.32, 59.94], "label": "Franco-Russian Alliance", "text": "Placeholder text for the Franco-Russian Alliance arrow.", "wiki": "Franco-Russian Alliance" }
+  ],
+  "sections": [
+    {
+      "id": "one", "title": "Section one", "intro": "Placeholder intro for section one.",
+      "date": "1914-06-28", "camera": { "center": [15, 47], "zoom": 3.2 },
+      "items": [
+        { "id": "sarajevo", "kind": "event", "title": "Sample event", "text": "Placeholder event text.\n\nSecond paragraph.", "date": "1914-06-28", "camera": { "center": [18.41, 43.86], "zoom": 5 }, "highlight": ["300"], "wiki": "Assassination of Archduke Franz Ferdinand" },
+        { "id": "blocs", "kind": "alliances", "title": "Sample alliances", "text": "Placeholder alliances text.", "date": "1914-08-05", "camera": { "center": [20, 50], "zoom": 2.6 }, "blocs": true, "arrows": ["franco-russian"] }
+      ]
+    },
+    {
+      "id": "two", "title": "Section two", "intro": "Placeholder intro for section two.",
+      "date": "1914-09-05", "camera": { "center": [5, 49], "zoom": 3.5 },
+      "items": [
+        { "id": "marne", "kind": "battle", "title": "Sample battle", "when": "5–12 Sep 1914", "text": "Placeholder battle text.", "date": "1914-09-05", "camera": { "center": [3.5, 48.9], "zoom": 5.5 }, "view": "flat", "wiki": "First Battle of the Marne" },
+        { "id": "player", "kind": "player", "title": "Sample player", "text": "Placeholder player text.", "date": "1914-09-05", "camera": { "center": [10, 51], "zoom": 4 }, "highlight": ["255"], "blocs": true }
+      ]
+    }
+  ]
+}
