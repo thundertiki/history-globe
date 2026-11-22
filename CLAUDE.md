@@ -5,7 +5,7 @@ https://thundertiki.github.io/history-globe/, deployed by `.github/workflows/pag
 installable offline app via `public/manifest.webmanifest` + `src/sw.js` (a template that `vite.config.ts` fills in;
 registered only on http(s) web, not in the artifact, Electron or Capacitor). Also a Claude artifact built from the
 same code (`npm run build:artifact`, publish `dist-artifact/page.html` + its files).
-Design and status: vault `10 Projects/History Globe.md`.
+Project state and Ben's next actions: Beacon project "History Globe".
 
 ## Layout
 - `src/`: Vite + TypeScript + MapLibre GL 5 (globe projection), no framework.
@@ -18,14 +18,7 @@ Design and status: vault `10 Projects/History Globe.md`.
     `tour-panel.ts` (sheet view), `applyStop`/`exitTour` in `main.ts`. Text rules: tone section of
     `docs/superpowers/specs/2026-11-16-guided-tours-design.md`. Checks: `npm run check:tours`,
     `node tests/tours-ui-check.mjs` (uses `tests/fixtures/sample-tour.json`).
-- `pipeline/` (run in this order): `fetch.sh` downloads into `raw/` (git-ignored); `build.mjs` simplifies to
-  `public/data/borders/` (each file: `borders` + one-per-polity `labels`) and adds 1886+ period names;
-  `entities.mjs` + `entities-search.mjs` map names to Wikipedia; `summaries.mjs` prebuilds `wiki.json`;
-  `fonts.mjs` fetches label glyphs into `public/fonts/`; `events.mjs` pulls Wikidata events into `events.json`;
-  `apply-overrides.mjs` applies `entity-overrides.json` and resolves new names; `eras.mjs` maps old-map names
-  like "Egypt" to period articles by date (`pipeline/eras.json`, run before `summaries.mjs`); `search.mjs` builds `search.json` for the search box (run after `build.mjs`); `artifact.mjs` packages the
-  artifact. `public/data/human.json` (early human sites and routes) is hand-written: keep dates hedged.
-- `public/data/` is generated, but committed so the site builds without running the pipeline.
+- `pipeline/`: builds the committed, generated `public/data/`. Script order and rules: `docs/pipeline.md`.
 
 ## Data tiers (keep the About panel in sync)
 - A: historical-basemaps (GPL-3.0), snapshots up to 1880, used before 1886-01-01.
@@ -39,8 +32,6 @@ Design and status: vault `10 Projects/History Globe.md`.
   `npm run dist:android` (Capacitor, debug-signed APK; JDK 21 + Android SDK paths in git-ignored
   `pipeline/android-build.local.json`).
   Shells: `desktop/main.cjs` (serves `dist/` over `app://`), `android/` (Capacitor). Icons: `build/`.
-- Data: `npm run data:fetch`, `data:build`, `data:entities` and `data:summaries` (slow, rate-limited), `data:fonts`.
-
 ## Rules
 - No runtime calls to other sites (the artifact blocks them): Wikipedia text and glyphs are prebuilt.
 - Data licences: `public/data/LICENSES.md`. CShapes is non-commercial, so no ads or paid features.
